@@ -9,6 +9,7 @@ This browser based web application to ...
 * Hello! My name is Ryan and I am excited to work with my team to build an awesome app.
 * Hi, my name is Noorarjun and I want to make a web app with my team.
 * Salutation, Vincent here o/
+
 	
 ## Technologies
 Technologies used for this project:

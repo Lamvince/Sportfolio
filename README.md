@@ -6,6 +6,7 @@
 
 ## General Info
 This browser based web application to ...
+* Hello! My name is Ryan and I am excited to work with my team to build a cool app.
 	
 ## Technologies
 Technologies used for this project:

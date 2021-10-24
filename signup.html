@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Sportfolio Login Page</title>
+        <title>Sportfolio Signup Page</title>
         <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
         
         <!-- Required meta tags -->
@@ -23,32 +23,34 @@
             </div>
         </nav>
 
-
         <div class="container col-xl-10 col-xxl-8 px-4 py-5">
           <div class="row align-items-center g-lg-5 py-5">
             <div class="col-lg-7 text-center text-lg-start">
               <h1 class="display-4 fw-bold lh-1 mb-3">Sportfolio</h1>
-              <p class="col-lg-10 fs-4">For athletes, by athletes<br> Log in here</p>
+              <p class="col-lg-10 fs-4">For athletes, by athletes<br> Sign up here</p>
             </div>
             <div class="col-md-10 mx-auto col-lg-5">
               <form class="p-4 p-md-5 border rounded-3 bg-light">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="text" class="form-control" id="floatingFullName">
+                  <label for="floatingInput">Full Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="floatingInput">
                   <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                  <input type="date" class="form-control" id="floatingdob">
+                  <label for="floatingInput">Date of Birth</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" id="floatingPassword">
                   <label for="floatingPassword">Password</label>
                 </div>
-                <div class="checkbox mb-3">
-                  <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                  </label>
-                </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
                 <hr class="my-4">
-                <small class="text-muted">Not registered? Click the Sign up button below to get registered.</small>
-                <a href="signup.html" class="w-100 btn btn-lg btn-success mt-4">Sign up</a>
+                <small class="text-muted">Already registered? Click the Log in button below to sign in.</small>
+                <a href="login.html" class="w-100 btn btn-lg btn-success mt-4">Log in</a>
               </form>
             </div>
           </div>

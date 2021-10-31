@@ -1,3 +1,16 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyCCqWMjEP2oy-Sd6-MjT1A5MIFr_0Omm9M",
+    authDomain: "sportfolio-96c76.firebaseapp.com",
+    projectId: "sportfolio-96c76",
+    storageBucket: "sportfolio-96c76.appspot.com",
+    messagingSenderId: "692569240990",
+    appId: "1:692569240990:web:febccf7600148c82ec528f"
+  };
+  
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+
 function sayHello() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -18,6 +31,9 @@ function sayHello() {
     });
 }
 //sayHello();
+
+
+
 
 function writeWebcamData() {
     //this is an array of JSON objects copied from open source data

@@ -5,10 +5,19 @@
     <meta charset="utf-8">
     <title>Sportfolio</title>
     <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
+    <link rel="stylesheet" href="styles/my_style.css" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Firebase 8 related JS CDN -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <!-- Link to the api keys for your Firebase project -->
+    <script src="./scripts/my_script.js"></script>
 
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
@@ -22,17 +31,106 @@
         </div>
     </nav>
 
-    <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="https://dummyimage.com/150x150/1b0575/d11929&text=Sportfolio" alt="Sportfolio">
-        <h1 class="display-5 fw-bold">Welcome to Sportfolio!</h1>
+    <div class="px-4 pt-5 my-5 text-center">
+        <h1 class="display-4 fw-bold">Welcome to Sportfolio!</h1>
         <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4"> Sportfolio is a free web application that aims to improve the recruitment process for both athletes and recruiters.</p>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-           <a href="signup.html"><button type="button" class="btn btn-primary btn-lg px-4 gap-3">Sign Up</button></a>
-           <a href="login.html"><button type="button" class="btn btn-outline-secondary btn-lg px-4">Log In</button></a>
-          </div>
+            <p class="lead mb-4">Sportfolio is a free web application that aims to improve the recruitment process for
+                both athletes and recruiters.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                <a href="login.html"><button class="btn btn-primary btn-lg px-4 me-sm-3">Log in</button></a>
+            </div>
         </div>
-      </div>
+        <div class="overflow-hidden" style="max-height: 30vh;">
+        </div>
+    </div>
+
+    <div class="container px-4 py-5" id="custom-cards">
+
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                    style="background-image: url('unsplash-photo-1.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Display your highlights to the world</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                    style="background-image: url('unsplash-photo-2.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Connect with athletes and recruiters
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                    style="background-image: url('unsplash-photo-3.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Get scouted digitally and faster</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="py-5 px-4">
+        <div id="section-container-review">
+            <div id="reviewpic">
+                <img id="pfpicon" class="mb-4" src="images/pfp.png">
+            </div>
+            <div id="reviewtext">
+                <h4><i>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque voluptatibus alias deleniti veritatis voluptate possimus soluta nam ipsa. Sed quos numquam cumque est in amet nobis neque eius vel voluptates.</i></h4>
+            </div>
+        </div>
+    </section>
+
+    <div class="container px-4 py-5 text-center" id="hanging-icons">
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="col d-flex align-items-start">
+                <div>
+                    <img id="uploadicon" class="mx-auto" src="images/upload.png">
+                    <h2>Upload Mulitimedia</h2>
+                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                        sentence and probably just keep going until we run out of words.</p>
+                    <a href="#" class="btn btn-primary">
+                        Primary button
+                    </a>
+                </div>
+            </div>
+
+            <div class="col d-flex align-items-start">
+                <div>
+                    <img id="msgicon" class="mx-auto" src="images/msg.png">
+                    <h2>Direct Messaging</h2>
+                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                        sentence and probably just keep going until we run out of words.</p>
+                    <a href="#" class="btn btn-primary">
+                        Primary button
+                    </a>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <div>
+                    <img id="followicon" class="mx-auto" src="images/follow.png">
+                    <h2>Follow Others</h2>
+                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                        sentence and probably just keep going until we run out of words.</p>
+                    <a href="#" class="btn btn-primary">
+                        Primary button
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
 
     <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
         <i class="material-icons-outlined">home</i>

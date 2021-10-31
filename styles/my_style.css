@@ -4,3 +4,55 @@
   font-family: 'Bangers', cursive;
 }
 
+#section {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#section-container-review {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 50% 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+#reviewpic {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  display: flex;
+  justify-content: center;
+}
+
+#reviewpic img {
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+#reviewtext {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  text-align: center;
+}
+
+#msgicon {
+  width: 30%;
+}
+
+#uploadicon {
+  width: 30%;
+}
+
+#followicon {
+  width: 30%;
+}
+

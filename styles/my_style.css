@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
+#body {
+  padding: 0;
+  margin: 0;
+}
+
 #logo {
   font-family: 'Bangers', cursive;
 }
@@ -16,7 +21,7 @@
 
 #section-container-review {
   grid-column: 1 / span 1;
-  grid-row: 1 / span;
+  grid-row: 1 / span 1;
   height: 100%;
   width: 100%;
   display: grid;
@@ -36,24 +41,13 @@
 #reviewpic img {
   border-radius: 50%;
   margin: 0 auto;
+  margin-top: 5%;
 }
 
 #reviewtext {
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
   text-align: center;
-}
-
-#msgicon {
-  width: 30%;
-}
-
-#uploadicon {
-  width: 30%;
-}
-
-#followicon {
-  width: 30%;
 }
 
 #sidenav {
@@ -79,3 +73,36 @@
   width: 37px;
   height: 37px;
 }
+
+#custom-cards {
+  background-color: rgb(146, 228, 183);
+}
+
+#welcome {
+  background-color: rgb(247, 247, 247);
+  padding: 5%;
+
+}
+
+#review {
+  background-color: rgb(247, 247, 247);
+}
+
+#featured-3 {
+  background-color: rgb(146, 228, 183);
+}
+
+
+
+#msgicon {
+  width: 20%;
+}
+
+#uploadicon {
+  width: 20%;
+}
+
+#followicon {
+  width: 20%;
+}
+

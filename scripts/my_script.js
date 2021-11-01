@@ -153,3 +153,12 @@ function writeWebcamData() {
             })
     })
 }
+
+function showOrHide(id) {
+    var x = document.getElementById(id);
+    if (x.style.display === "block") {
+      x.style = "display: none !important";
+    } else {
+      x.style = "display: block !important";
+    }
+}

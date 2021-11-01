@@ -56,3 +56,26 @@
   width: 30%;
 }
 
+#sidenav {
+  width: 280px; 
+  height: 100vh; 
+  z-index: 1; 
+  position: absolute; 
+  left: 0; 
+  top: 0;
+  display:none !important;
+}
+
+.white {
+  color: white;
+}
+
+.material-icons-outlined {
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.img-xs {
+  width: 37px;
+  height: 37px;
+}

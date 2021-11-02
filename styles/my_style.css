@@ -106,3 +106,22 @@
   width: 20%;
 }
 
+/* search.html */
+
+#heading {
+  margin-left: 30px;
+  margin-top: 10px;
+  font-size: 65px;
+}
+
+#search_query {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+#btn_search {
+  margin-left: 30px;
+  margin-top: 10px;
+  display: block;
+}
+

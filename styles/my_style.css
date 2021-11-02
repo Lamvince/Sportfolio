@@ -3,6 +3,7 @@
 #body {
   padding: 0;
   margin: 0;
+  padding-bottom: 30px;
 }
 
 #logo {
@@ -57,11 +58,7 @@
   position: absolute; 
   left: 0; 
   top: 0;
-  display:none !important;
-}
-
-.white {
-  color: white;
+  display: none !important;
 }
 
 .material-icons-outlined {

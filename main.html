@@ -27,7 +27,7 @@
         <!-- Google Icons (Material Design)-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     </head>
-    <body>
+    <body id="body">
         <nav class="navbar navbar-light bg-success">
             <div class="container py-3">
               <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
@@ -36,45 +36,45 @@
         </nav>
 
         <!-- Hamburger Side Navbar -->
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" id="sidenav">
-          <i class="material-icons-outlined white" onclick="showOrHide('sidenav')">close</i>
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-secondary text-white" id="sidenav">
+          <i class="material-icons-outlined" onclick="showOrHide('sidenav')">close</i>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
               <a href="#" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                <i class="material-icons-outlined white">leaderboard</i> Rank
+                <i class="material-icons-outlined">leaderboard</i> Rank
               </a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                <i class="material-icons-outlined white">group</i> Connections
+                <i class="material-icons-outlined">group</i> Connections
               </a>
             </li>
             <li>
             <li>
               <a href="#" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                <i class="material-icons-outlined white">settings</i> Settings
+                <i class="material-icons-outlined">settings</i> Settings
               </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                <i class="material-icons-outlined white">contact_support</i> About
+                <i class="material-icons-outlined">contact_support</i> About
               </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-                <i class="material-icons-outlined white">alternate_email</i> Contact
+                <i class="material-icons-outlined">alternate_email</i> Contact
               </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-                <i class="material-icons-outlined white">logout</i> Logout
+                <i class="material-icons-outlined">logout</i> Logout
               </a>
             </li>
           </ul>
@@ -82,10 +82,9 @@
 
         <div class="container">
             <h1 id="name">Hello, name!</h1>
-
-            <div class="row profile-body">
+            <div class="row">
               <!-- left wrapper start -->
-              <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
+              <div class="d-none d-md-block col-md-3">
                   <div class="card rounded card-body">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                       <h6 class="card-title mb-0">Announcements</h6>
@@ -95,7 +94,6 @@
                     <p>Ath Lete has been recruited by the sportsball team the Cityname
                         Teamname</p>
                     <p class="text-muted">November 15, 2021</p>
-
                   </div>
                   <div class="col-md-12 grid-margin">
                     <div class="card rounded">
@@ -112,44 +110,45 @@
               </div>
               <!-- left wrapper end -->
               <!-- middle wrapper start -->
-              <div class="col-md-8 col-xl-6 middle-wrapper row col-md-12 grid-margin">
-                <div class="card rounded">
-                  <div class="card-header d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                      <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-                      <div class="ml-2">
-                        <p>Mike Popescu</p>
-                        <p class="tx-11 text-muted">1 min ago</p>
+              <div class="col-md-6 col-xl-6 grid-margin">
+                <div class="row">
+                  <div class="card rounded">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                        <div class="ml-2">
+                          <p>Mike Popescu</p>
+                          <p class="tx-11 text-muted">1 min ago</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="card-body">
-                    <p class="mb-3 tx-14">Feed based on generic social media. We can change the layout if looking too similar to
-                      other
-                      social media platforms is an issue.</p>
-                    <img class="img-fluid" src="https://dummyimage.com/400x600/000/fff" alt="">
-                  </div>
-                  <div class="card-footer">
-                    <div class="d-flex justify-content-evenly">
-                      <a class="d-flex align-items-center text-muted mr-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"></svg>
-                        <i class="material-icons-outlined">thumb_up</i> Like
-                      </a>
-                      <a class="d-flex align-items-center text-muted mr-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"></svg>
-                        <i class="material-icons-outlined">comment</i> Comment
-                      </a>
-                      <a class="d-flex align-items-center text-muted mr-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"></svg>
-                        <i class="material-icons-outlined">share</i> Share
-                      </a>
+                    <div class="card-body">
+                      <p class="mb-3 tx-14">Feed based on generic social media. We can change the layout if looking too similar to
+                        other social media platforms is an issue.</p>
+                      <img class="img-fluid" src="https://dummyimage.com/400x600/000/fff" alt="">
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex justify-content-evenly">
+                        <a class="d-flex align-items-center text-muted mr-4">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"></svg>
+                          <i class="material-icons-outlined">thumb_up</i> Like
+                        </a>
+                        <a class="d-flex align-items-center text-muted mr-4">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"></svg>
+                          <i class="material-icons-outlined">comment</i> Comment
+                        </a>
+                        <a class="d-flex align-items-center text-muted mr-4">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"></svg>
+                          <i class="material-icons-outlined">share</i> Share
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <!-- middle wrapper end -->
               <!-- right wrapper start -->
-              <div class="d-none d-xl-block col-xl-3 right-wrapper">
+              <div class="d-none d-md-block col-md-3">
                   <div class="row">
                       <div class="col-md-12 grid-margin">
                           <div class="card rounded">
@@ -223,11 +222,10 @@
           </div>
 
         <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
-            <i class="material-icons-outlined white">home</i>
-            <i class="material-icons-outlined">account_circle</i>
-            <i class="material-icons-outlined">forum</i>
-            <i class="material-icons-outlined">notifications</i>
+            <i class="material-icons-outlined text-warning">home</i>
+            <i class="material-icons-outlined text-white">account_circle</i>
+            <i class="material-icons-outlined text-white">forum</i>
+            <i class="material-icons-outlined text-white">notifications</i>
         </footer>
-
     </body>
 </html>

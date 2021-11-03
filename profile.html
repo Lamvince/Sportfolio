@@ -34,44 +34,56 @@
     </div>
   </nav>
 
-   <!-- Hamburger Side Navbar -->
-   <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" id="sidenav">
+  <!-- Hamburger Side Navbar -->
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" id="sidenav">
     <i class="material-icons-outlined white" onclick="showOrHide('sidenav')">close</i>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" />
+          </svg>
           <i class="material-icons-outlined white">leaderboard</i> Rank
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" />
+          </svg>
           <i class="material-icons-outlined white">group</i> Connections
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" />
+          </svg>
           <i class="material-icons-outlined white">settings</i> Settings
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#table" />
+          </svg>
           <i class="material-icons-outlined white">contact_support</i> About
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#grid" />
+          </svg>
           <i class="material-icons-outlined white">alternate_email</i> Contact
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#people-circle" />
+          </svg>
           <i class="material-icons-outlined white">logout</i> Logout
         </a>
       </li>
@@ -80,7 +92,37 @@
 
 
   <div id="main_container">
-    
+
+    <div>
+      <img id="profile_pic" src="./profile.png" class="rounded mx-auto d-block" alt="profile picture">
+    </div>
+
+    <div id="greeting">
+      <p>Hello, <span id="user-name">name</span>!</p>
+    </div>
+
+    <div id="btn_edit_profile_div">
+      <button id="btn_edit_profile" type="button" class="btn btn-primary">Edit Profile</button>
+    </div>
+
+    <div id="photos" class="card" style="width: 18rem;">
+      <img src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Photos</h5>
+        <p class="card-text"></p>
+        <a href="#" class="btn btn-primary">Upload photos</a>
+      </div>
+    </div>
+
+    <div id="videos" class="card" style="width: 18rem;">
+      <img src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Videos</h5>
+        <p class="card-text"></p>
+        <a href="#" class="btn btn-primary">Upload Videos</a>
+      </div>
+    </div>
+
 
 
   </div>

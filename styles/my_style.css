@@ -6,6 +6,12 @@
   padding-bottom: 30px;
 }
 
+/* turn search icon black */
+
+#navbar_search {
+  color: black;
+}
+
 #logo {
   font-family: 'Bangers', cursive;
 }
@@ -121,6 +127,8 @@
   margin-top: 10px;
   display: block;
 }
+
+/* End of CSS for search.html */
 
 #about-section {
   height: 100%;

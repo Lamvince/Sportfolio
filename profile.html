@@ -98,7 +98,7 @@
     </div>
 
     <div id="greeting">
-      <p>Hello, <span id="user-name">name</span>!</p>
+      <p>Hello, <span id="user-name"></span>!</p>
     </div>
 
     <div id="btn_edit_profile_div">
@@ -137,6 +137,33 @@
     <i class="material-icons-outlined text-white">forum</i>
     <i class="material-icons-outlined text-white">notifications</i>
   </footer>
+
+  <script>
+    function insertName() {
+      firebase.auth().onAuthStateChanged(user => {
+        // Check if user is signed in:
+        if (user) {
+          // Do something for the current logged-in user here: 
+          console.log(user.uid);
+          //go to the correct user document by referencing to the user uid
+          currentUser = db.collection("users").doc(user.uid);
+          //get the document for current user.
+          currentUser.get()
+            .then(userDoc => {
+              var user_Name = userDoc.data().name;
+              console.log(user_Name);
+              //method #1:  insert with html only
+              document.getElementById("user-name").innerText = n;    //using javascript
+              //method #2:  insert using jquery
+              // $("#name-goes-here").text(user_Name); //using jquery
+            })
+        } else {
+          // No user is signed in.
+        }
+      });
+    }
+    insertName();
+  </script>
 
 </body>
 

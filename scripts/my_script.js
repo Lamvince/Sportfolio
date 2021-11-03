@@ -10,6 +10,7 @@ var firebaseConfig = {
   
   // Initialize Firebase
   const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
 function sayHello() {
     firebase.auth().onAuthStateChanged(function (user) {

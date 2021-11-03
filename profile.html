@@ -15,6 +15,8 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
 
   <!-- Link to the api keys for your Firebase project -->
   <script src="./scripts/my_script.js"></script>
@@ -155,7 +157,7 @@
               var user_Name = userDoc.data().name;
               console.log(user_Name);
               //method #1:  insert with html only
-              document.getElementById("user-name").innerText = n;    //using javascript
+              document.getElementById("user-name").innerText = user_Name;    //using javascript
               //method #2:  insert using jquery
               // $("#name-goes-here").text(user_Name); //using jquery
             })

@@ -26,10 +26,60 @@
 <body>
   <nav class="navbar navbar-light bg-success">
     <div class="container py-3">
-      <i class="material-icons">menu</i>
-      <i class="material-icons">search</i>
+      <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
+      <a href="./search.html">
+        <i class="material-icons-outlined" id="navbar_search">search</i>
+      </a>
     </div>
   </nav>
+
+  <!-- Hamburger Side Navbar -->
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-secondary text-white" id="sidenav">
+    <i class="material-icons-outlined" onclick="showOrHide('sidenav')">close</i>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
+          <i class="material-icons-outlined">leaderboard</i> Rank
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
+          <i class="material-icons-outlined">group</i> Connections
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
+          <i class="material-icons-outlined">settings</i> Settings
+        </a>
+      </li>
+      <li>
+        <a href="./about.html" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"></svg>
+          <i class="material-icons-outlined">contact_support</i> About
+        </a>
+      </li>
+      <li>
+        <a href="./contact.html" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"></svg>
+          <i class="material-icons-outlined">alternate_email</i> Contact
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#people-circle" /></svg>
+          <i class="material-icons-outlined">logout</i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
 
   <div class="px-4 text-center" id="welcome">
     <h1 class="display-4 fw-bold">About Sportfolio</h1>
@@ -61,10 +111,14 @@
   </section>
 
   <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
-    <i class="material-icons-outlined">home</i>
-    <i class="material-icons-outlined">account_circle</i>
-    <i class="material-icons-outlined">forum</i>
-    <i class="material-icons-outlined">notifications</i>
+    <a href="./main.html">
+      <i class="material-icons-outlined text-warning">home</i>
+    </a>
+    <a href="./profile.html">
+      <i class="material-icons-outlined text-white">account_circle</i>
+    </a>
+    <i class="material-icons-outlined text-white">forum</i>
+    <i class="material-icons-outlined text-white">notifications</i>
   </footer>
 
 </body>

@@ -128,6 +128,11 @@
   display: block;
 }
 
+#button_div {
+  display: flex;
+  align-items: flex-end;
+}
+
 /* End of CSS for search.html */
 
 #about-section {
@@ -266,6 +271,11 @@
 }
 
 /* profile.html */
+
+#body {
+  background-color: rgb(247, 247, 247);
+
+}
 
 #profile_pic {
   height: 100px;

@@ -15,6 +15,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
 
@@ -104,7 +105,13 @@
     </div>
 
     <div id="btn_edit_profile_div">
-      <button id="btn_edit_profile" type="button" class="btn btn-primary">Edit Profile</button>
+      <button type="button" id="btn_edit_profile" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#reg-modal">
+        Edit profile
+      </button>
+      <button id="btn_upload_profile" type="button" class="btn btn-danger">Upload</button>
+      <br>
+      <label id="loadingStuff"></label>
     </div>
 
     <div id="photos" class="card" style="width: 18rem;">
@@ -143,6 +150,9 @@
   </footer>
 
   <script>
+    let imgName, imgUrl;
+    let files = [];
+
     function insertName() {
       firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -157,9 +167,67 @@
               var user_Name = userDoc.data().name;
               console.log(user_Name);
               //method #1:  insert with html only
-              document.getElementById("user-name").innerText = user_Name;    //using javascript
+              document.getElementById("user-name").innerText = user_Name; //using javascript
               //method #2:  insert using jquery
               // $("#name-goes-here").text(user_Name); //using jquery
+
+              document.getElementById("btn_edit_profile").onclick = function (e) {
+
+                let input = document.createElement('input');
+                input.type = 'file';
+
+
+                input.onchange = e => {
+                  files = e.target.files;
+                  reader = new FileReader();
+                  reader.onload = function () {
+                    document.getElementById("profile_pic").src = reader.result;
+                  }
+
+                  reader.readAsDataURL(files[0]);
+                }
+                input.click();
+              }
+
+              document.getElementById("btn_upload_profile").onclick = function () {
+                imgName = user_Name + files[0].name;
+                let uploadTask = firebase.storage().ref('images/' + imgName).put(files[0]);
+
+                uploadTask.on('state_changed', function (snapshot) {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("loadingStuff").innerHTML = 'Upload' + progress + '%'
+                  },
+
+                  function (error) {
+                    alert('error in saving the image');
+                  },
+
+                  function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                      imgUrl = url;
+
+                      db.collection("users").doc(user.uid).set({
+                        name: user.displayName,
+                        email: user.email,
+                        image: imgName,
+                        link: imgUrl
+                      });
+                      alert('image added successfully');
+                    })
+                  }
+
+                );
+              }
+
+              let read = db.collection("users").doc(user.uid);
+
+              read.get()
+                .then(userDoc => {
+                  var aight = userDoc.data().link;
+                  console.log(aight);
+                  document.getElementById("profile_pic").src = aight;
+                })
+
             })
         } else {
           // No user is signed in.

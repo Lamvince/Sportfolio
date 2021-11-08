@@ -318,4 +318,9 @@
   color: white;
   display: flex;
   justify-content: center;
+  text-align: center;
+}
+
+#submit_div {
+  padding-bottom: 20px;
 }

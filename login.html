@@ -51,7 +51,11 @@
         <h5 style="color: white;">If you don't have an account, enter your email and follow the prompts!</h5>
     </div>
     <div id="firebaseui-auth-container"></div>
+    <div id="new_user_ui">
+        Great, you're almost set!
+    </div>
     <div id="loader">Loading...</div>
+
 
 
     <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
@@ -76,25 +80,28 @@
                     if (authResult.additionalUserInfo.isNewUser) {
 
                         let temp = "https://firebasestorage.googleapis.com/v0/b/sportfolio-96c76.appspot.com/o/images%2Fplaceholderpfpfromserver.png?alt=media&token=9f8ca543-9f0a-47c4-aa2b-217918ed8629"
-
+                        console.log("new user");
                         db.collection("users").doc(user.uid).set({
                                 name: user.displayName,
                                 email: user.email,
                                 link: temp
                             }).then(function () {
+                                //before showing main.html, user needs to fill out form
                                 window.location.assign("main.html")
                             })
                             .catch(function (error) {
                                 console.log("error is " + error)
                             })
                     } else {
+                        console.log("existing user");
                         return true;
                     }
                 },
                 uiShown: function () {
                     // The widget is rendered.
-                    // Hide the loader.
-                    document.getElementById('loader').style.display = 'none';
+                    // Hide the loader and new user ui.
+                    document.getElementById('loader').style.display = "none";
+                    document.getElementById('new_user_ui').style.display = "none";
                 }
             },
             // Will use popup for IDP Providers sign-in flow instead of the default, redirect.

@@ -312,3 +312,10 @@
   margin-bottom: 50px;
 }
 
+/* New user UI */
+
+#new_user_ui {
+  color: white;
+  display: flex;
+  justify-content: center;
+}

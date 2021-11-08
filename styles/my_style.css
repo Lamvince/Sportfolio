@@ -313,13 +313,17 @@
 }
 
 /* New user UI */
-
-#new_user_ui {
+#new_user_prompt {
   color: white;
   display: flex;
   justify-content: center;
   text-align: center;
 }
+
+/* #new_user_ui {
+  display: flex;
+  justify-content: center;
+} */
 
 #submit_div {
   padding-bottom: 20px;

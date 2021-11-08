@@ -107,32 +107,38 @@
     </div>
 
     <div id="btn_edit_profile_div">
-      <button type="button" id="btn_edit_profile" class="btn btn-primary" data-bs-toggle="modal"
-        data-bs-target="#reg-modal">
+      <button type="button" id="btn_edit_profile" class="btn btn-primary">
         Edit profile
       </button>
-      <button id="btn_upload_profile" type="button" class="btn btn-danger">Upload</button>
+      <button id="btn_upload_profile" class="btn btn-success">Upload</button>
       <br>
       <label id="loadingStuff"></label>
     </div>
 
-    <button type="button" id="upload" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">
-      photo
-    </button>
-    <button id="photoupload" type="button" class="btn btn-danger">photo Upload</button>
 
-    <div id="videos" class="card" style="width: 18rem;">
+    <div id="photo1" class="card" style="width: 18rem;">
       <img id="yeaight" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Photo #1</h5>
         <p class="card-text"></p>
+        <button type="button" id="upload1" class="btn btn-primary">
+          photo
+        </button>
+        <button id="photoupload1" class="btn btn-success">Upload</button>
+        <button id="delete1" class="btn btn-danger">delete</button>
+        
       </div>
     </div>
-    <div id="videoss" class="card" style="width: 18rem;">
+    <div id="photo2" class="card" style="width: 18rem;">
       <img id="bet" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Photo #2</h5>
         <p class="card-text"></p>
+        <button type="button" id="upload2" class="btn btn-primary">
+          photo
+        </button>
+        <button id="photoupload2" type="button" class="btn btn-success">Upload</button>
+        <button id="delete2" class="btn btn-danger">delete</button>
       </div>
     </div>
 
@@ -211,7 +217,7 @@
                     uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
                       imgUrl = url;
 
-                      db.collection("users").doc(user.uid).set({
+                      db.collection("users").doc(user.uid).update({
                         name: user.displayName,
                         email: user.email,
                         image: imgName,
@@ -233,132 +239,137 @@
                   document.getElementById("profile_pic").src = aight;
                 })
 
-              if (count == 0) {
-                document.getElementById("upload").onclick = function (e) {
+              document.getElementById("upload1").onclick = function (e) {
 
-                  let input1 = document.createElement('input');
-                  input1.type = 'file';
+                let input1 = document.createElement('input');
+                input1.type = 'file';
 
 
-                  input1.onchange = e => {
-                    files = e.target.files;
-                    reader1 = new FileReader();
+                input1.onchange = e => {
+                  files = e.target.files;
+                  reader1 = new FileReader();
 
-                    reader1.onload = function () {
-                      document.getElementById("yeaight").src = reader1.result;
-                    }
-
-                    reader1.readAsDataURL(files[0]);
+                  reader1.onload = function () {
+                    document.getElementById("yeaight").src = reader1.result;
                   }
-                  input1.click();
+
+                  reader1.readAsDataURL(files[0]);
                 }
-
-                document.getElementById("photoupload").onclick = function () {
-                  imgName = user_Name + files[0].name;
-                  let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
-
-                  uploadTask.on('state_changed', function (snapshot) {
-                      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    },
-
-                    function (error) {
-                      alert('error in saving the image');
-                    },
-
-                    function () {
-                      uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                        pic1 = url;
-
-                        db.collection("users").doc(user.uid).update({
-                          img1: pic1
-                        });
-                        alert('image added successfully');
-                      })
-                    }
-
-                  );
-                }
-
-                let read1 = db.collection("users").doc(user.uid);
-
-                read1.get()
-                  .then(userDoc => {
-                    var aight1 = userDoc.data().img1;
-                    console.log(aight1);
-                    document.getElementById("yeaight").src = aight1;
-                  })
-
-                count++;
+                input1.click();
               }
 
-              if (count == 1) {
-                document.getElementById("upload").onclick = function (e) {
+              document.getElementById("photoupload1").onclick = function () {
+                imgName = user_Name + files[0].name;
+                let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
 
-                  let input2 = document.createElement('input');
-                  input2.type = 'file';
+                uploadTask.on('state_changed', function (snapshot) {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  },
 
+                  function (error) {
+                    alert('error in saving the image');
+                  },
 
-                  input2.onchange = e => {
-                    files = e.target.files;
-                    reader2 = new FileReader();
+                  function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                      pic1 = url;
 
-                    reader2.onload = function () {
-                      document.getElementById("bet").src = reader2.result;
-                    }
-
-                    reader2.readAsDataURL(files[0]);
+                      db.collection("users").doc(user.uid).update({
+                        img1: pic1
+                      });
+                      alert('image added successfully');
+                    })
                   }
-                  input2.click();
-                }
 
-                document.getElementById("photoupload").onclick = function () {
-                  imgName = user_Name + files[0].name;
-                  let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
-
-                  uploadTask.on('state_changed', function (snapshot) {
-                      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    },
-
-                    function (error) {
-                      alert('error in saving the image');
-                    },
-
-                    function () {
-                      uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                        pic2 = url;
-
-                        db.collection("users").doc(user.uid).update({
-                          img2: pic2
-                        });
-                        alert('image added successfully');
-                      })
-                    }
-
-                  );
-                }
-
-                let read2 = db.collection("users").doc(user.uid);
-
-                read2.get()
-                  .then(userDoc => {
-                    var aight2 = userDoc.data().img2;
-                    console.log(aight2);
-                    document.getElementById("bet").src = aight2;
-                  })
-
-                count++;
+                );
               }
 
-              document.getElementById("bet").addEventListener("click", function (e) {
+              let read1 = db.collection("users").doc(user.uid);
+
+              read1.get()
+                .then(userDoc => {
+                  var aight1 = userDoc.data().img1;
+                  console.log(aight1);
+                  document.getElementById("yeaight").src = aight1;
+                })
+
+                document.getElementById("delete1").addEventListener("click", function (e) {
                 e.preventDefault();
 
-                var deleteIt = db.collection("users").doc(user.uid);
+                let photo1 = db.collection("users").doc(user.uid);
 
-                var removeIt = deleteIt.update({
+                let removeImg1 = photo1.update({
+                  img1: firebase.firestore.FieldValue.delete()
+                });
+
+              }, false);
+
+              document.getElementById("upload2").onclick = function (e) {
+
+                let input2 = document.createElement('input');
+                input2.type = 'file';
+
+
+                input2.onchange = e => {
+                  files = e.target.files;
+                  reader2 = new FileReader();
+
+                  reader2.onload = function () {
+                    document.getElementById("bet").src = reader2.result;
+                  }
+
+                  reader2.readAsDataURL(files[0]);
+                }
+                input2.click();
+              }
+
+              document.getElementById("photoupload2").onclick = function () {
+                imgName = user_Name + files[0].name;
+                let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
+
+                uploadTask.on('state_changed', function (snapshot) {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  },
+
+                  function (error) {
+                    alert('error in saving the image');
+                  },
+
+                  function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                      pic2 = url;
+
+                      db.collection("users").doc(user.uid).update({
+                        img2: pic2
+                      });
+                      alert('image added successfully');
+                    })
+                  }
+
+                );
+              }
+
+              let read2 = db.collection("users").doc(user.uid);
+
+              read2.get()
+                .then(userDoc => {
+                  var aight2 = userDoc.data().img2;
+                  console.log(aight2);
+                  document.getElementById("bet").src = aight2;
+                })
+
+              document.getElementById("delete2").addEventListener("click", function (e) {
+                e.preventDefault();
+
+                let photo2 = db.collection("users").doc(user.uid);
+
+                let removeImg2 = photo2.update({
                   img2: firebase.firestore.FieldValue.delete()
                 });
 
               }, false);
+
+
 
             })
         } else {

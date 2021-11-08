@@ -107,7 +107,8 @@
     </div>
 
     <div id="btn_edit_profile_div">
-      <button type="button" id="btn_edit_profile" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">
+      <button type="button" id="btn_edit_profile" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#reg-modal">
         Edit profile
       </button>
       <button id="btn_upload_profile" type="button" class="btn btn-danger">Upload</button>
@@ -115,21 +116,23 @@
       <label id="loadingStuff"></label>
     </div>
 
-    <div id="photos" class="card" style="width: 18rem;">
-      <img src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Photos</h5>
-        <p class="card-text"></p>
-        <a href="#" class="btn btn-primary">Upload photos</a>
-      </div>
-    </div>
+    <button type="button" id="upload" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">
+      photo
+    </button>
+    <button id="photoupload" type="button" class="btn btn-danger">photo Upload</button>
 
     <div id="videos" class="card" style="width: 18rem;">
-      <img src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+      <img id="yeaight" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Videos</h5>
+        <h5 class="card-title">Photo #1</h5>
         <p class="card-text"></p>
-        <a href="#" class="btn btn-primary">Upload Videos</a>
+      </div>
+    </div>
+    <div id="videoss" class="card" style="width: 18rem;">
+      <img id="bet" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Photo #2</h5>
+        <p class="card-text"></p>
       </div>
     </div>
 
@@ -151,8 +154,9 @@
   </footer>
 
   <script>
-    let imgName, imgUrl;
+    let imgName, imgUrl, pic1, pic2;
     let files = [];
+    let count = 0;
 
     function insertName() {
       firebase.auth().onAuthStateChanged(user => {
@@ -228,6 +232,133 @@
                   console.log(aight);
                   document.getElementById("profile_pic").src = aight;
                 })
+
+              if (count == 0) {
+                document.getElementById("upload").onclick = function (e) {
+
+                  let input1 = document.createElement('input');
+                  input1.type = 'file';
+
+
+                  input1.onchange = e => {
+                    files = e.target.files;
+                    reader1 = new FileReader();
+
+                    reader1.onload = function () {
+                      document.getElementById("yeaight").src = reader1.result;
+                    }
+
+                    reader1.readAsDataURL(files[0]);
+                  }
+                  input1.click();
+                }
+
+                document.getElementById("photoupload").onclick = function () {
+                  imgName = user_Name + files[0].name;
+                  let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
+
+                  uploadTask.on('state_changed', function (snapshot) {
+                      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    },
+
+                    function (error) {
+                      alert('error in saving the image');
+                    },
+
+                    function () {
+                      uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                        pic1 = url;
+
+                        db.collection("users").doc(user.uid).update({
+                          img1: pic1
+                        });
+                        alert('image added successfully');
+                      })
+                    }
+
+                  );
+                }
+
+                let read1 = db.collection("users").doc(user.uid);
+
+                read1.get()
+                  .then(userDoc => {
+                    var aight1 = userDoc.data().img1;
+                    console.log(aight1);
+                    document.getElementById("yeaight").src = aight1;
+                  })
+
+                count++;
+              }
+
+              if (count == 1) {
+                document.getElementById("upload").onclick = function (e) {
+
+                  let input2 = document.createElement('input');
+                  input2.type = 'file';
+
+
+                  input2.onchange = e => {
+                    files = e.target.files;
+                    reader2 = new FileReader();
+
+                    reader2.onload = function () {
+                      document.getElementById("bet").src = reader2.result;
+                    }
+
+                    reader2.readAsDataURL(files[0]);
+                  }
+                  input2.click();
+                }
+
+                document.getElementById("photoupload").onclick = function () {
+                  imgName = user_Name + files[0].name;
+                  let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
+
+                  uploadTask.on('state_changed', function (snapshot) {
+                      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    },
+
+                    function (error) {
+                      alert('error in saving the image');
+                    },
+
+                    function () {
+                      uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                        pic2 = url;
+
+                        db.collection("users").doc(user.uid).update({
+                          img2: pic2
+                        });
+                        alert('image added successfully');
+                      })
+                    }
+
+                  );
+                }
+
+                let read2 = db.collection("users").doc(user.uid);
+
+                read2.get()
+                  .then(userDoc => {
+                    var aight2 = userDoc.data().img2;
+                    console.log(aight2);
+                    document.getElementById("bet").src = aight2;
+                  })
+
+                count++;
+              }
+
+              document.getElementById("bet").addEventListener("click", function (e) {
+                e.preventDefault();
+
+                var deleteIt = db.collection("users").doc(user.uid);
+
+                var removeIt = deleteIt.update({
+                  img2: firebase.firestore.FieldValue.delete()
+                });
+
+              }, false);
 
             })
         } else {

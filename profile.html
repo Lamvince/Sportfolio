@@ -126,7 +126,7 @@
         </button>
         <button id="photoupload1" class="btn btn-success">Upload</button>
         <button id="delete1" class="btn btn-danger">delete</button>
-        
+
       </div>
     </div>
     <div id="photo2" class="card" style="width: 18rem;">
@@ -139,6 +139,33 @@
         </button>
         <button id="photoupload2" type="button" class="btn btn-success">Upload</button>
         <button id="delete2" class="btn btn-danger">delete</button>
+      </div>
+    </div>
+    <div id="photo3" class="card" style="width: 18rem;">
+      <img id="userimg3" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Photo #3</h5>
+        <p class="card-text"></p>
+        <button type="button" id="upload3" class="btn btn-primary">
+          photo
+        </button>
+        <button id="photoupload3" type="button" class="btn btn-success">Upload</button>
+        <button id="delete3" class="btn btn-danger">delete</button>
+      </div>
+    </div>
+
+    <div id="video1" class="card" style="width: 18rem;">
+      <video id="uservideo1" src="" class="card-img-top" alt="..." controls>
+        <source id="vid1src" src="">
+      </video>
+      <div class="card-body">
+        <h5 class="card-title">Video #1</h5>
+        <p class="card-text"></p>
+        <button type="button" id="uploadvideo1" class="btn btn-primary">
+          video
+        </button>
+        <button id="videoupload1" type="button" class="btn btn-success">Upload</button>
+        <button id="deletevideo1" class="btn btn-danger">delete</button>
       </div>
     </div>
 
@@ -160,7 +187,7 @@
   </footer>
 
   <script>
-    let imgName, imgUrl, pic1, pic2;
+    let imgName, imgUrl, pic1, pic2, pic3;
     let files = [];
     let count = 0;
 
@@ -293,7 +320,7 @@
                   document.getElementById("yeaight").src = aight1;
                 })
 
-                document.getElementById("delete1").addEventListener("click", function (e) {
+              document.getElementById("delete1").addEventListener("click", function (e) {
                 e.preventDefault();
 
                 let photo1 = db.collection("users").doc(user.uid);
@@ -370,6 +397,139 @@
               }, false);
 
 
+              document.getElementById("upload3").onclick = function (e) {
+
+                let input3 = document.createElement('input');
+                input3.type = 'file';
+
+
+                input3.onchange = e => {
+                  files = e.target.files;
+                  reader3 = new FileReader();
+
+                  reader3.onload = function () {
+                    document.getElementById("userimg3").src = reader3.result;
+                  }
+
+                  reader3.readAsDataURL(files[0]);
+                }
+                input3.click();
+              }
+
+              document.getElementById("photoupload3").onclick = function () {
+                imgName = user_Name + files[0].name;
+                let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
+
+                uploadTask.on('state_changed', function (snapshot) {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  },
+
+                  function (error) {
+                    alert('error in saving the image');
+                  },
+
+                  function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                      pic3 = url;
+
+                      db.collection("users").doc(user.uid).update({
+                        img3: pic3
+                      });
+                      alert('image added successfully');
+                    })
+                  }
+
+                );
+              }
+
+              let read3 = db.collection("users").doc(user.uid);
+
+              read3.get()
+                .then(userDoc => {
+                  var aight3 = userDoc.data().img3;
+                  console.log(aight3);
+                  document.getElementById("userimg3").src = aight3;
+                })
+
+              document.getElementById("delete3").addEventListener("click", function (e) {
+                e.preventDefault();
+
+                let photo3 = db.collection("users").doc(user.uid);
+
+                let removeImg3 = photo3.update({
+                  img3: firebase.firestore.FieldValue.delete(),
+                });
+
+
+              }, false);
+
+              document.getElementById("uploadvideo1").onclick = function (e) {
+
+                let input4 = document.createElement('input');
+                input4.type = 'file';
+
+
+                input4.onchange = e => {
+                  files = e.target.files;
+                  reader4 = new FileReader();
+
+                  reader4.onload = function () {
+                    document.getElementById("uservideo1").src = reader4.result;
+                    document.getElementById("vid1src").src = reader4.result;
+                  }
+
+                  reader4.readAsDataURL(files[0]);
+                }
+                input4.click();
+              }
+
+              document.getElementById("videoupload1").onclick = function () {
+                imgName = user_Name + files[0].name;
+                let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
+
+                uploadTask.on('state_changed', function (snapshot) {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  },
+
+                  function (error) {
+                    alert('error in saving the video');
+                  },
+
+                  function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                      vid1 = url;
+
+                      db.collection("users").doc(user.uid).update({
+                        uservid1: vid1
+                      });
+                      alert('video added successfully');
+                    })
+                  }
+
+                );
+              }
+
+              let read4 = db.collection("users").doc(user.uid);
+
+              read4.get()
+                .then(userDoc => {
+                  var aight4 = userDoc.data().uservid1;
+                  console.log(aight4);
+                  document.getElementById("vid1src").src = aight4;
+                  document.getElementById("uservideo1").src = aight4;
+                })
+
+              document.getElementById("deletevideo1").addEventListener("click", function (e) {
+                e.preventDefault();
+
+                let vidz1 = db.collection("users").doc(user.uid);
+
+                let removevidz1 = vidz1.update({
+                  uservid1: firebase.firestore.FieldValue.delete(),
+                });
+
+
+              }, false);
 
             })
         } else {

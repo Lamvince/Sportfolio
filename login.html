@@ -60,7 +60,7 @@
             </div>
         </div>
         <div>
-            <select class="form-select" aria-label="Default select example">
+            <select id="userGender" class="form-select" aria-label="Default select example">
                 <option selected>Gender</option>
                 <option value="1">Male</option>
                 <option value="2">Female</option>
@@ -69,7 +69,7 @@
             </select>
         </div>
         <div>
-            <select class="form-select" aria-label="Default select example">
+            <select id="userSport" class="form-select" aria-label="Default select example">
                 <option selected>What sport do you play?</option>
                 <option value="1">Basketball</option>
                 <option value="2">Baseball</option>
@@ -81,7 +81,7 @@
         <div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Team name</span>
-                <input type="text" class="form-control" aria-label="Sizing example input"
+                <input id="userTeam" type="text" class="form-control" aria-label="Sizing example input"
                     aria-describedby="inputGroup-sizing-default">
             </div>
         </div>
@@ -102,12 +102,24 @@
 
     <script>
 
-        // Add click event for new user submit button
-        document.getElementById("btnSubmit").addEventListener("click", function() {
-            //need to do something with user data here
-            window.location.assign("main.html")
+        function getNewUserInfo(user) {
+            let userGender = document.getElementById("userGender").value;
+            let userSport = document.getElementById("userSport").value;
+            let userTeam = document.getElementById("userTeam").value;
+            console.log("gender " + userGender);
+            console.log("sport " + userSport);
+            console.log("team " + userTeam);
 
-        })
+            //add to database
+            db.collection("users").doc(user.uid).update({
+                gender: userGender,
+                sport: userSport,
+                team: userTeam
+            });
+            alert("Account creation successful!");
+            // window.location.assign("main.html")
+        }
+
 
 
 
@@ -134,7 +146,11 @@
                         }).then(function () {
                             //before showing main.html, user needs to fill out form
                             document.getElementById("new_user_ui").style.display = "block";
-                            // window.location.assign("main.html")
+                            // Add click event for new user submit button
+                            // document.getElementById("btnSubmit").addEventListener("click", getNewUserInfo(user))
+                            document.getElementById("btnSubmit").onclick = function() {getNewUserInfo(user);};
+
+                            // window.location.assign("main.html") this can probably be deleted
                         })
                             .catch(function (error) {
                                 console.log("error is " + error)
@@ -171,6 +187,7 @@
 
         // The start method will wait until the DOM is loaded.
         ui.start('#firebaseui-auth-container', uiConfig);
+
     </script>
 
 </body>

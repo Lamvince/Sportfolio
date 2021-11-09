@@ -103,8 +103,14 @@
     <script>
 
         function getNewUserInfo(user) {
-            let userGender = document.getElementById("userGender").value;
-            let userSport = document.getElementById("userSport").value;
+
+            //NEED TO VERIFY THAT USER FILLED OUT FORM 
+            
+            let eGender = document.getElementById("userGender");
+            let eSport = document.getElementById("userSport");
+
+            let userGender = eGender.options[eGender.selectedIndex].text;
+            let userSport = eSport.options[eSport.selectedIndex].text;
             let userTeam = document.getElementById("userTeam").value;
             console.log("gender " + userGender);
             console.log("sport " + userSport);
@@ -117,7 +123,7 @@
                 team: userTeam
             });
             alert("Account creation successful!");
-            // window.location.assign("main.html")
+            window.location.assign("main.html")
         }
 
 
@@ -146,11 +152,9 @@
                         }).then(function () {
                             //before showing main.html, user needs to fill out form
                             document.getElementById("new_user_ui").style.display = "block";
-                            // Add click event for new user submit button
-                            // document.getElementById("btnSubmit").addEventListener("click", getNewUserInfo(user))
-                            document.getElementById("btnSubmit").onclick = function() {getNewUserInfo(user);};
 
-                            // window.location.assign("main.html") this can probably be deleted
+                            // Add click event for new user submit button
+                            document.getElementById("btnSubmit").onclick = function() {getNewUserInfo(user);};
                         })
                             .catch(function (error) {
                                 console.log("error is " + error)

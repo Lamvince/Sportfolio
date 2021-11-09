@@ -17,6 +17,7 @@
   text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
 }
 
+/* adds black border around text for readability over images */
 .black_border {
   text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
@@ -62,6 +63,7 @@
   text-align: center;
 }
 
+/* hamburger menu css */
 #sidenav {
   width: 280px; 
   height: 100vh; 
@@ -72,11 +74,13 @@
   display: none !important;
 }
 
+/* changes cursor when hovering over icons */
 .material-icons-outlined {
   vertical-align: middle;
   cursor: pointer;
 }
 
+/* Icon size for main page */
 .img-xs {
   width: 37px;
   height: 37px;

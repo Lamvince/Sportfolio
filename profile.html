@@ -117,7 +117,7 @@
 
 
     <div id="photo1" class="card" style="width: 18rem;">
-      <img id="yeaight" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+      <img id="img1" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Photo #1</h5>
         <p class="card-text"></p>
@@ -130,7 +130,7 @@
       </div>
     </div>
     <div id="photo2" class="card" style="width: 18rem;">
-      <img id="bet" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+      <img id="img2" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Photo #2</h5>
         <p class="card-text"></p>
@@ -142,7 +142,7 @@
       </div>
     </div>
     <div id="photo3" class="card" style="width: 18rem;">
-      <img id="userimg3" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+      <img id="img3" src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Photo #3</h5>
         <p class="card-text"></p>
@@ -169,6 +169,35 @@
       </div>
     </div>
 
+    <div id="video2" class="card" style="width: 18rem;">
+      <video id="uservideo2" src="" class="card-img-top" alt="..." controls>
+        <source id="vid2src" src="">
+      </video>
+      <div class="card-body">
+        <h5 class="card-title">Video #2</h5>
+        <p class="card-text"></p>
+        <button type="button" id="uploadvideo2" class="btn btn-primary">
+          video
+        </button>
+        <button id="videoupload2" type="button" class="btn btn-success">Upload</button>
+        <button id="deletevideo2" class="btn btn-danger">delete</button>
+      </div>
+    </div>
+
+    <div id="video3" class="card" style="width: 18rem;">
+      <video id="uservideo3" src="" class="card-img-top" alt="..." controls>
+        <source id="vid3src" src="">
+      </video>
+      <div class="card-body">
+        <h5 class="card-title">Video #3</h5>
+        <p class="card-text"></p>
+        <button type="button" id="uploadvideo3" class="btn btn-primary">
+          video
+        </button>
+        <button id="videoupload3" type="button" class="btn btn-success">Upload</button>
+        <button id="deletevideo3" class="btn btn-danger">delete</button>
+      </div>
+    </div>
 
 
   </div>
@@ -248,7 +277,7 @@
                         name: user.displayName,
                         email: user.email,
                         image: imgName,
-                        link: imgUrl
+                        userpfp: imgUrl
                       });
                       alert('image added successfully');
                     })
@@ -261,7 +290,7 @@
 
               read.get()
                 .then(userDoc => {
-                  var aight = userDoc.data().link;
+                  var aight = userDoc.data().userpfp;
                   console.log(aight);
                   document.getElementById("profile_pic").src = aight;
                 })
@@ -277,7 +306,7 @@
                   reader1 = new FileReader();
 
                   reader1.onload = function () {
-                    document.getElementById("yeaight").src = reader1.result;
+                    document.getElementById("img1").src = reader1.result;
                   }
 
                   reader1.readAsDataURL(files[0]);
@@ -315,9 +344,9 @@
 
               read1.get()
                 .then(userDoc => {
-                  var aight1 = userDoc.data().img1;
-                  console.log(aight1);
-                  document.getElementById("yeaight").src = aight1;
+                  var data1 = userDoc.data().img1;
+                  console.log(data1);
+                  document.getElementById("img1").src = data1;
                 })
 
               document.getElementById("delete1").addEventListener("click", function (e) {
@@ -329,7 +358,10 @@
                   img1: firebase.firestore.FieldValue.delete()
                 });
 
+
+                
               }, false);
+
 
               document.getElementById("upload2").onclick = function (e) {
 
@@ -342,7 +374,7 @@
                   reader2 = new FileReader();
 
                   reader2.onload = function () {
-                    document.getElementById("bet").src = reader2.result;
+                    document.getElementById("img2").src = reader2.result;
                   }
 
                   reader2.readAsDataURL(files[0]);
@@ -380,9 +412,9 @@
 
               read2.get()
                 .then(userDoc => {
-                  var aight2 = userDoc.data().img2;
-                  console.log(aight2);
-                  document.getElementById("bet").src = aight2;
+                  var data2 = userDoc.data().img2;
+                  console.log(data2);
+                  document.getElementById("img2").src = data2;
                 })
 
               document.getElementById("delete2").addEventListener("click", function (e) {
@@ -408,7 +440,7 @@
                   reader3 = new FileReader();
 
                   reader3.onload = function () {
-                    document.getElementById("userimg3").src = reader3.result;
+                    document.getElementById("img3").src = reader3.result;
                   }
 
                   reader3.readAsDataURL(files[0]);
@@ -446,9 +478,9 @@
 
               read3.get()
                 .then(userDoc => {
-                  var aight3 = userDoc.data().img3;
-                  console.log(aight3);
-                  document.getElementById("userimg3").src = aight3;
+                  var data3 = userDoc.data().img3;
+                  console.log(data3);
+                  document.getElementById("img3").src = data3;
                 })
 
               document.getElementById("delete3").addEventListener("click", function (e) {
@@ -513,10 +545,10 @@
 
               read4.get()
                 .then(userDoc => {
-                  var aight4 = userDoc.data().uservid1;
-                  console.log(aight4);
-                  document.getElementById("vid1src").src = aight4;
-                  document.getElementById("uservideo1").src = aight4;
+                  var data4 = userDoc.data().uservid1;
+                  console.log(data4);
+                  document.getElementById("vid1src").src = data4;
+                  document.getElementById("uservideo1").src = data4;
                 })
 
               document.getElementById("deletevideo1").addEventListener("click", function (e) {
@@ -530,6 +562,143 @@
 
 
               }, false);
+
+              document.getElementById("uploadvideo2").onclick = function (e) {
+
+                let input5 = document.createElement('input');
+                input5.type = 'file';
+
+
+                input5.onchange = e => {
+                  files = e.target.files;
+                  reader5 = new FileReader();
+
+                  reader5.onload = function () {
+                    document.getElementById("uservideo2").src = reader5.result;
+                    document.getElementById("vid2src").src = reader5.result;
+                  }
+
+                  reader5.readAsDataURL(files[0]);
+                }
+                input5.click();
+              }
+
+              document.getElementById("videoupload2").onclick = function () {
+                imgName = user_Name + files[0].name;
+                let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
+
+                uploadTask.on('state_changed', function (snapshot) {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  },
+
+                  function (error) {
+                    alert('error in saving the video');
+                  },
+
+                  function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                      vid2 = url;
+
+                      db.collection("users").doc(user.uid).update({
+                        uservid2: vid2
+                      });
+                      alert('video added successfully');
+                    })
+                  }
+
+                );
+              }
+
+              let read5 = db.collection("users").doc(user.uid);
+
+              read5.get()
+                .then(userDoc => {
+                  var data5 = userDoc.data().uservid2;
+                  console.log(data5);
+                  document.getElementById("vid2src").src = data5;
+                  document.getElementById("uservideo2").src = data5;
+                })
+
+              document.getElementById("deletevideo2").addEventListener("click", function (e) {
+                e.preventDefault();
+
+                let vidz2 = db.collection("users").doc(user.uid);
+
+                let removevidz2 = vidz2.update({
+                  uservid2: firebase.firestore.FieldValue.delete(),
+                });
+
+
+              }, false);
+
+              document.getElementById("uploadvideo3").onclick = function (e) {
+
+                let input6 = document.createElement('input');
+                input6.type = 'file';
+
+
+                input6.onchange = e => {
+                  files = e.target.files;
+                  reader6 = new FileReader();
+
+                  reader6.onload = function () {
+                    document.getElementById("uservideo3").src = reader6.result;
+                    document.getElementById("vid3src").src = reader6.result;
+                  }
+
+                  reader6.readAsDataURL(files[0]);
+                }
+                input6.click();
+              }
+
+              document.getElementById("videoupload3").onclick = function () {
+                imgName = user_Name + files[0].name;
+                let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
+
+                uploadTask.on('state_changed', function (snapshot) {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  },
+
+                  function (error) {
+                    alert('error in saving the video');
+                  },
+
+                  function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                      vid3 = url;
+
+                      db.collection("users").doc(user.uid).update({
+                        uservid3: vid3
+                      });
+                      alert('video added successfully');
+                    })
+                  }
+
+                );
+              }
+
+              let read6 = db.collection("users").doc(user.uid);
+
+              read6.get()
+                .then(userDoc => {
+                  var data6 = userDoc.data().uservid3;
+                  console.log(data6);
+                  document.getElementById("vid3src").src = data6;
+                  document.getElementById("uservideo3").src = data6;
+                })
+
+              document.getElementById("deletevideo3").addEventListener("click", function (e) {
+                e.preventDefault();
+
+                let vidz3 = db.collection("users").doc(user.uid);
+
+                let removevidz3 = vidz3.update({
+                  uservid3: firebase.firestore.FieldValue.delete(),
+                });
+
+
+              }, false);
+
 
             })
         } else {

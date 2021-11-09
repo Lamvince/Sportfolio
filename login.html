@@ -104,26 +104,47 @@
 
         function getNewUserInfo(user) {
 
-            //NEED TO VERIFY THAT USER FILLED OUT FORM 
-            
+            let verified = false;
+
             let eGender = document.getElementById("userGender");
             let eSport = document.getElementById("userSport");
 
             let userGender = eGender.options[eGender.selectedIndex].text;
             let userSport = eSport.options[eSport.selectedIndex].text;
             let userTeam = document.getElementById("userTeam").value;
+
             console.log("gender " + userGender);
             console.log("sport " + userSport);
             console.log("team " + userTeam);
 
-            //add to database
-            db.collection("users").doc(user.uid).update({
-                gender: userGender,
-                sport: userSport,
-                team: userTeam
-            });
-            alert("Account creation successful!");
-            window.location.assign("main.html")
+            //verify that user filled out whole form
+            //unchosen gender is "Gender"
+            //unchosen sport is "What sport do you play?"
+            //unchosen team is ""
+
+            if (userGender.localeCompare("Gender") == 0) {
+                alert("Please choose a gender");
+            } else if (userSport.localeCompare("What sport do you play?") == 0) {
+                alert("Please choose a sport");
+            } else if (userTeam.localeCompare("") == 0) {
+                alert("Please enter a team");
+            } else {
+                verified = true;
+            }
+
+            if (verified == true) {
+                db.collection("users").doc(user.uid).update({
+                    gender: userGender,
+                    sport: userSport,
+                    team: userTeam
+                });
+                alert("Account creation successful!");
+                console.log("verified");
+                window.location.assign("main.html")
+            } else {
+                console.log("not verified");
+            }
+            //once input is verified, add to database
         }
 
 
@@ -154,7 +175,7 @@
                             document.getElementById("new_user_ui").style.display = "block";
 
                             // Add click event for new user submit button
-                            document.getElementById("btnSubmit").onclick = function() {getNewUserInfo(user);};
+                            document.getElementById("btnSubmit").onclick = function () { getNewUserInfo(user); };
                         })
                             .catch(function (error) {
                                 console.log("error is " + error)

@@ -55,7 +55,7 @@ function getProfilePic() {
 
 // Logout
 function logout() {
-    const logout = document.getElementById("logout");
+    const logout = document.querySelectorAll("a[href='./index.html']");
     logout.addEventListener('click', (e) => {
         e.preventDefault();
         firebase.auth().signOut().then(() => {

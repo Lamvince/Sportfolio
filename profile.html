@@ -108,6 +108,12 @@
       <p>Hello, <span id="user-name"></span>!</p>
     </div>
 
+    <div id="user_info">
+      <p>Sport: <span id="user-sport"></span></p>
+      <p>Team: <span id="user-team"></span></p>
+      <p>Gender: <span id="user-gender"></span></p>
+    </div>
+
     <div id="btn_edit_profile_div">
       <button type="button" id="btn_edit_profile" class="btn btn-primary">
         Edit profile
@@ -128,7 +134,6 @@
         </button>
         <button id="photoupload1" class="btn btn-success">Upload</button>
         <button id="delete1" class="btn btn-danger">delete</button>
-
       </div>
     </div>
     <div id="photo2" class="card" style="width: 18rem;">
@@ -234,11 +239,17 @@
           currentUser.get()
             .then(userDoc => {
               var user_Name = userDoc.data().name;
+              var user_sport = userDoc.data().sport;
+              var user_team = userDoc.data().team;
+              var user_gender = userDoc.data().gender;
+
               console.log(user_Name);
               //method #1:  insert with html only
               document.getElementById("user-name").innerText = user_Name; //using javascript
-              //method #2:  insert using jquery
-              // $("#name-goes-here").text(user_Name); //using jquery
+              document.getElementById("user-sport").innerText = user_sport;
+              document.getElementById("user-team").innerText = user_team;
+              document.getElementById("user-gender").innerText = user_gender;
+
 
               document.getElementById("btn_edit_profile").onclick = function (e) {
 

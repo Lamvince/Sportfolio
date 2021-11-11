@@ -307,6 +307,11 @@
   justify-content: center;
 }
 
+#user_info {
+  text-align: center;
+  font-size: 20px;
+}
+
 #photos {
   margin-left: auto;
   margin-right: auto;
@@ -327,11 +332,6 @@
   justify-content: center;
   text-align: center;
 }
-
-/* #new_user_ui {
-  display: flex;
-  justify-content: center;
-} */
 
 #submit_div {
   padding-bottom: 20px;

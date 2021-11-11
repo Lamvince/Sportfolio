@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>Sportfolio</title>
   <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/my_style.css" />
 
   <!-- Bootstrap CSS -->
@@ -19,6 +20,7 @@
 
 
   <!-- Link to the api keys for your Firebase project -->
+  <script src="./scripts/firebase.js"></script>
   <script src="./scripts/my_script.js"></script>
 
   <!-- Google Icons (Material Design)-->
@@ -72,7 +74,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="./index.html" class="nav-link text-white" id="logout">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
           <i class="material-icons-outlined white">logout</i> Logout
         </a>
@@ -99,7 +101,7 @@
   <!-- Footer -->
   <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
     <a href="./main.html">
-      <i class="material-icons-outlined text-warning">home</i>
+      <i class="material-icons-outlined text-white">home</i>
     </a>
     <a href="./profile.html">
       <i class="material-icons-outlined text-white">account_circle</i>
@@ -108,6 +110,9 @@
     <i class="material-icons-outlined text-white">notifications</i>
   </footer>
 
+  <script>
+    logout();
+  </script>
 </body>
 
 </html>

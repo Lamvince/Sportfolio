@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>Sportfolio Main Page</title>
   <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/my_style.css" />
 
   <!-- Required meta tags -->
@@ -26,6 +27,7 @@
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
   <!-- Link to JS -->
+  <script src="./scripts/firebase.js"></script>
   <script src="./scripts/my_script.js"></script>
 
   <!-- Google Icons (Material Design)-->
@@ -81,7 +83,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="./index.html" class="nav-link text-white" id="logout">
           <svg class="bi me-2" width="16" height="16">
             <use xlink:href="#people-circle" /></svg>
           <i class="material-icons-outlined">logout</i> Logout
@@ -166,38 +168,30 @@
             <div class="card rounded">
               <div class="card-body">
                 <h6 class="card-title">Recommended Connections</h6>
-                <div class="latest-photos">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                      </figure>
-                    </div>
-                    <div class="col-md-4">
-                      <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
-                      </figure>
-                    </div>
-                    <div class="col-md-4">
-                      <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-                      </figure>
-                    </div>
-                    <div class="col-md-4">
-                      <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
-                      </figure>
-                    </div>
-                    <div class="col-md-4">
-                      <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="">
-                      </figure>
-                    </div>
-                    <div class="col-md-4">
-                      <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-                      </figure>
-                    </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <figure id="1">
+                    </figure>
+                  </div>
+                  <div class="col-md-4">
+                    <figure id="2">
+                    </figure>
+                  </div>
+                  <div class="col-md-4">
+                    <figure id="3">
+                    </figure>
+                  </div>
+                  <div class="col-md-4">
+                    <figure id="4">
+                    </figure>
+                  </div>
+                  <div class="col-md-4">
+                    <figure id="5">
+                    </figure>
+                  </div>
+                  <div class="col-md-4">
+                    <figure id="6">
+                    </figure>
                   </div>
                 </div>
               </div>
@@ -270,6 +264,8 @@
             });
         }
         insertName();
+        getProfilePic();
+        logout();
     </script>
 </body>
 </html>

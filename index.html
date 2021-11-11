@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Sportfolio</title>
     <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/my_style.css" />
 
     <!-- Bootstrap CSS -->
@@ -17,6 +18,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
     <!-- Link to the api keys for your Firebase project -->
+    <script src="./scripts/firebase.js"></script>
     <script src="./scripts/my_script.js"></script>
 
     <!-- Google Icons (Material Design)-->
@@ -26,8 +28,7 @@
 <body>
     <nav class="navbar navbar-light bg-success">
         <div class="container py-3">
-            <!-- <i class="material-icons">menu</i>
-            <i class="material-icons">search</i> -->
+            <h1 id="logo" class="display-2 fw-bold">Sportfolio</h1>
         </div>
     </nav>
 
@@ -118,11 +119,8 @@
 
 
 
-    <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
-        <!-- <i class="material-icons-outlined">home</i>
-        <i class="material-icons-outlined">account_circle</i>
-        <i class="material-icons-outlined">forum</i>
-        <i class="material-icons-outlined">notifications</i> -->
+    <footer class="navbar justify-content-evenly bg-secondary text-white">
+        <p>©2021 BBY-31 | <a href="./about.html" class="white">About</a> | <a href="./contact.html" class="white">Contact Us</a></p>
     </footer>
 
 </body>

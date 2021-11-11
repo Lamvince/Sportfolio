@@ -1,17 +1,3 @@
-// Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyCCqWMjEP2oy-Sd6-MjT1A5MIFr_0Omm9M",
-    authDomain: "sportfolio-96c76.firebaseapp.com",
-    projectId: "sportfolio-96c76",
-    storageBucket: "sportfolio-96c76.appspot.com",
-    messagingSenderId: "692569240990",
-    appId: "1:692569240990:web:febccf7600148c82ec528f"
-  };
-  
-  // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
 function sayHello() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -32,6 +18,51 @@ function sayHello() {
     });
 }
 //sayHello();
+
+function logoHeader() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            // Hamburger menu and search icons appear in top navbar. 
+            document.getElementById('logo').style = "display: none !important";
+        } else {
+            // Logo in top navbar.
+            document.getElementById('logo').style= "display: block !important";
+            const icons = document.getElementsByClassName('material-icons-outlined');
+            for (var i = 0; i < icons.length; i++){
+                icons[i].style = 'display: none !important';
+            }
+        }
+    });
+}
+
+
+// Grabs profile pictures and adds them to Recommened Connections on main.html
+function getProfilePic() {
+    var count = 1;
+    db.collection("users").get()
+        .then(allUsers => {
+            allUsers.forEach(doc => {
+                var image = doc.data().userpfp;
+                var tempID = count;
+                console.log(tempID);
+                console.log(image);
+                document.getElementById(tempID).innerHTML = "<img class='img-fluid' src=" + image + " alt=''>";
+                count = count + 1;
+            })
+        })
+}
+
+// Logout
+function logout() {
+    const logout = document.getElementById("logout");
+    logout.addEventListener('click', (e) => {
+        e.preventDefault();
+        firebase.auth().signOut().then(() => {
+            console.log("Logged out");
+        });
+    });
+}
 
 
 function writeWebcamData() {

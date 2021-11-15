@@ -44,10 +44,7 @@ function getProfilePic() {
         .then(allUsers => {
             allUsers.forEach(doc => {
                 var image = doc.data().userpfp;
-                var tempID = count;
-                console.log(tempID);
-                console.log(image);
-                document.getElementById(tempID).innerHTML = "<img class='img-fluid' src=" + image + " alt=''>";
+                document.getElementById(count).innerHTML = "<img class='img-fluid' src=" + image + " alt=''>";
                 count = count + 1;
             })
         })
@@ -56,16 +53,22 @@ function getProfilePic() {
 function getSearchResults() {
     let input = document.getElementById("search_query").value;
     var count = 1;
+
+    while(count<=10){
+        document.getElementById(count).innerHTML = "";
+        count++;
+    }
+    count = 1;
+
     db.collection("users").where('name', '>=', input).where('name', '<=', input + '\uf8ff').get()
         .then((snapshot) => {
             snapshot.docs.forEach(doc => {
                 var name = doc.data().name;
                 var image = doc.data().userpfp;
                 var sport = doc.data().sport;
-                var tempID = count;
                 console.log(name);
-                document.getElementById(tempID).innerHTML = "<div class='card-header border-0'><img id='profile_pic' src="+image+"></div><div class='card-block px-2'><h4 class='card-title'>"+name+"</h4><p class='card-text'>"+sport+"</p></div>";
-                count = count + 1;
+                document.getElementById(count).innerHTML = "<div class='card-header border-0'><img id='profile_pic' src="+image+"></div><div class='card-block px-2'><h4 class='card-title'>"+name+"</h4><p class='card-text'>"+sport+"</p></div>";
+                count++;
             })
         })
 }

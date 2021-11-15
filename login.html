@@ -170,6 +170,7 @@
                         console.log("new user");
                         db.collection("users").doc(user.uid).set({
                             name: user.displayName,
+                            lowerCaseName: user.displayName.toLowerCase(),
                             email: user.email,
                             userpfp: temp
                         }).then(function () {

@@ -53,6 +53,23 @@ function getProfilePic() {
         })
 }
 
+function getSearchResults() {
+    let input = document.getElementById("search_query").value;
+    var count = 1;
+    db.collection("users").where('name', '>=', input).where('name', '<=', input + '\uf8ff').get()
+        .then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                var name = doc.data().name;
+                var image = doc.data().userpfp;
+                var sport = doc.data().sport;
+                var tempID = count;
+                console.log(name);
+                document.getElementById(tempID).innerHTML = "<div class='card-header border-0'><img id='profile_pic' src="+image+"></div><div class='card-block px-2'><h4 class='card-title'>"+name+"</h4><p class='card-text'>"+sport+"</p></div>";
+                count = count + 1;
+            })
+        })
+}
+
 // Logout
 function logout() {
     const logout = document.querySelectorAll("a[href='./index.html']");

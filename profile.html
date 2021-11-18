@@ -113,6 +113,14 @@
       <p>Hello, <span id="user-name"></span>!</p>
     </div>
 
+    <div id="user-description" class="mx-auto p-2" contenteditable="true">
+      Click me to write your own description!
+    </div>
+    <button type="button" id="savetext" class="btn btn-primary mx-auto m-3">
+      Save Text
+    </button>
+ 
+
     <div id="user_info">
       <p>Sport: <span id="user-sport"></span></p>
       <p>Team: <span id="user-team"></span></p>
@@ -232,7 +240,6 @@
     let files = [];
     let count = 0;
 
-
     function insertName() {
       firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -248,6 +255,7 @@
               var user_sport = userDoc.data().sport;
               var user_team = userDoc.data().team;
               var user_gender = userDoc.data().gender;
+              var user_text = userDoc.data().description;
 
               console.log(user_Name);
               //method #1:  insert with html only
@@ -255,6 +263,7 @@
               document.getElementById("user-sport").innerText = user_sport;
               document.getElementById("user-team").innerText = user_team;
               document.getElementById("user-gender").innerText = user_gender;
+              document.getElementById("user-description").innerHTML = user_text;
 
 
               document.getElementById("btn_edit_profile").onclick = function (e) {
@@ -730,6 +739,17 @@
 
               }, false);
 
+              // Save the description text
+              document.getElementById("savetext").addEventListener("click", function (e) {
+                e.preventDefault();
+
+                let usertext = document.getElementById("user-description").innerHTML;
+                console.log(usertext);
+                db.collection("users").doc(user.uid).update({
+                    description: usertext
+                });
+
+              }, false);
 
             })
             

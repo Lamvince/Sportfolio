@@ -336,3 +336,12 @@
 #submit_div {
   padding-bottom: 20px;
 }
+
+#user-description {
+  width: 30%;
+}
+
+#savetext {
+  display: flex;
+  justify-content: center;
+}

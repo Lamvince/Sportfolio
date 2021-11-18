@@ -163,7 +163,7 @@
                     // Return type determines whether we continue the redirect automatically
                     // or whether we leave that to developer to handle.
                     var user = authResult.user;
-
+                    let temptext = "Click me to create a description!";
                     if (authResult.additionalUserInfo.isNewUser) {
 
                         let temp = "https://firebasestorage.googleapis.com/v0/b/sportfolio-96c76.appspot.com/o/images%2Fplaceholderpfpfromserver.png?alt=media&token=9f8ca543-9f0a-47c4-aa2b-217918ed8629"
@@ -172,7 +172,8 @@
                             name: user.displayName,
                             lowerCaseName: user.displayName.toLowerCase(),
                             email: user.email,
-                            userpfp: temp
+                            userpfp: temp,
+                            description: temptext
                         }).then(function () {
                             //before showing main.html, user needs to fill out form
                             document.getElementById("new_user_ui").style.display = "block";

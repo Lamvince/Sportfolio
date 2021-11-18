@@ -51,7 +51,7 @@ function getProfilePic() {
 }
 
 function getSearchResults() {
-    let input = document.getElementById("search_query").value;
+    let input = document.getElementById("search_query").value.toLowerCase();
     var count = 1;
 
     while(count<=10){

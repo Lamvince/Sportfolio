@@ -60,7 +60,7 @@ function getSearchResults() {
     }
     count = 1;
 
-    db.collection("users").where('name', '>=', input).where('name', '<=', input + '\uf8ff').get()
+    db.collection("users").where('lowercasename', '>=', input).where('lowercasename', '<=', input + '\uf8ff').get()
         .then((snapshot) => {
             snapshot.docs.forEach(doc => {
                 var name = doc.data().name;

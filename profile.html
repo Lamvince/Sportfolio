@@ -256,9 +256,12 @@
               var user_team = userDoc.data().team;
               var user_gender = userDoc.data().gender;
               var user_text = userDoc.data().description;
-              var img1text = userDoc.data().img1;
+
+              let img1text = userDoc.data().img1;
+              let img2text = userDoc.data().img2;
+              let img3text = userDoc.data().img3;
+              
               console.log("page loaded");
-              console.log(img1text + " image text");
 
               //insert user info with html 
               document.getElementById("user-name").innerText = user_Name;
@@ -268,6 +271,24 @@
               document.getElementById("user-description").innerHTML = user_text;
 
               //hide or show apprpriate buttons
+
+              //hide photo upload button every time
+              for (let i = 1; i <= 3; i++) {
+                // document.getElementById("photoupload" + i).style.display = "none";
+              }
+              
+              //also hide delete button if user has uploaded a photo
+              if (img1text == "./images/tempimg.png") {
+                document.getElementById("delete1").style.display = "none";
+              }
+
+              if (img2text == "./images/tempimg.png") {
+                document.getElementById("delete2").style.display = "none";
+              }
+
+              if (img3text == "./images/tempimg.png") {
+                document.getElementById("delete3").style.display = "none";
+              }
 
               //edit profile
               document.getElementById("btn_edit_profile").onclick = function (e) {

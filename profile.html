@@ -182,6 +182,7 @@
         <h5 class="card-title">Video #1</h5>
         <p class="card-text"></p>
         <button type="button" id="uploadvideo1" class="btn btn-primary">
+          <!-- changed from id="uploadvideo1" -->
           Add new video
         </button>
         <button id="videoupload1" type="button" class="btn btn-success">Upload video</button>
@@ -429,7 +430,7 @@
                 }, false);
               }
 
-              //SET UP ONCLICKS FOR VIDEO UPLOAD BUTTONS
+              //SET UP ONCLICKS FOR ADD NEW VIDEO BUTTONS
               for (var i = 1; i <= 3; i++) {
                 let idString = "uploadvideo" + i;
 
@@ -456,31 +457,63 @@
 
               }
 
-              document.getElementById("videoupload1").onclick = function () {
-                imgName = user_Name + files[0].name;
-                let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
+              //SET UP ONCLICKS FOR VIDEO UPLOAD BUTTONS
+              for (var i = 1; i <= 3; i++) {
+                let idString = "videoupload" + i;
+                document.getElementById(idString).onclick = function () {
+                  imgName = user_Name + files[0].name;
+                  let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
 
-                uploadTask.on('state_changed', function (snapshot) {
-                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                },
-
-                  function (error) {
-                    alert('error in saving the video');
+                  uploadTask.on('state_changed', function (snapshot) {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                   },
 
-                  function () {
-                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                      vid1 = url;
+                    function (error) {
+                      alert('error in saving the video');
+                    },
 
-                      db.collection("users").doc(user.uid).update({
-                        uservid1: vid1
-                      });
-                      alert('video added successfully');
-                    })
-                  }
+                    function () {
+                      uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
 
-                );
+                        vid1 = url;
+                        let vidString = "uservid" + idString.charAt(11);
+                        console.log("vidstring " + vidString);
+                        db.collection("users").doc(user.uid).update({
+                          [vidString]: vid1
+                        });
+                        alert('video added successfully');
+                      })
+                    }
+
+                  );
+                }
               }
+
+              // document.getElementById("videoupload1").onclick = function () {
+              //   imgName = user_Name + files[0].name;
+              //   let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
+
+              //   uploadTask.on('state_changed', function (snapshot) {
+              //     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              //   },
+
+              //     function (error) {
+              //       alert('error in saving the video');
+              //     },
+
+              //     function () {
+              //       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+              //         vid1 = url;
+
+              //         db.collection("users").doc(user.uid).update({
+              //           uservid1: vid1
+              //         });
+              //         alert('video added successfully');
+              //       })
+              //     }
+
+              //   );
+              // }
 
               let read4 = db.collection("users").doc(user.uid);
 
@@ -506,31 +539,31 @@
 
               }, false);
 
-              document.getElementById("videoupload2").onclick = function () {
-                imgName = user_Name + files[0].name;
-                let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
+              // document.getElementById("videoupload2").onclick = function () {
+              //   imgName = user_Name + files[0].name;
+              //   let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
 
-                uploadTask.on('state_changed', function (snapshot) {
-                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                },
+              //   uploadTask.on('state_changed', function (snapshot) {
+              //     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              //   },
 
-                  function (error) {
-                    alert('error in saving the video');
-                  },
+              //     function (error) {
+              //       alert('error in saving the video');
+              //     },
 
-                  function () {
-                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                      vid2 = url;
+              //     function () {
+              //       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+              //         vid2 = url;
 
-                      db.collection("users").doc(user.uid).update({
-                        uservid2: vid2
-                      });
-                      alert('video added successfully');
-                    })
-                  }
+              //         db.collection("users").doc(user.uid).update({
+              //           uservid2: vid2
+              //         });
+              //         alert('video added successfully');
+              //       })
+              //     }
 
-                );
-              }
+              //   );
+              // }
 
               let read5 = db.collection("users").doc(user.uid);
 
@@ -556,31 +589,31 @@
 
               }, false);
 
-              document.getElementById("videoupload3").onclick = function () {
-                imgName = user_Name + files[0].name;
-                let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
+              // document.getElementById("videoupload3").onclick = function () {
+              //   imgName = user_Name + files[0].name;
+              //   let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
 
-                uploadTask.on('state_changed', function (snapshot) {
-                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                },
+              //   uploadTask.on('state_changed', function (snapshot) {
+              //     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              //   },
 
-                  function (error) {
-                    alert('error in saving the video');
-                  },
+              //     function (error) {
+              //       alert('error in saving the video');
+              //     },
 
-                  function () {
-                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                      vid3 = url;
+              //     function () {
+              //       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+              //         vid3 = url;
 
-                      db.collection("users").doc(user.uid).update({
-                        uservid3: vid3
-                      });
-                      alert('video added successfully');
-                    })
-                  }
+              //         db.collection("users").doc(user.uid).update({
+              //           uservid3: vid3
+              //         });
+              //         alert('video added successfully');
+              //       })
+              //     }
 
-                );
-              }
+              //   );
+              // }
 
               let read6 = db.collection("users").doc(user.uid);
 

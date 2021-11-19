@@ -456,26 +456,6 @@
 
               }
 
-              // document.getElementById("uploadvideo1").onclick = function (e) {
-
-              //   let input = document.createElement('input');
-              //   input.type = 'file';
-
-
-              //   input.onchange = e => {
-              //     files = e.target.files;
-              //     reader = new FileReader();
-
-              //     reader.onload = function () {
-              //       document.getElementById("uservideo1").src = reader.result;
-              //       document.getElementById("vid1src").src = reader.result;
-              //     }
-
-              //     reader.readAsDataURL(files[0]);
-              //   }
-              //   input.click();
-              // }
-
               document.getElementById("videoupload1").onclick = function () {
                 imgName = user_Name + files[0].name;
                 let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
@@ -526,26 +506,6 @@
 
               }, false);
 
-              // document.getElementById("uploadvideo2").onclick = function (e) {
-
-              //   let input5 = document.createElement('input');
-              //   input5.type = 'file';
-
-
-              //   input5.onchange = e => {
-              //     files = e.target.files;
-              //     reader5 = new FileReader();
-
-              //     reader5.onload = function () {
-              //       document.getElementById("uservideo2").src = reader5.result;
-              //       document.getElementById("vid2src").src = reader5.result;
-              //     }
-
-              //     reader5.readAsDataURL(files[0]);
-              //   }
-              //   input5.click();
-              // }
-
               document.getElementById("videoupload2").onclick = function () {
                 imgName = user_Name + files[0].name;
                 let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
@@ -595,26 +555,6 @@
 
 
               }, false);
-
-              // document.getElementById("uploadvideo3").onclick = function (e) {
-
-              //   let input6 = document.createElement('input');
-              //   input6.type = 'file';
-
-
-              //   input6.onchange = e => {
-              //     files = e.target.files;
-              //     reader6 = new FileReader();
-
-              //     reader6.onload = function () {
-              //       document.getElementById("uservideo3").src = reader6.result;
-              //       document.getElementById("vid3src").src = reader6.result;
-              //     }
-
-              //     reader6.readAsDataURL(files[0]);
-              //   }
-              //   input6.click();
-              // }
 
               document.getElementById("videoupload3").onclick = function () {
                 imgName = user_Name + files[0].name;

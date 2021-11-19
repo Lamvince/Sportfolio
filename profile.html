@@ -490,7 +490,22 @@
 
               //SET UP ONCLICKS FOR DELETE VIDEO BUTTONS
               for (var i = 1; i <= 3; i++) {
+                let idString = "deletevideo" + i;
+                document.getElementById(idString).addEventListener("click", function (e) {
+                  e.preventDefault();
 
+                  idString = "uservideo" + idString.charAt(11);
+                  document.getElementById(idString).src = "";
+
+                  idString = "uservid" + idString.charAt(9);
+                  let read = db.collection("users").doc(user.uid);
+
+                  let removeVideo = read.update({
+                    [idString]: firebase.firestore.FieldValue.delete(),
+                  });
+
+
+                }, false);
               }
 
               let read4 = db.collection("users").doc(user.uid);
@@ -503,19 +518,19 @@
                   document.getElementById("uservideo1").src = data4;
                 })
 
-              document.getElementById("deletevideo1").addEventListener("click", function (e) {
-                e.preventDefault();
+              // document.getElementById("deletevideo1").addEventListener("click", function (e) {
+              //   e.preventDefault();
 
-                document.getElementById("uservideo1").src = "";
+              //   document.getElementById("uservideo1").src = "";
 
-                let vidz1 = db.collection("users").doc(user.uid);
+              //   let vidz1 = db.collection("users").doc(user.uid);
 
-                let removevidz1 = vidz1.update({
-                  uservid1: firebase.firestore.FieldValue.delete(),
-                });
+              //   let removevidz1 = vidz1.update({
+              //     uservid1: firebase.firestore.FieldValue.delete(),
+              //   });
 
 
-              }, false);
+              // }, false);
 
               let read5 = db.collection("users").doc(user.uid);
 
@@ -527,19 +542,19 @@
                   document.getElementById("uservideo2").src = data5;
                 })
 
-              document.getElementById("deletevideo2").addEventListener("click", function (e) {
-                e.preventDefault();
+              // document.getElementById("deletevideo2").addEventListener("click", function (e) {
+              //   e.preventDefault();
 
-                document.getElementById("uservideo2").src = "";
+              //   document.getElementById("uservideo2").src = "";
 
-                let vidz2 = db.collection("users").doc(user.uid);
+              //   let vidz2 = db.collection("users").doc(user.uid);
 
-                let removevidz2 = vidz2.update({
-                  uservid2: firebase.firestore.FieldValue.delete(),
-                });
+              //   let removevidz2 = vidz2.update({
+              //     uservid2: firebase.firestore.FieldValue.delete(),
+              //   });
 
 
-              }, false);
+              // }, false);
 
               let read6 = db.collection("users").doc(user.uid);
 
@@ -551,19 +566,19 @@
                   document.getElementById("uservideo3").src = data6;
                 })
 
-              document.getElementById("deletevideo3").addEventListener("click", function (e) {
-                e.preventDefault();
+              // document.getElementById("deletevideo3").addEventListener("click", function (e) {
+              //   e.preventDefault();
 
-                document.getElementById("uservideo3").src = "";
+              //   document.getElementById("uservideo3").src = "";
 
-                let vidz3 = db.collection("users").doc(user.uid);
+              //   let vidz3 = db.collection("users").doc(user.uid);
 
-                let removevidz3 = vidz3.update({
-                  uservid3: firebase.firestore.FieldValue.delete(),
-                });
+              //   let removevidz3 = vidz3.update({
+              //     uservid3: firebase.firestore.FieldValue.delete(),
+              //   });
 
 
-              }, false);
+              // }, false);
 
               // Save the description text
               document.getElementById("savetext").addEventListener("click", function (e) {

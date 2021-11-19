@@ -30,9 +30,9 @@
 
 <body>
 
-  
 
-  
+
+
   <!-- Header -->
 
   <nav class="navbar navbar-light bg-success">
@@ -119,7 +119,7 @@
     <button type="button" id="savetext" class="btn btn-primary mx-auto m-3">
       Save Text
     </button>
- 
+
 
     <div id="user_info">
       <p>Sport: <span id="user-sport"></span></p>
@@ -265,9 +265,8 @@
               document.getElementById("user-gender").innerText = user_gender;
               document.getElementById("user-description").innerHTML = user_text;
 
-
+              //edit profile
               document.getElementById("btn_edit_profile").onclick = function (e) {
-
                 let input = document.createElement('input');
                 input.type = 'file';
 
@@ -283,15 +282,15 @@
                 }
                 input.click();
               }
-
+              //profile picture upload photo
               document.getElementById("btn_upload_profile").onclick = function () {
                 imgName = user_Name + files[0].name;
                 let uploadTask = firebase.storage().ref('images/' + imgName).put(files[0]);
 
                 uploadTask.on('state_changed', function (snapshot) {
-                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    document.getElementById("loadingStuff").innerHTML = 'Upload' + progress + '%'
-                  },
+                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  document.getElementById("loadingStuff").innerHTML = 'Upload' + progress + '%'
+                },
 
                   function (error) {
                     alert('error in saving the image');
@@ -318,16 +317,14 @@
 
               read.get()
                 .then(userDoc => {
-                  var aight = userDoc.data().userpfp;
-                  console.log(aight);
-                  document.getElementById("profile_pic").src = aight;
+                  var pfpLink = userDoc.data().userpfp;
+                  document.getElementById("profile_pic").src = pfpLink;
                 })
 
+              //select photo 
               document.getElementById("upload1").onclick = function (e) {
-
                 let input1 = document.createElement('input');
                 input1.type = 'file';
-
 
                 input1.onchange = e => {
                   files = e.target.files;
@@ -342,13 +339,16 @@
                 input1.click();
               }
 
+              //upload photo
               document.getElementById("photoupload1").onclick = function () {
+                console.log("clicked!");
+
                 imgName = user_Name + files[0].name;
                 let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
 
                 uploadTask.on('state_changed', function (snapshot) {
-                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                  },
+                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                },
 
                   function (error) {
                     alert('error in saving the image');
@@ -377,9 +377,10 @@
                   document.getElementById("img1").src = data1;
                 })
 
+              //delete
               document.getElementById("delete1").addEventListener("click", function (e) {
                 e.preventDefault();
-
+                console.log("delete");
                 document.getElementById("img1").src = "";
 
                 let photo1 = db.collection("users").doc(user.uid);
@@ -389,7 +390,7 @@
                 });
 
 
-                
+
               }, false);
 
 
@@ -417,8 +418,8 @@
                 let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
 
                 uploadTask.on('state_changed', function (snapshot) {
-                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                  },
+                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                },
 
                   function (error) {
                     alert('error in saving the image');
@@ -485,8 +486,8 @@
                 let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
 
                 uploadTask.on('state_changed', function (snapshot) {
-                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                  },
+                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                },
 
                   function (error) {
                     alert('error in saving the image');
@@ -554,8 +555,8 @@
                 let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
 
                 uploadTask.on('state_changed', function (snapshot) {
-                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                  },
+                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                },
 
                   function (error) {
                     alert('error in saving the video');
@@ -624,8 +625,8 @@
                 let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
 
                 uploadTask.on('state_changed', function (snapshot) {
-                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                  },
+                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                },
 
                   function (error) {
                     alert('error in saving the video');
@@ -694,8 +695,8 @@
                 let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
 
                 uploadTask.on('state_changed', function (snapshot) {
-                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                  },
+                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                },
 
                   function (error) {
                     alert('error in saving the video');
@@ -746,13 +747,13 @@
                 let usertext = document.getElementById("user-description").innerHTML;
                 console.log(usertext);
                 db.collection("users").doc(user.uid).update({
-                    description: usertext
+                  description: usertext
                 });
 
               }, false);
 
             })
-            
+
         } else {
           // No user is signed in.
         }

@@ -279,7 +279,6 @@
               document.getElementById("user-description").innerHTML = user_text;
 
               //hide or show apprpriate buttons
-
               //hide photo upload button every time
               for (let i = 1; i <= 3; i++) {
                 // document.getElementById("photoupload" + i).style.display = "none";
@@ -515,36 +514,6 @@
 
                 }, false);
               }
-
-              // let read4 = db.collection("users").doc(user.uid);
-
-              // read4.get()
-              //   .then(userDoc => {
-              //     var data4 = userDoc.data().uservid1;
-              //     console.log(data4);
-              //     document.getElementById("vid1src").src = data4;
-              //     document.getElementById("uservideo1").src = data4;
-              //   })
-
-              // let read5 = db.collection("users").doc(user.uid);
-
-              // read5.get()
-              //   .then(userDoc => {
-              //     var data5 = userDoc.data().uservid2;
-              //     console.log(data5);
-              //     document.getElementById("vid2src").src = data5;
-              //     document.getElementById("uservideo2").src = data5;
-              //   })
-
-              // let read6 = db.collection("users").doc(user.uid);
-
-              // read6.get()
-              //   .then(userDoc => {
-              //     var data6 = userDoc.data().uservid3;
-              //     console.log(data6);
-              //     document.getElementById("vid3src").src = data6;
-              //     document.getElementById("uservideo3").src = data6;
-              //   })
 
               // Save the description text
               document.getElementById("savetext").addEventListener("click", function (e) {

@@ -408,7 +408,6 @@
                         alert('image added successfully');
                       })
                     }
-
                   );
                 }
               }
@@ -489,31 +488,10 @@
                 }
               }
 
-              // document.getElementById("videoupload1").onclick = function () {
-              //   imgName = user_Name + files[0].name;
-              //   let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
+              //SET UP ONCLICKS FOR DELETE VIDEO BUTTONS
+              for (var i = 1; i <= 3; i++) {
 
-              //   uploadTask.on('state_changed', function (snapshot) {
-              //     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              //   },
-
-              //     function (error) {
-              //       alert('error in saving the video');
-              //     },
-
-              //     function () {
-              //       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-              //         vid1 = url;
-
-              //         db.collection("users").doc(user.uid).update({
-              //           uservid1: vid1
-              //         });
-              //         alert('video added successfully');
-              //       })
-              //     }
-
-              //   );
-              // }
+              }
 
               let read4 = db.collection("users").doc(user.uid);
 
@@ -539,32 +517,6 @@
 
               }, false);
 
-              // document.getElementById("videoupload2").onclick = function () {
-              //   imgName = user_Name + files[0].name;
-              //   let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
-
-              //   uploadTask.on('state_changed', function (snapshot) {
-              //     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              //   },
-
-              //     function (error) {
-              //       alert('error in saving the video');
-              //     },
-
-              //     function () {
-              //       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-              //         vid2 = url;
-
-              //         db.collection("users").doc(user.uid).update({
-              //           uservid2: vid2
-              //         });
-              //         alert('video added successfully');
-              //       })
-              //     }
-
-              //   );
-              // }
-
               let read5 = db.collection("users").doc(user.uid);
 
               read5.get()
@@ -588,32 +540,6 @@
 
 
               }, false);
-
-              // document.getElementById("videoupload3").onclick = function () {
-              //   imgName = user_Name + files[0].name;
-              //   let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
-
-              //   uploadTask.on('state_changed', function (snapshot) {
-              //     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              //   },
-
-              //     function (error) {
-              //       alert('error in saving the video');
-              //     },
-
-              //     function () {
-              //       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-              //         vid3 = url;
-
-              //         db.collection("users").doc(user.uid).update({
-              //           uservid3: vid3
-              //         });
-              //         alert('video added successfully');
-              //       })
-              //     }
-
-              //   );
-              // }
 
               let read6 = db.collection("users").doc(user.uid);
 

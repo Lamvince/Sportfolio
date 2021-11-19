@@ -348,6 +348,7 @@
 
               //select photo 
               document.getElementById("upload1").onclick = function (e) {
+
                 let input1 = document.createElement('input');
                 input1.type = 'file';
 
@@ -356,7 +357,7 @@
                   reader1 = new FileReader();
 
                   reader1.onload = function () {
-                    document.getElementById("text").src = reader1.reimg1;
+                    document.getElementById("img1").src = reader1.result;
                   }
 
                   reader1.readAsDataURL(files[0]);
@@ -366,7 +367,6 @@
 
               //upload photo
               document.getElementById("photoupload1").onclick = function () {
-                console.log("clicked!");
 
                 imgName = user_Name + files[0].name;
                 let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
@@ -384,7 +384,7 @@
                       pic1 = url;
 
                       db.collection("users").doc(user.uid).update({
-                        text:img1
+                        img1: pic1
                       });
                       alert('image added successfully');
                     })

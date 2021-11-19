@@ -125,6 +125,7 @@
       <p>Sport: <span id="user-sport"></span></p>
       <p>Team: <span id="user-team"></span></p>
       <p>Gender: <span id="user-gender"></span></p>
+      <p>Rank: <span id="user-rank"></span></p>
     </div>
 
     <div id="btn_edit_profile_div">
@@ -262,6 +263,7 @@
               var user_team = userDoc.data().team;
               var user_gender = userDoc.data().gender;
               var user_text = userDoc.data().description;
+              var user_rank = userDoc.data().rank;
 
               const imgText = [
                 userDoc.data().img1,
@@ -285,6 +287,9 @@
               document.getElementById("user-team").innerText = user_team;
               document.getElementById("user-gender").innerText = user_gender;
               document.getElementById("user-description").innerHTML = user_text;
+              document.getElementById("user-rank").innerText = user_rank;
+
+
 
               //hide or show apprpriate buttons
               for (var i = 1; i <= 3; i++) {

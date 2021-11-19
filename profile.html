@@ -385,7 +385,13 @@
 
                     reader.onload = function () {
                       let imgString = "img" + idString.charAt(6); //img1, img2, img3
+                      let buttonString = "photoupload" + idString.charAt(6);
+
                       document.getElementById(imgString).src = reader.result;
+
+                      //show upload photo button
+                      document.getElementById(buttonString).style.display = "block";
+
                     }
                     reader.readAsDataURL(files[0]);
                   }
@@ -417,7 +423,11 @@
                         db.collection("users").doc(user.uid).update({
                           [imgString]: pic1
                         });
+
                         alert('image added successfully');
+                        //hide upload button, show delete button
+                        document.getElementById("photoupload" + idString.charAt(11)).style.display = "none";
+                        document.getElementById("delete" + idString.charAt(11)).style.display = "block";
                       })
                     }
                   );
@@ -430,13 +440,15 @@
                 document.getElementById(idString).addEventListener("click", function (e) {
                   e.preventDefault();
                   let imgString = "img" + idString.charAt(6);
-
                   document.getElementById(imgString).src = "./images/tempimg.png";
 
                   let userUID = db.collection("users").doc(user.uid);
                   let removeImg1 = userUID.update({
                     [imgString]: "./images/tempimg.png"
                   });
+
+                  //hide delete button
+                  document.getElementById("delete" + idString.charAt(6)).style.display = "none";
 
                 }, false);
               }

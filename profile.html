@@ -380,13 +380,13 @@
               //delete
               document.getElementById("delete1").addEventListener("click", function (e) {
                 e.preventDefault();
-                console.log("delete");
-                document.getElementById("img1").src = "";
+
+                document.getElementById("img1").src = "./images/tempimg.png";
 
                 let photo1 = db.collection("users").doc(user.uid);
 
                 let removeImg1 = photo1.update({
-                  img1: firebase.firestore.FieldValue.delete()
+                  img1: "./images/tempimg.png"
                 });
 
 
@@ -451,12 +451,12 @@
               document.getElementById("delete2").addEventListener("click", function (e) {
                 e.preventDefault();
 
-                document.getElementById("img2").src = "";
+                document.getElementById("img2").src = "./images/tempimg.png";
 
                 let photo2 = db.collection("users").doc(user.uid);
 
                 let removeImg2 = photo2.update({
-                  img2: firebase.firestore.FieldValue.delete()
+                  img2: "./images/tempimg.png"
                 });
 
               }, false);
@@ -519,12 +519,12 @@
               document.getElementById("delete3").addEventListener("click", function (e) {
                 e.preventDefault();
 
-                document.getElementById("img3").src = "";
+                document.getElementById("img3").src = "./images/tempimg.png";
 
                 let photo3 = db.collection("users").doc(user.uid);
 
                 let removeImg3 = photo3.update({
-                  img3: firebase.firestore.FieldValue.delete(),
+                  img3: "./images/tempimg.png"
                 });
 
 

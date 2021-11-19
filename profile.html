@@ -355,6 +355,7 @@
                   document.getElementById("profile_pic").src = pfpLink;
                 })
 
+
               //SET UP ONCLICKS FOR UPLOAD BUTTONS *************
               for (var i = 1; i <= 3; i++) {
                 let idString = "upload" + i;
@@ -411,6 +412,42 @@
                 }
 
               }
+
+              //SET UP ONCLICKS FOR PHOTO DELETE BUTTONS
+              for (var i = 1; i <= 3; i++) {
+                let idString = "delete" + i;
+                document.getElementById(idString).addEventListener("click", function (e) {
+                  e.preventDefault();
+
+                  let imgString = "img" + idString.charAt(6);
+
+                  document.getElementById(imgString).src = "./images/tempimg.png";
+
+                  let photo1 = db.collection("users").doc(user.uid);
+
+                  let removeImg1 = photo1.update({
+                    [imgString]: "./images/tempimg.png"
+                  });
+
+
+
+                }, false);
+              }
+
+              //DISPLAY PHOTOS IN CONTAINERS
+              // for (var i = 1; i <= 3; i++) {
+              //   let read = db.collection("users").doc(user.uid);
+
+              //   read.get()
+              //     .then(userDoc => {
+              //       var data1 = userDoc.data().img1;
+              //       console.log(data1);
+              //       document.getElementById("img1").src = data1;
+              //     })
+
+              // }
+
+              //displays the photo in the container
               let read1 = db.collection("users").doc(user.uid);
 
               read1.get()
@@ -420,21 +457,22 @@
                   document.getElementById("img1").src = data1;
                 })
 
+              //end displaying photo in container
               //delete
-              document.getElementById("delete1").addEventListener("click", function (e) {
-                e.preventDefault();
+              // document.getElementById("delete1").addEventListener("click", function (e) {
+              //   e.preventDefault();
 
-                document.getElementById("img1").src = "./images/tempimg.png";
+              //   document.getElementById("img1").src = "./images/tempimg.png";
 
-                let photo1 = db.collection("users").doc(user.uid);
+              //   let photo1 = db.collection("users").doc(user.uid);
 
-                let removeImg1 = photo1.update({
-                  img1: "./images/tempimg.png"
-                });
+              //   let removeImg1 = photo1.update({
+              //     img1: "./images/tempimg.png"
+              //   });
 
 
 
-              }, false);
+              // }, false);
 
               let read2 = db.collection("users").doc(user.uid);
 
@@ -445,18 +483,18 @@
                   document.getElementById("img2").src = data2;
                 })
 
-              document.getElementById("delete2").addEventListener("click", function (e) {
-                e.preventDefault();
+              // document.getElementById("delete2").addEventListener("click", function (e) {
+              //   e.preventDefault();
 
-                document.getElementById("img2").src = "./images/tempimg.png";
+              //   document.getElementById("img2").src = "./images/tempimg.png";
 
-                let photo2 = db.collection("users").doc(user.uid);
+              //   let photo2 = db.collection("users").doc(user.uid);
 
-                let removeImg2 = photo2.update({
-                  img2: "./images/tempimg.png"
-                });
+              //   let removeImg2 = photo2.update({
+              //     img2: "./images/tempimg.png"
+              //   });
 
-              }, false);
+              // }, false);
 
               let read3 = db.collection("users").doc(user.uid);
 
@@ -467,19 +505,19 @@
                   document.getElementById("img3").src = data3;
                 })
 
-              document.getElementById("delete3").addEventListener("click", function (e) {
-                e.preventDefault();
+              // document.getElementById("delete3").addEventListener("click", function (e) {
+              //   e.preventDefault();
 
-                document.getElementById("img3").src = "./images/tempimg.png";
+              //   document.getElementById("img3").src = "./images/tempimg.png";
 
-                let photo3 = db.collection("users").doc(user.uid);
+              //   let photo3 = db.collection("users").doc(user.uid);
 
-                let removeImg3 = photo3.update({
-                  img3: "./images/tempimg.png"
-                });
+              //   let removeImg3 = photo3.update({
+              //     img3: "./images/tempimg.png"
+              //   });
 
 
-              }, false);
+              // }, false);
 
               document.getElementById("uploadvideo1").onclick = function (e) {
 

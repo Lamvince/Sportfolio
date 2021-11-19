@@ -351,9 +351,17 @@
               read.get()
                 .then(userDoc => {
                   document.getElementById("profile_pic").src = userDoc.data().userpfp;
+
                   document.getElementById("img1").src = userDoc.data().img1;
                   document.getElementById("img2").src = userDoc.data().img2;
                   document.getElementById("img3").src = userDoc.data().img3;
+
+                  document.getElementById("vid1src").src = userDoc.data().uservid1;
+                  document.getElementById("uservideo1").src = userDoc.data().uservid1;
+                  document.getElementById("vid2src").src = userDoc.data().uservid2;
+                  document.getElementById("uservideo2").src = userDoc.data().uservid2;
+                  document.getElementById("vid3src").src = userDoc.data().uservid3;
+                  document.getElementById("uservideo3").src = userDoc.data().uservid3;
                 })
 
 
@@ -508,77 +516,35 @@
                 }, false);
               }
 
-              let read4 = db.collection("users").doc(user.uid);
+              // let read4 = db.collection("users").doc(user.uid);
 
-              read4.get()
-                .then(userDoc => {
-                  var data4 = userDoc.data().uservid1;
-                  console.log(data4);
-                  document.getElementById("vid1src").src = data4;
-                  document.getElementById("uservideo1").src = data4;
-                })
+              // read4.get()
+              //   .then(userDoc => {
+              //     var data4 = userDoc.data().uservid1;
+              //     console.log(data4);
+              //     document.getElementById("vid1src").src = data4;
+              //     document.getElementById("uservideo1").src = data4;
+              //   })
 
-              // document.getElementById("deletevideo1").addEventListener("click", function (e) {
-              //   e.preventDefault();
+              // let read5 = db.collection("users").doc(user.uid);
 
-              //   document.getElementById("uservideo1").src = "";
+              // read5.get()
+              //   .then(userDoc => {
+              //     var data5 = userDoc.data().uservid2;
+              //     console.log(data5);
+              //     document.getElementById("vid2src").src = data5;
+              //     document.getElementById("uservideo2").src = data5;
+              //   })
 
-              //   let vidz1 = db.collection("users").doc(user.uid);
+              // let read6 = db.collection("users").doc(user.uid);
 
-              //   let removevidz1 = vidz1.update({
-              //     uservid1: firebase.firestore.FieldValue.delete(),
-              //   });
-
-
-              // }, false);
-
-              let read5 = db.collection("users").doc(user.uid);
-
-              read5.get()
-                .then(userDoc => {
-                  var data5 = userDoc.data().uservid2;
-                  console.log(data5);
-                  document.getElementById("vid2src").src = data5;
-                  document.getElementById("uservideo2").src = data5;
-                })
-
-              // document.getElementById("deletevideo2").addEventListener("click", function (e) {
-              //   e.preventDefault();
-
-              //   document.getElementById("uservideo2").src = "";
-
-              //   let vidz2 = db.collection("users").doc(user.uid);
-
-              //   let removevidz2 = vidz2.update({
-              //     uservid2: firebase.firestore.FieldValue.delete(),
-              //   });
-
-
-              // }, false);
-
-              let read6 = db.collection("users").doc(user.uid);
-
-              read6.get()
-                .then(userDoc => {
-                  var data6 = userDoc.data().uservid3;
-                  console.log(data6);
-                  document.getElementById("vid3src").src = data6;
-                  document.getElementById("uservideo3").src = data6;
-                })
-
-              // document.getElementById("deletevideo3").addEventListener("click", function (e) {
-              //   e.preventDefault();
-
-              //   document.getElementById("uservideo3").src = "";
-
-              //   let vidz3 = db.collection("users").doc(user.uid);
-
-              //   let removevidz3 = vidz3.update({
-              //     uservid3: firebase.firestore.FieldValue.delete(),
-              //   });
-
-
-              // }, false);
+              // read6.get()
+              //   .then(userDoc => {
+              //     var data6 = userDoc.data().uservid3;
+              //     console.log(data6);
+              //     document.getElementById("vid3src").src = data6;
+              //     document.getElementById("uservideo3").src = data6;
+              //   })
 
               // Save the description text
               document.getElementById("savetext").addEventListener("click", function (e) {

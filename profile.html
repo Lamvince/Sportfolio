@@ -240,6 +240,12 @@
     let files = [];
     let count = 0;
 
+    function constructJson(jsonKeyNumber, jsonValue) {
+      var jsonObj = { "img1": jsonValue };
+      // jsonObj[jsonKey] = "2";
+      return jsonObj;
+    }
+
     function insertName() {
       firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -261,7 +267,10 @@
               let img2text = userDoc.data().img2;
               let img3text = userDoc.data().img3;
 
+              let arraytest = userDoc.data().img[0];
+
               console.log("page loaded");
+              console.log("arrayTest " + arraytest);
 
               //insert user info with html 
               document.getElementById("user-name").innerText = user_Name;
@@ -349,8 +358,6 @@
               //SET UP ONCLICKS FOR UPLOAD BUTTONS *************
               for (var i = 1; i <= 3; i++) {
                 let idString = "upload" + i;
-                console.log("here " + idString);
-                console.log(document.getElementById(idString));
                 document.getElementById(idString).onclick = function (e) {
                   console.log("clicked " + idString);
                   let input = document.createElement('input');
@@ -361,7 +368,7 @@
                     reader = new FileReader();
 
                     reader.onload = function () {
-                      let imgString = "img" + idString.charAt(6);
+                      let imgString = "img" + idString.charAt(6); //img1, img2, img3
                       document.getElementById(imgString).src = reader.result;
                     }
                     reader.readAsDataURL(files[0]);
@@ -369,33 +376,70 @@
                   input.click();
                 }
               }
-              //upload photo
-              document.getElementById("photoupload1").onclick = function () {
 
-                imgName = user_Name + files[0].name;
-                let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
+              //SET UP ONCLICKS FOR PHOTO UPLOAD BUTTONS
+              for (var i = 1; i <= 3; i++) {
+                let idString = "photoupload" + i;
+                document.getElementById(idString).onclick = function () {
 
-                uploadTask.on('state_changed', function (snapshot) {
-                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                },
+                  let imgName = user_Name + files[0].name;
+                  let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
 
-                  function (error) {
-                    alert('error in saving the image');
+                  uploadTask.on('state_changed', function (snapshot) {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                   },
 
-                  function () {
-                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                      pic1 = url;
+                    function (error) {
+                      alert('error in saving the image');
+                    },
 
-                      db.collection("users").doc(user.uid).update({
-                        img1: pic1
-                      });
-                      alert('image added successfully');
-                    })
-                  }
+                    function () {
+                      uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                        pic1 = url;
+                        let imgString = "img" + idString.charAt(11);
+                        console.log("hello");
+                        console.log(imgString)
 
-                );
+                        db.collection("users").doc(user.uid).update({
+                          [imgString]: pic1
+                        });
+                        alert('image added successfully');
+                      })
+                    }
+
+                  );
+                }
+
               }
+              //upload photo
+              // document.getElementById("photoupload1").onclick = function () {
+
+              //   imgName = user_Name + files[0].name;
+              //   let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
+
+              //   uploadTask.on('state_changed', function (snapshot) {
+              //     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              //   },
+
+              //     function (error) {
+              //       alert('error in saving the image');
+              //     },
+
+              //     function () {
+              //       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+              //         pic1 = url;
+              //         let strImg = "img2";
+              //         // console.log("hello");
+
+              //         db.collection("users").doc(user.uid).update({
+              //           img1: pic1
+              //         });
+              //         alert('image added successfully');
+              //       })
+              //     }
+
+              //   );
+              // }
 
               let read1 = db.collection("users").doc(user.uid);
 
@@ -422,31 +466,31 @@
 
               }, false);
 
-              document.getElementById("photoupload2").onclick = function () {
-                imgName = user_Name + files[0].name;
-                let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
+              // document.getElementById("photoupload2").onclick = function () {
+              //   imgName = user_Name + files[0].name;
+              //   let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
 
-                uploadTask.on('state_changed', function (snapshot) {
-                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                },
+              //   uploadTask.on('state_changed', function (snapshot) {
+              //     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              //   },
 
-                  function (error) {
-                    alert('error in saving the image');
-                  },
+              //     function (error) {
+              //       alert('error in saving the image');
+              //     },
 
-                  function () {
-                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                      pic2 = url;
+              //     function () {
+              //       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+              //         pic2 = url;
 
-                      db.collection("users").doc(user.uid).update({
-                        img2: pic2
-                      });
-                      alert('image added successfully');
-                    })
-                  }
+              //         db.collection("users").doc(user.uid).update({
+              //           img2: pic2
+              //         });
+              //         alert('image added successfully');
+              //       })
+              //     }
 
-                );
-              }
+              //   );
+              // }
 
               let read2 = db.collection("users").doc(user.uid);
 
@@ -470,31 +514,31 @@
 
               }, false);
 
-              document.getElementById("photoupload3").onclick = function () {
-                imgName = user_Name + files[0].name;
-                let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
+              // document.getElementById("photoupload3").onclick = function () {
+              //   imgName = user_Name + files[0].name;
+              //   let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
 
-                uploadTask.on('state_changed', function (snapshot) {
-                  let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                },
+              //   uploadTask.on('state_changed', function (snapshot) {
+              //     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              //   },
 
-                  function (error) {
-                    alert('error in saving the image');
-                  },
+              //     function (error) {
+              //       alert('error in saving the image');
+              //     },
 
-                  function () {
-                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                      pic3 = url;
+              //     function () {
+              //       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+              //         pic3 = url;
 
-                      db.collection("users").doc(user.uid).update({
-                        img3: pic3
-                      });
-                      alert('image added successfully');
-                    })
-                  }
+              //         db.collection("users").doc(user.uid).update({
+              //           img3: pic3
+              //         });
+              //         alert('image added successfully');
+              //       })
+              //     }
 
-                );
-              }
+              //   );
+              // }
 
               let read3 = db.collection("users").doc(user.uid);
 

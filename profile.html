@@ -433,6 +433,14 @@
                         //hide upload button, show delete button
                         document.getElementById("photoupload" + idString.charAt(11)).style.display = "none";
                         document.getElementById("delete" + idString.charAt(11)).style.display = "block";
+
+                        //increase rank by 5
+                        db.collection("users").doc(user.uid).update({
+                          rank: userDoc.data().rank + 5
+                        });
+
+                        document.getElementById("user-rank").innerText = userDoc.data().rank + 5;
+
                       })
                     }
                   );
@@ -516,6 +524,13 @@
                         //hide upload button, show delete button
                         document.getElementById("videoupload" + idString.charAt(11)).style.display = "none";
                         document.getElementById("deletevideo" + idString.charAt(11)).style.display = "block";
+
+                        //increase rank by 5
+                        db.collection("users").doc(user.uid).update({
+                          rank: userDoc.data().rank + 5
+                        });
+
+                        document.getElementById("user-rank").innerText = userDoc.data().rank + 5;
                       })
                     }
 

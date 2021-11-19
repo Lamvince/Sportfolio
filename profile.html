@@ -260,7 +260,7 @@
               let img1text = userDoc.data().img1;
               let img2text = userDoc.data().img2;
               let img3text = userDoc.data().img3;
-              
+
               console.log("page loaded");
 
               //insert user info with html 
@@ -276,7 +276,7 @@
               for (let i = 1; i <= 3; i++) {
                 // document.getElementById("photoupload" + i).style.display = "none";
               }
-              
+
               //also hide delete button if user has uploaded a photo
               if (img1text == "./images/tempimg.png") {
                 document.getElementById("delete1").style.display = "none";
@@ -346,24 +346,49 @@
                   document.getElementById("profile_pic").src = pfpLink;
                 })
 
-              //select photo 
-              document.getElementById("upload1").onclick = function (e) {
+              //SET UP ONCLICKS FOR UPLOAD BUTTONS *************
 
-                let input1 = document.createElement('input');
-                input1.type = 'file';
+              for (var i = 1; i <= 3; i++) {
+                let idString = "upload" + i;
+                console.log("here " + idString);
+                console.log(document.getElementById(idString));
+                document.getElementById(idString).onclick = function (e) {
+                  console.log("clicked " + idString);
+                  let input = document.createElement('input');
+                  input.type = 'file';
 
-                input1.onchange = e => {
-                  files = e.target.files;
-                  reader1 = new FileReader();
+                  input.onchange = e => {
+                    files = e.target.files;
+                    reader = new FileReader();
 
-                  reader1.onload = function () {
-                    document.getElementById("img1").src = reader1.result;
+                    reader.onload = function () {
+                      let imgString = "img" + idString.charAt(6);
+                      document.getElementById(imgString).src = reader.result;
+                    }
+                    reader.readAsDataURL(files[0]);
                   }
-
-                  reader1.readAsDataURL(files[0]);
+                  input.click();
                 }
-                input1.click();
               }
+
+              //select photo 
+              // document.getElementById("upload1").onclick = function (e) {
+
+              //   let input = document.createElement('input');
+              //   input.type = 'file';
+
+              //   input.onchange = e => {
+              //     files = e.target.files;
+              //     reader = new FileReader();
+
+              //     reader.onload = function () {
+              //       document.getElementById("img1").src = reader.result;
+              //     }
+
+              //     reader.readAsDataURL(files[0]);
+              //   }
+              //   input.click();
+              // }
 
               //upload photo
               document.getElementById("photoupload1").onclick = function () {
@@ -419,24 +444,24 @@
               }, false);
 
 
-              document.getElementById("upload2").onclick = function (e) {
+              // document.getElementById("upload2").onclick = function (e) {
 
-                let input2 = document.createElement('input');
-                input2.type = 'file';
+              //   let input = document.createElement('input');
+              //   input.type = 'file';
 
 
-                input2.onchange = e => {
-                  files = e.target.files;
-                  reader2 = new FileReader();
+              //   input.onchange = e => {
+              //     files = e.target.files;
+              //     reader = new FileReader();
 
-                  reader2.onload = function () {
-                    document.getElementById("img2").src = reader2.result;
-                  }
+              //     reader.onload = function () {
+              //       document.getElementById("img2").src = reader.result;
+              //     }
 
-                  reader2.readAsDataURL(files[0]);
-                }
-                input2.click();
-              }
+              //     reader.readAsDataURL(files[0]);
+              //   }
+              //   input.click();
+              // }
 
               document.getElementById("photoupload2").onclick = function () {
                 imgName = user_Name + files[0].name;
@@ -487,24 +512,24 @@
               }, false);
 
 
-              document.getElementById("upload3").onclick = function (e) {
+              // document.getElementById("upload3").onclick = function (e) {
 
-                let input3 = document.createElement('input');
-                input3.type = 'file';
+              //   let input3 = document.createElement('input');
+              //   input3.type = 'file';
 
 
-                input3.onchange = e => {
-                  files = e.target.files;
-                  reader3 = new FileReader();
+              //   input3.onchange = e => {
+              //     files = e.target.files;
+              //     reader3 = new FileReader();
 
-                  reader3.onload = function () {
-                    document.getElementById("img3").src = reader3.result;
-                  }
+              //     reader3.onload = function () {
+              //       document.getElementById("img3").src = reader3.result;
+              //     }
 
-                  reader3.readAsDataURL(files[0]);
-                }
-                input3.click();
-              }
+              //     reader3.readAsDataURL(files[0]);
+              //   }
+              //   input3.click();
+              // }
 
               document.getElementById("photoupload3").onclick = function () {
                 imgName = user_Name + files[0].name;

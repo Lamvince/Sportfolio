@@ -129,9 +129,9 @@
 
     <div id="btn_edit_profile_div">
       <button type="button" id="btn_edit_profile" class="btn btn-primary">
-        Edit profile
+        Edit profile photo
       </button>
-      <button id="btn_upload_profile" class="btn btn-success">Upload</button>
+      <button id="btn_upload_profile" class="btn btn-success">Upload profile photo</button>
       <br>
       <label id="loadingStuff"></label>
     </div>
@@ -143,10 +143,10 @@
         <h5 class="card-title">Photo #1</h5>
         <p class="card-text"></p>
         <button type="button" id="upload1" class="btn btn-primary">
-          photo
+          Add new photo
         </button>
-        <button id="photoupload1" class="btn btn-success">Upload</button>
-        <button id="delete1" class="btn btn-danger">delete</button>
+        <button id="photoupload1" class="btn btn-success">Upload photo</button>
+        <button id="delete1" class="btn btn-danger">Delete photo</button>
       </div>
     </div>
     <div id="photo2" class="card" style="width: 18rem;">
@@ -155,10 +155,10 @@
         <h5 class="card-title">Photo #2</h5>
         <p class="card-text"></p>
         <button type="button" id="upload2" class="btn btn-primary">
-          photo
+          Add new photo
         </button>
-        <button id="photoupload2" type="button" class="btn btn-success">Upload</button>
-        <button id="delete2" class="btn btn-danger">delete</button>
+        <button id="photoupload2" type="button" class="btn btn-success">Upload photo</button>
+        <button id="delete2" class="btn btn-danger">Delete photo</button>
       </div>
     </div>
     <div id="photo3" class="card" style="width: 18rem;">
@@ -167,10 +167,10 @@
         <h5 class="card-title">Photo #3</h5>
         <p class="card-text"></p>
         <button type="button" id="upload3" class="btn btn-primary">
-          photo
+          Add new photo
         </button>
-        <button id="photoupload3" type="button" class="btn btn-success">Upload</button>
-        <button id="delete3" class="btn btn-danger">delete</button>
+        <button id="photoupload3" type="button" class="btn btn-success">Upload photo</button>
+        <button id="delete3" class="btn btn-danger">Delete photo</button>
       </div>
     </div>
 
@@ -182,10 +182,10 @@
         <h5 class="card-title">Video #1</h5>
         <p class="card-text"></p>
         <button type="button" id="uploadvideo1" class="btn btn-primary">
-          video
+          Add new video
         </button>
-        <button id="videoupload1" type="button" class="btn btn-success">Upload</button>
-        <button id="deletevideo1" class="btn btn-danger">delete</button>
+        <button id="videoupload1" type="button" class="btn btn-success">Upload video</button>
+        <button id="deletevideo1" class="btn btn-danger">Delete video</button>
       </div>
     </div>
 
@@ -197,10 +197,10 @@
         <h5 class="card-title">Video #2</h5>
         <p class="card-text"></p>
         <button type="button" id="uploadvideo2" class="btn btn-primary">
-          video
+          Add new video
         </button>
-        <button id="videoupload2" type="button" class="btn btn-success">Upload</button>
-        <button id="deletevideo2" class="btn btn-danger">delete</button>
+        <button id="videoupload2" type="button" class="btn btn-success">Upload video</button>
+        <button id="deletevideo2" class="btn btn-danger">Delete video</button>
       </div>
     </div>
 
@@ -212,10 +212,10 @@
         <h5 class="card-title">Video #3</h5>
         <p class="card-text"></p>
         <button type="button" id="uploadvideo3" class="btn btn-primary">
-          video
+          Add new video
         </button>
-        <button id="videoupload3" type="button" class="btn btn-success">Upload</button>
-        <button id="deletevideo3" class="btn btn-danger">delete</button>
+        <button id="videoupload3" type="button" class="btn btn-success">Upload video</button>
+        <button id="deletevideo3" class="btn btn-danger">Delete video</button>
       </div>
     </div>
 
@@ -256,14 +256,18 @@
               var user_team = userDoc.data().team;
               var user_gender = userDoc.data().gender;
               var user_text = userDoc.data().description;
+              var img1text = userDoc.data().img1;
+              console.log("page loaded");
+              console.log(img1text + " image text");
 
-              console.log(user_Name);
-              //method #1:  insert with html only
-              document.getElementById("user-name").innerText = user_Name; //using javascript
+              //insert user info with html 
+              document.getElementById("user-name").innerText = user_Name;
               document.getElementById("user-sport").innerText = user_sport;
               document.getElementById("user-team").innerText = user_team;
               document.getElementById("user-gender").innerText = user_gender;
               document.getElementById("user-description").innerHTML = user_text;
+
+              //hide or show apprpriate buttons
 
               //edit profile
               document.getElementById("btn_edit_profile").onclick = function (e) {
@@ -331,7 +335,7 @@
                   reader1 = new FileReader();
 
                   reader1.onload = function () {
-                    document.getElementById("img1").src = reader1.result;
+                    document.getElementById("text").src = reader1.reimg1;
                   }
 
                   reader1.readAsDataURL(files[0]);
@@ -359,7 +363,7 @@
                       pic1 = url;
 
                       db.collection("users").doc(user.uid).update({
-                        img1: pic1
+                        text:img1
                       });
                       alert('image added successfully');
                     })

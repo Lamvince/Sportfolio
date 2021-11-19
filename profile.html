@@ -449,7 +449,6 @@
 
               //displays the photo in the container
               let read1 = db.collection("users").doc(user.uid);
-
               read1.get()
                 .then(userDoc => {
                   var data1 = userDoc.data().img1;
@@ -457,25 +456,7 @@
                   document.getElementById("img1").src = data1;
                 })
 
-              //end displaying photo in container
-              //delete
-              // document.getElementById("delete1").addEventListener("click", function (e) {
-              //   e.preventDefault();
-
-              //   document.getElementById("img1").src = "./images/tempimg.png";
-
-              //   let photo1 = db.collection("users").doc(user.uid);
-
-              //   let removeImg1 = photo1.update({
-              //     img1: "./images/tempimg.png"
-              //   });
-
-
-
-              // }, false);
-
               let read2 = db.collection("users").doc(user.uid);
-
               read2.get()
                 .then(userDoc => {
                   var data2 = userDoc.data().img2;
@@ -483,21 +464,7 @@
                   document.getElementById("img2").src = data2;
                 })
 
-              // document.getElementById("delete2").addEventListener("click", function (e) {
-              //   e.preventDefault();
-
-              //   document.getElementById("img2").src = "./images/tempimg.png";
-
-              //   let photo2 = db.collection("users").doc(user.uid);
-
-              //   let removeImg2 = photo2.update({
-              //     img2: "./images/tempimg.png"
-              //   });
-
-              // }, false);
-
               let read3 = db.collection("users").doc(user.uid);
-
               read3.get()
                 .then(userDoc => {
                   var data3 = userDoc.data().img3;
@@ -505,20 +472,7 @@
                   document.getElementById("img3").src = data3;
                 })
 
-              // document.getElementById("delete3").addEventListener("click", function (e) {
-              //   e.preventDefault();
-
-              //   document.getElementById("img3").src = "./images/tempimg.png";
-
-              //   let photo3 = db.collection("users").doc(user.uid);
-
-              //   let removeImg3 = photo3.update({
-              //     img3: "./images/tempimg.png"
-              //   });
-
-
-              // }, false);
-
+                
               document.getElementById("uploadvideo1").onclick = function (e) {
 
                 let input4 = document.createElement('input');

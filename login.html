@@ -164,6 +164,7 @@
                     // or whether we leave that to developer to handle.
                     var user = authResult.user;
                     let temptext = "Click me to create a description!";
+                    let placeholderimg = "./images/tempimg.png";
                     if (authResult.additionalUserInfo.isNewUser) {
 
                         let temp = "https://firebasestorage.googleapis.com/v0/b/sportfolio-96c76.appspot.com/o/images%2Fplaceholderpfpfromserver.png?alt=media&token=9f8ca543-9f0a-47c4-aa2b-217918ed8629"
@@ -173,7 +174,10 @@
                             lowerCaseName: user.displayName.toLowerCase(),
                             email: user.email,
                             userpfp: temp,
-                            description: temptext
+                            description: temptext,
+                            img1: placeholderimg,
+                            img2: placeholderimg,
+                            img3: placeholderimg
                         }).then(function () {
                             //before showing main.html, user needs to fill out form
                             document.getElementById("new_user_ui").style.display = "block";

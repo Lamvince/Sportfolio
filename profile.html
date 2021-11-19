@@ -347,7 +347,6 @@
                 })
 
               //SET UP ONCLICKS FOR UPLOAD BUTTONS *************
-
               for (var i = 1; i <= 3; i++) {
                 let idString = "upload" + i;
                 console.log("here " + idString);
@@ -370,26 +369,6 @@
                   input.click();
                 }
               }
-
-              //select photo 
-              // document.getElementById("upload1").onclick = function (e) {
-
-              //   let input = document.createElement('input');
-              //   input.type = 'file';
-
-              //   input.onchange = e => {
-              //     files = e.target.files;
-              //     reader = new FileReader();
-
-              //     reader.onload = function () {
-              //       document.getElementById("img1").src = reader.result;
-              //     }
-
-              //     reader.readAsDataURL(files[0]);
-              //   }
-              //   input.click();
-              // }
-
               //upload photo
               document.getElementById("photoupload1").onclick = function () {
 
@@ -443,26 +422,6 @@
 
               }, false);
 
-
-              // document.getElementById("upload2").onclick = function (e) {
-
-              //   let input = document.createElement('input');
-              //   input.type = 'file';
-
-
-              //   input.onchange = e => {
-              //     files = e.target.files;
-              //     reader = new FileReader();
-
-              //     reader.onload = function () {
-              //       document.getElementById("img2").src = reader.result;
-              //     }
-
-              //     reader.readAsDataURL(files[0]);
-              //   }
-              //   input.click();
-              // }
-
               document.getElementById("photoupload2").onclick = function () {
                 imgName = user_Name + files[0].name;
                 let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
@@ -510,26 +469,6 @@
                 });
 
               }, false);
-
-
-              // document.getElementById("upload3").onclick = function (e) {
-
-              //   let input3 = document.createElement('input');
-              //   input3.type = 'file';
-
-
-              //   input3.onchange = e => {
-              //     files = e.target.files;
-              //     reader3 = new FileReader();
-
-              //     reader3.onload = function () {
-              //       document.getElementById("img3").src = reader3.result;
-              //     }
-
-              //     reader3.readAsDataURL(files[0]);
-              //   }
-              //   input3.click();
-              // }
 
               document.getElementById("photoupload3").onclick = function () {
                 imgName = user_Name + files[0].name;

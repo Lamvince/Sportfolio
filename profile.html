@@ -182,7 +182,6 @@
         <h5 class="card-title">Video #1</h5>
         <p class="card-text"></p>
         <button type="button" id="uploadvideo1" class="btn btn-primary">
-          <!-- changed from id="uploadvideo1" -->
           Add new video
         </button>
         <button id="videoupload1" type="button" class="btn btn-success">Upload video</button>
@@ -288,9 +287,10 @@
               document.getElementById("user-description").innerHTML = user_text;
 
               //hide or show apprpriate buttons
-              //hide photo upload button every time
               for (var i = 1; i <= 3; i++) {
+                //hide photo/video upload button every time
                 document.getElementById("photoupload" + i).style.display = "none";
+                document.getElementById("videoupload" + i).style.display = "none";
 
                 //hide delete photo button if needed
                 if (imgText[i - 1] == "./images/tempimg.png") {
@@ -471,6 +471,9 @@
                       let num = idString.charAt(11);
                       document.getElementById("uservideo" + num).src = reader.result;
                       document.getElementById("vid" + num + "src").src = reader.result;
+
+                      //show upload video button
+                      document.getElementById("videoupload" + num).style.display = "block";
                     }
 
                     reader.readAsDataURL(files[0]);
@@ -504,6 +507,10 @@
                           [vidString]: vid1
                         });
                         alert('video added successfully');
+
+                        //hide upload button, show delete button
+                        document.getElementById("videoupload" + idString.charAt(11)).style.display = "none";
+                        document.getElementById("deletevideo" + idString.charAt(11)).style.display = "block";
                       })
                     }
 
@@ -527,6 +534,8 @@
                     [idString]: firebase.firestore.FieldValue.delete(),
                   });
 
+                  //hide delete button
+                  document.getElementById("deletevideo" + idString.charAt(7)).style.display = "none";
 
                 }, false);
               }

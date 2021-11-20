@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>My Profile</title>
+  <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/my_style.css" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Firebase 8 related JS CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+
+  <!-- Link to the api keys for your Firebase project -->
+  <script src="./scripts/firebase.js"></script>
+  <script src="./scripts/my_script.js"></script>
+
+  <!-- Google Icons (Material Design)-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+
+  <!-- Header -->
+
+  <nav class="navbar navbar-light bg-success">
+    <div class="container py-3">
+      <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
+      <a href="./search.html">
+        <i class="material-icons-outlined" id="navbar_search">search</i>
+      </a>
+    </div>
+  </nav>
+
+
+
+  <!-- Hamburger Side Navbar -->
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" id="sidenav">
+    <i class="material-icons-outlined white" onclick="showOrHide('sidenav')">close</i>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" />
+          </svg>
+          <i class="material-icons-outlined white">leaderboard</i> Rank
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" />
+          </svg>
+          <i class="material-icons-outlined white">group</i> Connections
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" />
+          </svg>
+          <i class="material-icons-outlined white">settings</i> Settings
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#table" />
+          </svg>
+          <i class="material-icons-outlined white">contact_support</i> About
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#grid" />
+          </svg>
+          <i class="material-icons-outlined white">alternate_email</i> Contact
+        </a>
+      </li>
+      <li>
+        <a href="./index.html" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#people-circle" />
+          </svg>
+          <i class="material-icons-outlined white">logout</i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <div id="main_container">
+
+    <div>
+      <img id="profile_pic" src="./placeholderpfpfromserver.png" class="rounded mx-auto d-block">
+    </div>
+
+    <div id="greeting">
+      <p>Hello, <span id="user-name"></span>!</p>
+    </div>
+
+    <div id="user-description" class="mx-auto p-2" contenteditable="true">
+      Click me to write your own description!
+    </div>
+    <button type="button" id="savetext" class="btn btn-primary mx-auto m-3">
+      Save Text
+    </button>
+
+
+    <div id="user_info">
+      <p>Sport: <span id="user-sport"></span></p>
+      <p>Team: <span id="user-team"></span></p>
+      <p>Gender: <span id="user-gender"></span></p>
+      <p>Rank: <span id="user-rank"></span></p>
+    </div>
+
+    <div id="btn_edit_profile_div">
+      <button type="button" id="btn_edit_profile" class="btn btn-primary">
+        Edit profile photo
+      </button>
+      <button id="btn_upload_profile" class="btn btn-success">Upload profile photo</button>
+      <br>
+      <label id="loadingStuff"></label>
+    </div>
+
+
+    <div id="photo1" class="card" style="width: 18rem;">
+      <img id="img1" src="./images/uploadanimg.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Photo #1</h5>
+        <p class="card-text"></p>
+        <button type="button" id="upload1" class="btn btn-primary">
+          Add new photo
+        </button>
+        <button id="photoupload1" class="btn btn-success">Upload photo</button>
+        <button id="delete1" class="btn btn-danger">Delete photo</button>
+      </div>
+    </div>
+    <div id="photo2" class="card" style="width: 18rem;">
+      <img id="img2" src="./images/uploadanimg.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Photo #2</h5>
+        <p class="card-text"></p>
+        <button type="button" id="upload2" class="btn btn-primary">
+          Add new photo
+        </button>
+        <button id="photoupload2" type="button" class="btn btn-success">Upload photo</button>
+        <button id="delete2" class="btn btn-danger">Delete photo</button>
+      </div>
+    </div>
+    <div id="photo3" class="card" style="width: 18rem;">
+      <img id="img3" src="./images/uploadanimg.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Photo #3</h5>
+        <p class="card-text"></p>
+        <button type="button" id="upload3" class="btn btn-primary">
+          Add new photo
+        </button>
+        <button id="photoupload3" type="button" class="btn btn-success">Upload photo</button>
+        <button id="delete3" class="btn btn-danger">Delete photo</button>
+      </div>
+    </div>
+
+    <div id="video1" class="card" style="width: 18rem;">
+      <video id="uservideo1" src="" class="card-img-top" alt="..." controls>
+        <source id="vid1src" src="">
+      </video>
+      <div class="card-body">
+        <h5 class="card-title">Video #1</h5>
+        <p class="card-text"></p>
+        <button type="button" id="uploadvideo1" class="btn btn-primary">
+          Add new video
+        </button>
+        <button id="videoupload1" type="button" class="btn btn-success">Upload video</button>
+        <button id="deletevideo1" class="btn btn-danger">Delete video</button>
+      </div>
+    </div>
+
+    <div id="video2" class="card" style="width: 18rem;">
+      <video id="uservideo2" src="" class="card-img-top" alt="..." controls>
+        <source id="vid2src" src="">
+      </video>
+      <div class="card-body">
+        <h5 class="card-title">Video #2</h5>
+        <p class="card-text"></p>
+        <button type="button" id="uploadvideo2" class="btn btn-primary">
+          Add new video
+        </button>
+        <button id="videoupload2" type="button" class="btn btn-success">Upload video</button>
+        <button id="deletevideo2" class="btn btn-danger">Delete video</button>
+      </div>
+    </div>
+
+    <div id="video3" class="card" style="width: 18rem;">
+      <video id="uservideo3" src="" class="card-img-top" alt="..." controls>
+        <source id="vid3src" src="">
+      </video>
+      <div class="card-body">
+        <h5 class="card-title">Video #3</h5>
+        <p class="card-text"></p>
+        <button type="button" id="uploadvideo3" class="btn btn-primary">
+          Add new video
+        </button>
+        <button id="videoupload3" type="button" class="btn btn-success">Upload video</button>
+        <button id="deletevideo3" class="btn btn-danger">Delete video</button>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+  <!-- Footer -->
+  <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
+    <a href="./main.html">
+      <i class="material-icons-outlined text-white">home</i>
+    </a>
+    <i class="material-icons-outlined text-warning">account_circle</i>
+    <i class="material-icons-outlined text-white">forum</i>
+    <i class="material-icons-outlined text-white">notifications</i>
+  </footer>
+
+  <script src="./scripts/profile.js"></script>
+
+</body>
+
+</html>

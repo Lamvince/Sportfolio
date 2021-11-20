@@ -375,13 +375,12 @@
               for (var i = 1; i <= 3; i++) {
                 let idString = "upload" + i;
                 document.getElementById(idString).onclick = function (e) {
-                  console.log("clicked " + idString);
                   let input = document.createElement('input');
                   input.type = 'file';
 
                   input.onchange = e => {
                     files = e.target.files;
-                    reader = new FileReader();
+                    let reader = new FileReader();
 
                     reader.onload = function () {
                       let imgString = "img" + idString.charAt(6); //img1, img2, img3
@@ -417,7 +416,7 @@
 
                     function () {
                       uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                        pic1 = url;
+                        let pic1 = url;
                         let imgString = "img" + idString.charAt(11);
 
                         db.collection("users").doc(user.uid).update({

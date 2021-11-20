@@ -1,8 +1,6 @@
-
-
 function insertName() {
   let files = [];
-  
+
   firebase.auth().onAuthStateChanged(user => {
     // Check if user is signed in:
     if (user) {
@@ -65,7 +63,7 @@ function insertName() {
             input.type = 'file';
 
             input.onchange = e => {
-              let files = e.target.files;
+              files = e.target.files;
               let reader = new FileReader();
               reader.onload = function () {
                 document.getElementById("profile_pic").src = reader.result;
@@ -132,7 +130,7 @@ function insertName() {
               input.type = 'file';
 
               input.onchange = e => {
-                let files = e.target.files;
+                files = e.target.files;
                 let reader = new FileReader();
 
                 reader.onload = function () {

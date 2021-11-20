@@ -67,8 +67,14 @@ function getSearchResults() {
                 var image = doc.data().userpfp;
                 var sport = doc.data().sport;
                 console.log(name);
-                console.log(`UID ${doc.id}`);
+                console.log(`${doc.id}`);
                 document.getElementById(count).innerHTML = "<div class='card-header border-0'><img id='profile_pic' src="+image+"></div><div class='card-block px-2'><h4 class='card-title'>"+name+"</h4><p class='card-text'>"+sport+"</p></div>";
+
+                //add click event for name
+                document.getElementById(count).onclick = function() {
+                    console.log("clicked!");
+                    window.location.href = "genericprofile.html?" + `${doc.id}`
+                }
                 count++;
             })
         })

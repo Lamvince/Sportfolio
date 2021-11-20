@@ -277,9 +277,7 @@
                 userDoc.data().uservid3
               ]
 
-
               console.log("page loaded");
-
 
               //insert user info with html 
               document.getElementById("user-name").innerText = user_Name;
@@ -289,9 +287,7 @@
               document.getElementById("user-description").innerHTML = user_text;
               document.getElementById("user-rank").innerText = user_rank;
 
-
-
-              //hide or show apprpriate buttons
+              //hide or show appropriate buttons
               for (var i = 1; i <= 3; i++) {
                 //hide photo/video upload button every time
                 document.getElementById("photoupload" + i).style.display = "none";
@@ -308,8 +304,7 @@
                 }
               }
 
-
-              //edit profile
+              //edit profile photo
               document.getElementById("btn_edit_profile").onclick = function (e) {
                 let input = document.createElement('input');
                 input.type = 'file';
@@ -326,7 +321,7 @@
                 }
                 input.click();
               }
-              //profile picture upload photo
+              //upload profile picture
               document.getElementById("btn_upload_profile").onclick = function () {
                 imgName = user_Name + files[0].name;
                 let uploadTask = firebase.storage().ref('images/' + imgName).put(files[0]);
@@ -376,7 +371,7 @@
                 })
 
 
-              //SET UP ONCLICKS FOR UPLOAD BUTTONS *************
+              //SET UP ONCLICKS FOR ADD PHOTO BUTTONS
               for (var i = 1; i <= 3; i++) {
                 let idString = "upload" + i;
                 document.getElementById(idString).onclick = function (e) {
@@ -404,7 +399,7 @@
                 }
               }
 
-              //SET UP ONCLICKS FOR PHOTO UPLOAD BUTTONS
+              //SET UP ONCLICKS FOR UPLOAD PHOTO BUTTONS
               for (var i = 1; i <= 3; i++) {
                 let idString = "photoupload" + i;
                 document.getElementById(idString).onclick = function () {
@@ -462,7 +457,6 @@
 
                   //hide delete button
                   document.getElementById("delete" + idString.charAt(6)).style.display = "none";
-
                 }, false);
               }
 

@@ -1,4 +1,4 @@
-function insertName() {
+function insertPageData() {
   let files = [];
 
   firebase.auth().onAuthStateChanged(user => {
@@ -321,5 +321,5 @@ function insertName() {
     }
   });
 }
-insertName();
+insertPageData();
 logout();

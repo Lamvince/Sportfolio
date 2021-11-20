@@ -1,15 +1,15 @@
-let imgName, imgUrl, pic1, pic2, pic3;
-let files = [];
-let count = 0;
+
 
 function insertName() {
+  let files = [];
+  
   firebase.auth().onAuthStateChanged(user => {
     // Check if user is signed in:
     if (user) {
       // Do something for the current logged-in user here: 
       console.log(user.uid);
       //go to the correct user document by referencing to the user uid
-      currentUser = db.collection("users").doc(user.uid);
+      let currentUser = db.collection("users").doc(user.uid);
       //get the document for current user.
       currentUser.get()
         .then(userDoc => {
@@ -64,10 +64,9 @@ function insertName() {
             let input = document.createElement('input');
             input.type = 'file';
 
-
             input.onchange = e => {
-              files = e.target.files;
-              reader = new FileReader();
+              let files = e.target.files;
+              let reader = new FileReader();
               reader.onload = function () {
                 document.getElementById("profile_pic").src = reader.result;
               }
@@ -78,12 +77,12 @@ function insertName() {
           }
           //upload profile picture
           document.getElementById("btn_upload_profile").onclick = function () {
-            imgName = user_Name + files[0].name;
+            let imgName = user_Name + files[0].name;
             let uploadTask = firebase.storage().ref('images/' + imgName).put(files[0]);
 
             uploadTask.on('state_changed', function (snapshot) {
               let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              document.getElementById("loadingStuff").innerHTML = 'Upload' + progress + '%'
+              document.getElementById("loadingStuff").innerHTML = 'Upload' + progress + '%';
             },
 
               function (error) {
@@ -92,13 +91,12 @@ function insertName() {
 
               function () {
                 uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                  imgUrl = url;
 
                   db.collection("users").doc(user.uid).update({
                     name: user.displayName,
                     email: user.email,
                     image: imgName,
-                    userpfp: imgUrl
+                    userpfp: url
                   });
                   alert('image added successfully');
                 })
@@ -134,7 +132,7 @@ function insertName() {
               input.type = 'file';
 
               input.onchange = e => {
-                files = e.target.files;
+                let files = e.target.files;
                 let reader = new FileReader();
 
                 reader.onload = function () {
@@ -171,11 +169,10 @@ function insertName() {
 
                 function () {
                   uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                    let pic1 = url;
-                    let imgString = "img" + idString.charAt(11);
+                    let imgString = "img" + idString.charAt(11); //img 1, img2, img3
 
                     db.collection("users").doc(user.uid).update({
-                      [imgString]: pic1
+                      [imgString]: url
                     });
 
                     alert('image added successfully');
@@ -248,7 +245,7 @@ function insertName() {
           for (var i = 1; i <= 3; i++) {
             let idString = "videoupload" + i;
             document.getElementById(idString).onclick = function () {
-              imgName = user_Name + files[0].name;
+              let imgName = user_Name + files[0].name;
               let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
 
               uploadTask.on('state_changed', function (snapshot) {
@@ -262,10 +259,9 @@ function insertName() {
                 function () {
                   uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
 
-                    vid1 = url;
                     let vidString = "uservid" + idString.charAt(11);
                     db.collection("users").doc(user.uid).update({
-                      [vidString]: vid1
+                      [vidString]: url
                     });
                     alert('video added successfully');
 

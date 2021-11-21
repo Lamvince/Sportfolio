@@ -346,3 +346,8 @@
   display: flex;
   justify-content: center;
 }
+
+/* Turn radio button text white */
+.radiofont {
+  color: white;
+}

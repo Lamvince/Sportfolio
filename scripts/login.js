@@ -8,10 +8,19 @@ function getNewUserInfo(user) {
   let userGender = eGender.options[eGender.selectedIndex].text;
   let userSport = eSport.options[eSport.selectedIndex].text;
   let userTeam = document.getElementById("userTeam").value;
+  let userRole;
+
+  //find user rold
+  if (document.getElementById("role1").checked) {
+    userRole = "Athlete";
+  } else {
+    userRole = "Recruiter";
+  }
 
   console.log("gender " + userGender);
   console.log("sport " + userSport);
   console.log("team " + userTeam);
+  console.log("role "+ userRole);
 
   //verify that user filled out whole form
   //unchosen gender is "Gender"
@@ -32,7 +41,8 @@ function getNewUserInfo(user) {
     db.collection("users").doc(user.uid).update({
       gender: userGender,
       sport: userSport,
-      team: userTeam
+      team: userTeam,
+      role: userRole
     });
     alert("Account creation successful!");
     console.log("verified");

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sportfolio</title>
+  <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/my_style.css" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Firebase 8 related JS CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+
+  <!-- Link to the api keys for your Firebase project -->
+  <script src="./scripts/firebase.js"></script>
+  <script src="./scripts/my_script.js"></script>
+
+  <!-- Google Icons (Material Design)-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+</head>
+
+<body id="body">
+
+  <!-- Header -->
+
+  <nav class="navbar navbar-light bg-success">
+    <div class="container py-3">
+      <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
+      <i class="material-icons-outlined">search</i>
+    </div>
+  </nav>
+
+  <!-- Hamburger Side Navbar -->
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" id="sidenav">
+    <i class="material-icons-outlined white" onclick="showOrHide('sidenav')">close</i>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
+          <i class="material-icons-outlined white">leaderboard</i> Rank
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
+          <i class="material-icons-outlined white">group</i> Connections
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
+          <i class="material-icons-outlined white">settings</i> Settings
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#table" /></svg>
+          <i class="material-icons-outlined white">contact_support</i> About
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#grid" /></svg>
+          <i class="material-icons-outlined white">alternate_email</i> Contact
+        </a>
+      </li>
+      <li>
+        <a href="./index.html" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#people-circle" /></svg>
+          <i class="material-icons-outlined white">logout</i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container py-3">
+    <h3>My Chat with <span id="friend">Friend</span></h3>
+    <!--The div element for the map -->
+    <!-- <input class="btn btn-success" value="Chat Samsantech" onclick="chat('samsantech')"> -->
+
+    <!-- <input id="username" type="text" placeholder="Enter name"><br/> -->
+    <div class="container">
+      <!-- <input id="text" type="text" placeholder="Enter name"><br /> -->
+
+      <input id="text" type="text" placeholder="Enter message"><br />
+      <button id="post"> Post </button> <br />
+      <button id="clear"> Clear </button> <br />
+      <button id="quit"> Quit </button> <br />
+      <div class="p-5 mb-4 bg-light rounded-3" id="results"></div>
+    </div>
+  </div>
+
+  <template id="card-template">
+    <div class="card">
+      <div class="container msg">
+        <b class="card-name"> Name</b>
+        <span class="card-body"> some stuff </span>
+      </div>
+    </div>
+  </template>
+
+  <div id="user-descriptions" contenteditable="true">
+    Click me to write your own description!
+  </div>
+  <button type="button" id="savetext" class="btn btn-primary mx-auto m-3">
+    Save Text
+  </button>
+
+
+  <!-- Footer -->
+  <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
+    <a href="./main.html">
+      <i class="material-icons-outlined text-white">home</i>
+    </a>
+    <a href="./profile.html">
+      <i class="material-icons-outlined text-white">account_circle</i>
+    </a>
+    <i class="material-icons-outlined text-white">forum</i>
+    <i class="material-icons-outlined text-white">notifications</i>
+  </footer>
+
+  <script>
+    let uid;
+
+
+
+    function initChat() {
+      //get the ID of who we are chatting with
+      let params = new URL(window.location.href);
+      uid = params.searchParams.get("uid"); //parse "uid"
+      let name = params.searchParams.get("name"); //parse "name"
+      console.log(uid);
+
+      //set the title to show that person's name
+      document.getElementById("friend").innerHTML = name;
+
+      // generate a random 4 digit ID
+      chatid = Math.random().toString().substr(2, 4);
+      console.log(chatid);
+      db.collection("chats").doc(chatid).set({
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(doc => {
+        alert("Your Chat ID is " + chatid + ". Pass this to your friend.");
+        postMessageListen(chatid);
+        clearButtonListen(chatid);
+        listenNewMessage(chatid);
+        quitButtonListen(chatid);
+      })
+    }
+    initChat();
+
+    //------------------------------------------------------
+    // This function allows the Logged in user post a message. 
+    // Will create a new doc with .add() to Firestore messsages
+    // subcollection for this chat.
+    //-------------------------------------------------------
+    function postMessageListen(chatid) {
+      var textInput = document.getElementById("text");
+      var postButton = document.getElementById("post");
+      postButton.addEventListener("click", function () {
+        var msgText = textInput.value; //user provided message
+        firebase.auth().onAuthStateChanged(function (user) {
+          db.collection('chats').doc(chatid).collection("messages")
+            .add({
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              name: user.displayName,
+              text: msgText,
+              userid: user.uid
+            })
+          textInput.value = "";
+        })
+      });
+    }
+
+    //-------------------------------------------------------------
+    //This function clears the entire chat log.
+    //gets the messsages collection, and deletes each doc one by one
+    //in Firestore, and deletes the DOM of class name "msg" (see template)
+    //-------------------------------------------------------------
+    function clearButtonListen(chatid) {
+      var clearButton = document.getElementById("clear");
+      clearButton.addEventListener("click", function () {
+        console.log("in clear function");
+        db.collection('chats').doc(chatid).collection("messages")
+          .get()
+          .then(snap => {
+            snap.docs.forEach(doc => {
+              doc.ref.delete();
+            })
+            var msg = document.getElementsByClassName("item");
+            while (msg[0]) {
+              msg[0].remove();
+            }
+          })
+      })
+    }
+    
+
+    function quitButtonListen(chatid) {
+      var quitButton = document.getElementById("quit");
+      quitButton.addEventListener("click", function () {
+        db.collection("chats").doc(chatid)
+          .get()
+          .then(snap => {
+            snap.ref.delete();
+            window.location.href = "users.html";
+          })
+
+      })
+    }
+
+    //--------------------------------------------------------------------
+    // When a new message doc has been added, let's display it.
+    // Use "onSnapshot()" to listen to changes.
+    // https://firebase.google.com/docs/firestore/query-data/listen.html#view_changes_between_snapshots
+    //--------------------------------------------------------------------
+    function listenNewMessage(chatid) {
+      db.collection("chats").doc(chatid).collection("messages")
+        .onSnapshot(snap => {
+          snap.docChanges().forEach(change => {
+            if (change.type == "added") {
+              console.log("new message ", change.doc.data());
+              let msgCard = document.getElementById("card-template")
+                .content.cloneNode(true);
+              msgCard.querySelector('.card-body').innerHTML = change.doc.data().text;
+              msgCard.querySelector('.card-name').innerHTML = change.doc.data().name;
+              document.getElementById("results").appendChild(msgCard);
+            }
+          })
+        })
+    }
+
+
+    document.getElementById("savetext").addEventListener("click", function (e) {
+      e.preventDefault();
+
+      let usertext = document.getElementById("user-descriptions").innerHTML;
+
+      usertext = usertext.trim();
+      console.log(usertext);
+
+      db.collection("chats").get()
+        .then(snap => {
+          snap.forEach(doc => {
+            if (doc.id == usertext) {
+              console.log(doc.id);
+              console.log(usertext);
+              listenNewMessage(usertext);
+              let bruv = usertext;
+
+              function postMessageListen(bruv) {
+                var textIn = document.getElementById("text");
+                var postBu = document.getElementById("post");
+                postBu.addEventListener("click", function () {
+                  var msgTe = textIn.value; //user provided message
+                  firebase.auth().onAuthStateChanged(function (user) {
+                    db.collection('chats').doc(bruv).collection("messages")
+                      .add({
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        name: user.displayName,
+                        text: msgTe,
+                        userid: user.uid
+                      })
+                    textInput.value = "";
+                  })
+                });
+              }
+              postMessageListen(bruv);
+            }
+
+          })
+        })
+
+    }, false);
+  </script>
+</body>
+
+</html>

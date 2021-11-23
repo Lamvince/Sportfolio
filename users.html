@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sportfolio</title>
+  <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/my_style.css" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Firebase 8 related JS CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+
+  <!-- Link to the api keys for your Firebase project -->
+  <script src="./scripts/firebase.js"></script>
+  <script src="./scripts/my_script.js"></script>
+
+  <!-- Google Icons (Material Design)-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+</head>
+
+<body id="body">
+
+  <!-- Header -->
+
+  <nav class="navbar navbar-light bg-success">
+    <div class="container py-3">
+      <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
+      <i class="material-icons-outlined">search</i>
+    </div>
+  </nav>
+
+  <!-- Hamburger Side Navbar -->
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" id="sidenav">
+    <i class="material-icons-outlined white" onclick="showOrHide('sidenav')">close</i>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
+          <i class="material-icons-outlined white">leaderboard</i> Rank
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
+          <i class="material-icons-outlined white">group</i> Connections
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
+          <i class="material-icons-outlined white">settings</i> Settings
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#table" /></svg>
+          <i class="material-icons-outlined white">contact_support</i> About
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#grid" /></svg>
+          <i class="material-icons-outlined white">alternate_email</i> Contact
+        </a>
+      </li>
+      <li>
+        <a href="./index.html" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#people-circle" /></svg>
+          <i class="material-icons-outlined white">logout</i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="friends-go-here" class="container">
+    <template id="card-template">
+      <div class="card">
+        <div class="container item">
+          <b class="card-name"> Name</b>
+          <a class="btn card-href">CHAT</a>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  
+
+
+
+
+
+  <!-- Footer -->
+  <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
+    <a href="./main.html">
+      <i class="material-icons-outlined text-white">home</i>
+    </a>
+    <a href="./profile.html">
+      <i class="material-icons-outlined text-white">account_circle</i>
+    </a>
+    <i class="material-icons-outlined text-white">forum</i>
+    <i class="material-icons-outlined text-white">notifications</i>
+  </footer>
+
+  <script>
+    let usertext;
+    //----------------------------------------------
+    // Show is list of all users EXCEPT me (who is logged in)
+    //----------------------------------------------
+    function showAllUsers() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          console.log(user);
+          myid = user.uid;
+          db.collection("users").get()
+            .then(snap => {
+              snap.forEach(doc => {
+                if (doc.id != myid) {
+                  let newCard = document.getElementById("card-template")
+                    .content.cloneNode(true);
+                  newCard.querySelector('.card-name').innerHTML = doc.data().name;
+                  newCard.querySelector('.card-href').href = "chat.html?uid=" +
+                    doc.id + "&name=" + doc.data().name; //pass name and id
+                  document.getElementById("friends-go-here").appendChild(newCard);
+                }
+              })
+            })
+
+        } else {
+          // No user is signed in.
+          console.log("no user signed in");
+        }
+      })
+    }
+    showAllUsers();
+
+    
+
+
+
+    
+
+    
+  </script>
+</body>
+
+</html>

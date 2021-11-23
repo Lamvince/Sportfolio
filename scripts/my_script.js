@@ -105,7 +105,7 @@ function loadVisit() {
               document.getElementById("visit-sport").innerText = user_sport;
               document.getElementById("visit-team").innerText = user_team;
               document.getElementById("visit-gender").innerText = user_gender;
-              if(document.getElementById("visit-description").innerHTML === "Click me to create a description!") {
+              if(user_text === "Click me to create a description!") {
                 document.getElementById("visit-description").innerHTML = "";
               } else {
                 document.getElementById("visit-description").innerHTML = user_text;

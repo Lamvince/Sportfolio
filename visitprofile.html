@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>My Profile</title>
+  <title id="title">Name's Profile</title>
   <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/my_style.css" />
@@ -106,121 +106,73 @@
   <div id="main_container">
 
     <div>
-      <img id="profile_pic" src="./placeholderpfpfromserver.png" class="rounded mx-auto d-block">
+      <img id="visit_profile_pic" src="./placeholderpfpfromserver.png" class="rounded mx-auto d-block">
     </div>
 
-    <div id="greeting">
-      <p>Hello, <span id="user-name"></span>!</p>
+    <div id="visit_name">
+      <p><span id="visit-name"></span></p>
     </div>
 
-    <div id="user-description" class="mx-auto p-2" contenteditable="true">
-      Click me to write your own description!
-    </div>
-    <button type="button" id="savetext" class="btn btn-primary mx-auto m-3">
-      Save Text
-    </button>
+    <div id="visit-description" class="mx-auto p-2"></div>
 
-
-    <div id="user_info">
-      <p>Sport: <span id="user-sport"></span></p>
-      <p>Team: <span id="user-team"></span></p>
-      <p>Gender: <span id="user-gender"></span></p>
-      <p>Rank: <span id="user-rank"></span></p>
+    <div id="visit_info">
+      <p>Sport: <span id="visit-sport"></span></p>
+      <p>Team: <span id="visit-team"></span></p>
+      <p>Gender: <span id="visit-gender"></span></p>
+      <p>Rank: <span id="visit-rank"></span></p>
     </div>
 
-    <div id="btn_edit_profile_div">
-      <button type="button" id="btn_edit_profile" class="btn btn-primary">
-        Edit profile photo
-      </button>
-      <button id="btn_upload_profile" class="btn btn-success">Upload profile photo</button>
-      <br>
-      <label id="loadingStuff"></label>
-    </div>
-
-
-    <div id="photo1" class="card" style="width: 18rem;">
-      <img id="img1" src="./images/uploadanimg.png" class="card-img-top" alt="...">
+    <div id="visit_photo1" class="card" style="width: 18rem;">
+      <img id="visit-img1" src="./images/uploadanimg.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Photo #1</h5>
         <p class="card-text"></p>
-        <button type="button" id="upload1" class="btn btn-primary">
-          Add new photo
-        </button>
-        <button id="photoupload1" class="btn btn-success">Upload photo</button>
-        <button id="delete1" class="btn btn-danger">Delete photo</button>
       </div>
     </div>
-    <div id="photo2" class="card" style="width: 18rem;">
-      <img id="img2" src="./images/uploadanimg.png" class="card-img-top" alt="...">
+    <div id="visit_photo2" class="card" style="width: 18rem;">
+      <img id="visit-img2" src="./images/uploadanimg.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Photo #2</h5>
         <p class="card-text"></p>
-        <button type="button" id="upload2" class="btn btn-primary">
-          Add new photo
-        </button>
-        <button id="photoupload2" type="button" class="btn btn-success">Upload photo</button>
-        <button id="delete2" class="btn btn-danger">Delete photo</button>
       </div>
     </div>
-    <div id="photo3" class="card" style="width: 18rem;">
-      <img id="img3" src="./images/uploadanimg.png" class="card-img-top" alt="...">
+    <div id="visit_photo3" class="card" style="width: 18rem;">
+      <img id="visit-img3" src="./images/uploadanimg.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Photo #3</h5>
         <p class="card-text"></p>
-        <button type="button" id="upload3" class="btn btn-primary">
-          Add new photo
-        </button>
-        <button id="photoupload3" type="button" class="btn btn-success">Upload photo</button>
-        <button id="delete3" class="btn btn-danger">Delete photo</button>
       </div>
     </div>
 
-    <div id="video1" class="card" style="width: 18rem;">
-      <video id="uservideo1" src="" class="card-img-top" alt="..." controls>
-        <source id="vid1src" src="">
+    <div id="visit_video1" class="card" style="width: 18rem;">
+      <video id="visit-video1" src="" class="card-img-top" alt="..." controls>
+        <source id="visit-vid1src" src="">
       </video>
       <div class="card-body">
         <h5 class="card-title">Video #1</h5>
         <p class="card-text"></p>
-        <button type="button" id="uploadvideo1" class="btn btn-primary">
-          Add new video
-        </button>
-        <button id="videoupload1" type="button" class="btn btn-success">Upload video</button>
-        <button id="deletevideo1" class="btn btn-danger">Delete video</button>
       </div>
     </div>
 
-    <div id="video2" class="card" style="width: 18rem;">
-      <video id="uservideo2" src="" class="card-img-top" alt="..." controls>
-        <source id="vid2src" src="">
+    <div id="visit_video2" class="card" style="width: 18rem;">
+      <video id="visit-video2" src="" class="card-img-top" alt="..." controls>
+        <source id="visit-vid2src" src="">
       </video>
       <div class="card-body">
         <h5 class="card-title">Video #2</h5>
         <p class="card-text"></p>
-        <button type="button" id="uploadvideo2" class="btn btn-primary">
-          Add new video
-        </button>
-        <button id="videoupload2" type="button" class="btn btn-success">Upload video</button>
-        <button id="deletevideo2" class="btn btn-danger">Delete video</button>
       </div>
     </div>
 
-    <div id="video3" class="card" style="width: 18rem;">
-      <video id="uservideo3" src="" class="card-img-top" alt="..." controls>
-        <source id="vid3src" src="">
+    <div id="visit_video3" class="card" style="width: 18rem;">
+      <video id="visit-video3" src="" class="card-img-top" alt="..." controls>
+        <source id="visit-vid3src" src="">
       </video>
       <div class="card-body">
         <h5 class="card-title">Video #3</h5>
         <p class="card-text"></p>
-        <button type="button" id="uploadvideo3" class="btn btn-primary">
-          Add new video
-        </button>
-        <button id="videoupload3" type="button" class="btn btn-success">Upload video</button>
-        <button id="deletevideo3" class="btn btn-danger">Delete video</button>
       </div>
     </div>
-
-
   </div>
 
 
@@ -231,13 +183,16 @@
     <a href="./main.html">
       <i class="material-icons-outlined text-white">home</i>
     </a>
-    <i class="material-icons-outlined text-warning">account_circle</i>
+    <a href="./profile.html">
+      <i class="material-icons-outlined text-white">account_circle</i>
+    </a>
     <i class="material-icons-outlined text-white">forum</i>
     <i class="material-icons-outlined text-white">notifications</i>
   </footer>
 
-  <script src="./scripts/genericprofile.js"></script>
-
+  <script>
+    loadVisit();
+  </script>
 </body>
 
 </html>

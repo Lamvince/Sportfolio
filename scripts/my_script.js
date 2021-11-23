@@ -73,22 +73,72 @@ function getSearchResults() {
                 //add click event for name
                 document.getElementById(count).onclick = function() {
                     console.log("clicked!");
-                    window.location.href = "genericprofile.html?" + `${doc.id}`
+                    window.location.href = "visitprofile.html?uid=" + `${doc.id}`;
                 }
                 count++;
             })
         })
 }
 
+// Loads visited profile
+function loadVisit() {
+    //get the ID of user being visited
+    let params = new URL(window.location.href);
+    uid = params.searchParams.get("uid"); //parse "uid"
+    db.collection("users").doc(uid)
+          .get()
+          .then(userDoc => {
+              // get the documents of query
+              var user_Name = userDoc.data().name;
+              var user_sport = userDoc.data().sport;
+              var user_team = userDoc.data().team;
+              var user_gender = userDoc.data().gender;
+              var user_text = userDoc.data().description;
+              var user_rank = userDoc.data().rank;
+    
+              console.log("page loaded");
+    
+              //insert visited user info with html 
+              document.getElementById("title").innerHTML = user_Name + "'s Profile";
+
+              document.getElementById("visit-name").innerText = user_Name;
+              document.getElementById("visit-sport").innerText = user_sport;
+              document.getElementById("visit-team").innerText = user_team;
+              document.getElementById("visit-gender").innerText = user_gender;
+              if(document.getElementById("visit-description").innerHTML === "Click me to create a description!") {
+                document.getElementById("visit-description").innerHTML = "";
+              } else {
+                document.getElementById("visit-description").innerHTML = user_text;
+              }
+              document.getElementById("visit-rank").innerText = user_rank;
+
+              document.getElementById("visit_profile_pic").src = userDoc.data().userpfp;
+              console.log("img is" + userDoc.data().userpfp);
+
+              document.getElementById("visit-img1").src = userDoc.data().img1;
+              document.getElementById("visit-img2").src = userDoc.data().img2;
+              document.getElementById("visit-img3").src = userDoc.data().img3;
+
+              document.getElementById("visit-vid1src").src = userDoc.data().uservid1;
+              document.getElementById("visit-video1").src = userDoc.data().uservid1;
+              document.getElementById("visit-vid2src").src = userDoc.data().uservid2;
+              document.getElementById("visit-video2").src = userDoc.data().uservid2;
+              document.getElementById("visit-vid3src").src = userDoc.data().uservid3;
+              document.getElementById("visit-video3").src = userDoc.data().uservid3;
+          })
+}
+
+
 // Logout
 function logout() {
-    const logout = document.querySelectorAll("a[href='./index.html']");
-    logout.addEventListener('click', (e) => {
-        e.preventDefault();
-        firebase.auth().signOut().then(() => {
-            console.log("Logged out");
-        });
-    });
+  const logout = document.querySelectorAll("#logout");
+  logout.addEventListener('click', (e) => {
+      e.preventDefault();
+      firebase.auth().signOut().then(() => {
+          console.log("Logged out");
+      });
+      window.location.href = "index.html";
+  });
 }
 
 

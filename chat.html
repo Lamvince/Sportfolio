@@ -115,7 +115,7 @@
   </template>
 
   <div id="user-descriptions" contenteditable="true">
-    Click me to write your own description!
+    Enter Chat Number
   </div>
   <button type="button" id="savetext" class="btn btn-primary mx-auto m-3">
     Save Text
@@ -155,11 +155,8 @@
       db.collection("chats").doc(chatid).set({
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       }).then(doc => {
-        alert("Your Chat ID is " + chatid + ". Pass this to your friend.");
-        postMessageListen(chatid);
-        clearButtonListen(chatid);
-        listenNewMessage(chatid);
-        quitButtonListen(chatid);
+        alert("Your Chat ID is " + chatid + ". Pass this to your friend and enter the id into the box below and save it.");
+
       })
     }
     initChat();
@@ -182,7 +179,7 @@
               text: msgText,
               userid: user.uid
             })
-          textInput.value = "";
+
         })
       });
     }
@@ -258,29 +255,14 @@
         .then(snap => {
           snap.forEach(doc => {
             if (doc.id == usertext) {
+              console.log(uid);
               console.log(doc.id);
-              console.log(usertext);
+              chatid = usertext;
               listenNewMessage(usertext);
-              let bruv = usertext;
-
-              function postMessageListen(bruv) {
-                var textIn = document.getElementById("text");
-                var postBu = document.getElementById("post");
-                postBu.addEventListener("click", function () {
-                  var msgTe = textIn.value; //user provided message
-                  firebase.auth().onAuthStateChanged(function (user) {
-                    db.collection('chats').doc(bruv).collection("messages")
-                      .add({
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                        name: user.displayName,
-                        text: msgTe,
-                        userid: user.uid
-                      })
-                    textInput.value = "";
-                  })
-                });
-              }
-              postMessageListen(bruv);
+              
+              clearButtonListen(chatid);
+              quitButtonListen(chatid);
+              postMessageListen(chatid);
             }
 
           })

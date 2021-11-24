@@ -125,7 +125,6 @@
     function showAllUsers() {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
-          console.log(user);
           myid = user.uid;
           db.collection("users").get()
             .then(snap => {

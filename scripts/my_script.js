@@ -131,15 +131,11 @@ function loadVisit() {
 
 // Logout
 function logout() {
-  const logout = document.querySelectorAll("#logout");
-  logout.addEventListener('click', (e) => {
-      e.preventDefault();
       firebase.auth().signOut().then(() => {
           console.log("Logged out");
+          window.location.href = "index.html";
       });
-      window.location.href = "index.html";
-  });
-}
+  }
 
 
 function writeWebcamData() {

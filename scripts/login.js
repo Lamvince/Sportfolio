@@ -10,7 +10,7 @@ function getNewUserInfo(user) {
   let userTeam = document.getElementById("userTeam").value;
   let userRole;
 
-  //find user rold
+  //find user role
   if (document.getElementById("role1").checked) {
     userRole = "Athlete";
   } else {

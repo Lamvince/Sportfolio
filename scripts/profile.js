@@ -322,4 +322,3 @@ function insertPageData() {
   });
 }
 insertPageData();
-logout();

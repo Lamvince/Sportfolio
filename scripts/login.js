@@ -68,7 +68,7 @@ var uiConfig = {
       // or whether we leave that to developer to handle.
       var user = authResult.user;
       let temptext = "Click me to create a description!";
-      let placeholderimg = "./images/tempimg.png";
+      let placeholderimg = "./../images/tempimg.png";
       if (authResult.additionalUserInfo.isNewUser) {
 
         let temp = "https://firebasestorage.googleapis.com/v0/b/sportfolio-96c76.appspot.com/o/images%2Fplaceholderpfpfromserver.png?alt=media&token=9f8ca543-9f0a-47c4-aa2b-217918ed8629"

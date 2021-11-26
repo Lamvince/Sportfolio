@@ -1,19 +1,14 @@
-console.log("hello world");
-
 var queryString = decodeURIComponent(window.location.search);
 var queries = queryString.split("?");
-var uid = queries[1];
-console.log("HERE " + uid);
+var profileUID = queries[1];
 
 function showProfileData(uid) {
 
   firebase.auth().onAuthStateChanged(user => {
     // Check if user is signed in:
     if (user) {
-      // Do something for the current logged-in user here: 
-      console.log("hello " + user.uid + " hey " + uid);
       //go to the correct user document by referencing to the user uid
-      let profile = db.collection("users").doc(uid);
+      let profile = db.collection("users").doc(profileUID);
       //get the document for current user.
       profile.get()
         .then(userDoc => {

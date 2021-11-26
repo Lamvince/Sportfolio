@@ -52,7 +52,7 @@ function insertPageData() {
             document.getElementById("btn_upload_profile").style.display = "none";
 
             //hide delete photo button if needed
-            if (imgText[i - 1] == "./images/tempimg.png") {
+            if (imgText[i - 1] == "./../images/tempimg.png") {
               document.getElementById("delete" + i).style.display = "none";
             }
 
@@ -224,11 +224,11 @@ function insertPageData() {
             document.getElementById(idString).addEventListener("click", function (e) {
               e.preventDefault();
               let imgString = "img" + idString.charAt(6);
-              document.getElementById(imgString).src = "./images/tempimg.png";
+              document.getElementById(imgString).src = "./../images/tempimg.png";
 
               let userUID = db.collection("users").doc(user.uid);
               let removeImg1 = userUID.update({
-                [imgString]: "./images/tempimg.png"
+                [imgString]: "./../images/tempimg.png"
               });
 
               //hide delete button

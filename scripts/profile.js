@@ -171,8 +171,26 @@ function insertPageData() {
               let imgName = user_Name + files[0].name;
               let uploadTask = firebase.storage().ref('pics/' + imgName).put(files[0]);
 
+              let cardNum = idString.charAt(11);
+              let oldCardText = document.getElementsByClassName("card-title")[cardNum - 1].innerHTML;
+
               uploadTask.on('state_changed', function (snapshot) {
                 let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+                //check progress, set card title accordingly
+                if (progress < 100) {
+                  document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = 'Upload progress: ' + progress + '%';
+                } else {
+                  document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = "Upload complete!";
+                  setTimeout(() => {
+                    document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = oldCardText;
+                    //hide upload button, show delete button
+                    document.getElementById("photoupload" + idString.charAt(11)).style.display = "none";
+                    document.getElementById("delete" + idString.charAt(11)).style.display = "block";
+                  }, 1800);
+
+
+                }
               },
 
                 function (error) {
@@ -186,11 +204,6 @@ function insertPageData() {
                     db.collection("users").doc(user.uid).update({
                       [imgString]: url
                     });
-
-                    alert('image added successfully');
-                    //hide upload button, show delete button
-                    document.getElementById("photoupload" + idString.charAt(11)).style.display = "none";
-                    document.getElementById("delete" + idString.charAt(11)).style.display = "block";
 
                     //increase rank by 5
                     db.collection("users").doc(user.uid).update({
@@ -260,8 +273,25 @@ function insertPageData() {
               let imgName = user_Name + files[0].name;
               let uploadTask = firebase.storage().ref('videos/' + imgName).put(files[0]);
 
+              let cardNum = Number(idString.charAt(11)) + 3;
+              let oldCardText = document.getElementsByClassName("card-title")[cardNum - 1].innerHTML;
+
               uploadTask.on('state_changed', function (snapshot) {
                 let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                // check progress, change card title accordingly
+                if (progress < 100) {
+                  document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = 'Upload progress: ' + progress + '%';
+                } else {
+                  document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = "Upload complete!";
+                  setTimeout(() => {
+                    document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = oldCardText;
+                    //hide upload button, show delete button
+                    document.getElementById("videoupload" + idString.charAt(11)).style.display = "none";
+                    document.getElementById("deletevideo" + idString.charAt(11)).style.display = "block";
+                  }, 1800);
+
+
+                }
               },
 
                 function (error) {
@@ -275,11 +305,6 @@ function insertPageData() {
                     db.collection("users").doc(user.uid).update({
                       [vidString]: url
                     });
-                    alert('video added successfully');
-
-                    //hide upload button, show delete button
-                    document.getElementById("videoupload" + idString.charAt(11)).style.display = "none";
-                    document.getElementById("deletevideo" + idString.charAt(11)).style.display = "block";
 
                     //increase rank by 5
                     db.collection("users").doc(user.uid).update({

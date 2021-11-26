@@ -88,7 +88,7 @@ function insertPageData() {
 
             uploadTask.on('state_changed', function (snapshot) {
               let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              document.getElementById("loadingStuff").innerHTML = 'Upload' + progress + '%';
+              document.getElementById("profile_photo_load_progress").innerHTML = 'Upload' + progress + '%';
             },
 
               function (error) {
@@ -105,6 +105,7 @@ function insertPageData() {
                     userpfp: url
                   });
                   alert('image added successfully');
+                  document.getElementById("profile_photo_load_progress").style.display = "none";
                   document.getElementById("btn_upload_profile").style.display = "none";
                 })
               }

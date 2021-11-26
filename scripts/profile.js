@@ -17,6 +17,7 @@ function insertPageData() {
           var user_gender = userDoc.data().gender;
           var user_text = userDoc.data().description;
           var user_rank = userDoc.data().rank;
+          var user_role = userDoc.data().role;
 
           const imgText = [
             userDoc.data().img1,
@@ -39,6 +40,7 @@ function insertPageData() {
           document.getElementById("user-gender").innerText = user_gender;
           document.getElementById("user-description").innerHTML = user_text;
           document.getElementById("user-rank").innerText = user_rank;
+          document.getElementById("user-role").innerText = user_role;
 
           //hide or show appropriate buttons
           for (var i = 1; i <= 3; i++) {

@@ -79,7 +79,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white"  onclick="logout()">
+        <a href="#" class="nav-link text-white" onclick="logout()">
           <svg class="bi me-2" width="16" height="16">
             <use xlink:href="#people-circle" /></svg>
           <i class="material-icons-outlined white">logout</i> Logout
@@ -136,6 +136,7 @@
 
   <script>
     let uid;
+    var sender;
 
 
 
@@ -146,6 +147,17 @@
       let name = params.searchParams.get("name"); //parse "name"
       console.log(uid);
 
+      firebase.auth().onAuthStateChanged(user => {
+        // Check if user is signed in:
+        if (user) {
+          let userNow = db.collection("users").doc(user.uid);
+
+          userNow.get().then(userDoc => {
+            sender = userDoc.data().name;
+          })
+        }
+      });
+
       //set the title to show that person's name
       document.getElementById("friend").innerHTML = name;
 
@@ -155,7 +167,8 @@
       db.collection("chats").doc(chatid).set({
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       }).then(doc => {
-        alert("Your Chat ID is " + chatid + ". Pass this to your friend and enter the id into the box below and save it.");
+        alert("Your Chat ID is " + chatid +
+          ". Pass this to your friend and enter the id into the box below and save it.");
 
       })
     }
@@ -179,6 +192,12 @@
               text: msgText,
               userid: user.uid
             })
+
+
+          db.collection("users").doc(uid).update({
+            noti: chatid,
+            recentSender: sender
+          });
 
         })
       });
@@ -206,7 +225,7 @@
           })
       })
     }
-    
+
 
     function quitButtonListen(chatid) {
       var quitButton = document.getElementById("quit");
@@ -259,7 +278,7 @@
               console.log(doc.id);
               chatid = usertext;
               listenNewMessage(usertext);
-              
+
               clearButtonListen(chatid);
               quitButtonListen(chatid);
               postMessageListen(chatid);

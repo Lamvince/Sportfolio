@@ -11,13 +11,13 @@ function insertPageData() {
       //get the document for current user.
       currentUser.get()
         .then(userDoc => {
-          var user_Name = userDoc.data().name;
-          var user_sport = userDoc.data().sport;
-          var user_team = userDoc.data().team;
-          var user_gender = userDoc.data().gender;
-          var user_text = userDoc.data().description;
-          var user_rank = userDoc.data().rank;
-          var user_role = userDoc.data().role;
+          let user_Name = userDoc.data().name;
+          let user_sport = userDoc.data().sport;
+          let user_team = userDoc.data().team;
+          let user_gender = userDoc.data().gender;
+          let user_text = userDoc.data().description;
+          let user_rank = userDoc.data().rank;
+          let user_role = userDoc.data().role;
 
           const imgText = [
             userDoc.data().img1,
@@ -44,9 +44,12 @@ function insertPageData() {
 
           //hide or show appropriate buttons
           for (var i = 1; i <= 3; i++) {
-            //hide photo/video upload button every time
+            //hide photo/video upload button every time on load
             document.getElementById("photoupload" + i).style.display = "none";
             document.getElementById("videoupload" + i).style.display = "none";
+
+            //hide profile upload button every time on load
+            document.getElementById("btn_upload_profile").style.display = "none";
 
             //hide delete photo button if needed
             if (imgText[i - 1] == "./images/tempimg.png") {
@@ -57,6 +60,7 @@ function insertPageData() {
             if (vidText[i - 1] == null) {
               document.getElementById("deletevideo" + i).style.display = "none";
             }
+
           }
 
           //edit profile photo
@@ -70,12 +74,14 @@ function insertPageData() {
               reader.onload = function () {
                 document.getElementById("profile_pic").src = reader.result;
               }
-
+              // show upload button
+              document.getElementById("btn_upload_profile").style.display = "block";
               reader.readAsDataURL(files[0]);
             }
             input.click();
           }
-          //upload profile picture
+
+          // upload profile picture
           document.getElementById("btn_upload_profile").onclick = function () {
             let imgName = user_Name + files[0].name;
             let uploadTask = firebase.storage().ref('images/' + imgName).put(files[0]);
@@ -99,6 +105,7 @@ function insertPageData() {
                     userpfp: url
                   });
                   alert('image added successfully');
+                  document.getElementById("btn_upload_profile").style.display = "none";
                 })
               }
 
@@ -122,6 +129,10 @@ function insertPageData() {
               document.getElementById("vid3src").src = userDoc.data().uservid3;
               document.getElementById("uservideo3").src = userDoc.data().uservid3;
             })
+
+          //SET UP ONCLICK FOR EDIT PROFILE PHOTO
+
+          document
 
 
           //SET UP ONCLICKS FOR ADD PHOTO BUTTONS

@@ -15,6 +15,20 @@ function insertName() {
           //document.getElementById("name-goes-here").innerText = n;    //using javascript
           //method #2:  insert using jquery
           $("#name-goes-here").text(user_Name); //using jquery
+
+          //Notifcation button click
+          document.getElementById("notification").addEventListener("click", function (e) {
+            e.preventDefault();
+          
+            let read = db.collection("users").doc(user.uid);
+          
+            read.get()
+              .then(doc => {
+                // doc.data() is never undefined for query doc snapshots
+                alert(doc.data().recentSender + " just sent you a message! Message back using this chat ID! " + doc.data().noti);
+              })
+          
+          }, false);
         })
     } else {
       // No user is signed in.
@@ -24,16 +38,3 @@ function insertName() {
 insertName();
 
 
-document.getElementById("notification").addEventListener("click", function (e) {
-  e.preventDefault();
-
-  db.collection("users").where("noti", "!=", null)
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        alert(doc.data().recentSender + " just send you a message! Message back using this chat ID! " + doc.data().noti);
-      });
-    })
-
-}, false);

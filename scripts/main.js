@@ -19,15 +19,20 @@ function insertName() {
           //Notifcation button click
           document.getElementById("notification").addEventListener("click", function (e) {
             e.preventDefault();
-          
+
             let read = db.collection("users").doc(user.uid);
-          
+
             read.get()
               .then(doc => {
-                // doc.data() is never undefined for query doc snapshots
-                alert(doc.data().recentSender + " just sent you a message! Message back using this chat ID! " + doc.data().noti);
+                if (doc.data().noti != null) {
+                  // doc.data() is never undefined for query doc snapshots
+                  alert(doc.data().recentSender + " just sent you a message! Message back using this chat ID! " + doc.data().noti);
+                } else {
+                  alert("No messages yet");
+                }
               })
-          
+
+
           }, false);
         })
     } else {
@@ -36,5 +41,3 @@ function insertName() {
   });
 }
 insertName();
-
-

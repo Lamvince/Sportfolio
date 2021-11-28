@@ -381,6 +381,11 @@
 }
 
 #savetext {
+  display: inline;
+  justify-content: center;
+}
+
+#savetextpfp {
   display: flex;
   justify-content: center;
 }
@@ -392,4 +397,8 @@
 
 #userspfp {
   width: 15%;
+}
+
+#msguserpfp {
+  width: 10%;
 }

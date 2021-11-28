@@ -126,7 +126,7 @@ function listenNewMessage(chatid) {
 document.getElementById("savetext").addEventListener("click", function (e) {
   e.preventDefault();
 
-  let usertext = document.getElementById("user-descriptions").innerHTML;
+  let usertext = document.getElementById("textChatID").value;
 
   usertext = usertext.trim();
   console.log(usertext);

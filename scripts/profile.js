@@ -92,7 +92,7 @@ function insertPageData() {
             },
 
               function (error) {
-                alert('error in saving the image');
+                uploadFail();
               },
 
               function () {
@@ -104,7 +104,7 @@ function insertPageData() {
                     image: imgName,
                     userpfp: url
                   });
-                  alert('image added successfully');
+                  $('#mediaMod').modal('show');
                   document.getElementById("profile_photo_load_progress").style.display = "none";
                   document.getElementById("btn_upload_profile").style.display = "none";
                 })
@@ -180,9 +180,11 @@ function insertPageData() {
                 //check progress, set card title accordingly
                 if (progress < 100) {
                   document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = 'Upload progress: ' + progress + '%';
+                  $('#mediaMod').modal('hide');
                 } else {
                   document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = "Upload complete!";
                   setTimeout(() => {
+                    $('#mediaMod').modal('show');
                     document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = oldCardText;
                     //hide upload button, show delete button
                     document.getElementById("photoupload" + idString.charAt(11)).style.display = "none";
@@ -194,7 +196,7 @@ function insertPageData() {
               },
 
                 function (error) {
-                  alert('error in saving the image');
+                  uploadFail();
                 },
 
                 function () {
@@ -281,9 +283,12 @@ function insertPageData() {
                 // check progress, change card title accordingly
                 if (progress < 100) {
                   document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = 'Upload progress: ' + progress + '%';
+                  $('#mediaMod').modal('hide');
                 } else {
                   document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = "Upload complete!";
                   setTimeout(() => {
+                    $('#mediaMod').modal('show');
+                    videoSuccess();
                     document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = oldCardText;
                     //hide upload button, show delete button
                     document.getElementById("videoupload" + idString.charAt(11)).style.display = "none";
@@ -295,7 +300,7 @@ function insertPageData() {
               },
 
                 function (error) {
-                  alert('error in saving the video');
+                  uploadFail();
                 },
 
                 function () {
@@ -361,3 +366,12 @@ function insertPageData() {
   });
 }
 insertPageData();
+
+function videoSuccess() {
+  document.getElementById("mediaModText").innerHTML = "Video successfully uploaded!";
+}
+
+function uploadFail() {
+  document.getElementById("mediaLabel").innerHTML = "Whoops!";
+  document.getElementById("mediaModText").innerHTML = "Could not upload your file.";
+}

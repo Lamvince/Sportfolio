@@ -228,6 +228,25 @@
     </div>
   </div>
 
+  <!-- Notifcation Modal -->
+  <div class="modal fade" id="notificationMod" tabindex="-1" aria-labelledby="notificationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="notificationLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div id="notificationModText" class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
     <a href="./../html/main.html">
       <i class="material-icons-outlined text-warning">home</i>
@@ -236,13 +255,17 @@
       <i class="material-icons-outlined text-white">account_circle</i>
     </a>
     <a href="./../html/users.html">
-    <i class="material-icons-outlined text-white">forum</i>
+      <i class="material-icons-outlined text-white">forum</i>
     </a>
-    <i id="notification" class="material-icons-outlined text-white">notifications</i>
+    <i id="notification" class="material-icons-outlined text-white" type="button" data-bs-toggle="modal"
+      data-bs-target="#notificationMod">notifications</i>
   </footer>
 
-  <script>getProfilePic();</script>
+  <script>
+    getProfilePic();
+  </script>
   <script src="./../scripts/main.js"></script>
+  <script src="./../scripts/modals.js"></script>
 </body>
 
 </html>

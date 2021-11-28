@@ -20,7 +20,7 @@ function getNewUserInfo(user) {
   console.log("gender " + userGender);
   console.log("sport " + userSport);
   console.log("team " + userTeam);
-  console.log("role "+ userRole);
+  console.log("role " + userRole);
 
   //verify that user filled out whole form
   //unchosen gender is "Gender"
@@ -28,11 +28,11 @@ function getNewUserInfo(user) {
   //unchosen team is ""
 
   if (userGender.localeCompare("Gender") == 0) {
-    alert("Please choose a gender");
+    accountmodalGenderFail();
   } else if (userSport.localeCompare("What sport do you play?") == 0) {
-    alert("Please choose a sport");
+    accountmodalSportFail();
   } else if (userTeam.localeCompare("") == 0) {
-    alert("Please enter a team");
+    accountmodalTeamFail();
   } else {
     verified = true;
   }
@@ -44,11 +44,14 @@ function getNewUserInfo(user) {
       team: userTeam,
       role: userRole
     });
-    alert("Account creation successful!");
+    accountmodalsuccess();
     console.log("verified");
-    window.location.assign("main.html")
   } else {
     console.log("not verified");
+    $('#accountMod').modal('hide');
+
+
+
   }
   //once input is verified, add to database
 }
@@ -74,22 +77,24 @@ var uiConfig = {
         let temp = "https://firebasestorage.googleapis.com/v0/b/sportfolio-96c76.appspot.com/o/images%2Fplaceholderpfpfromserver.png?alt=media&token=9f8ca543-9f0a-47c4-aa2b-217918ed8629"
         console.log("new user");
         db.collection("users").doc(user.uid).set({
-          name: user.displayName,
-          lowerCaseName: user.displayName.toLowerCase(),
-          email: user.email,
-          userpfp: temp,
-          description: temptext,
-          img1: placeholderimg,
-          img2: placeholderimg,
-          img3: placeholderimg,
-          rank: 0
-        }).then(function () {
-          //before showing main.html, user needs to fill out form
-          document.getElementById("new_user_ui").style.display = "block";
+            name: user.displayName,
+            lowerCaseName: user.displayName.toLowerCase(),
+            email: user.email,
+            userpfp: temp,
+            description: temptext,
+            img1: placeholderimg,
+            img2: placeholderimg,
+            img3: placeholderimg,
+            rank: 0
+          }).then(function () {
+            //before showing main.html, user needs to fill out form
+            document.getElementById("new_user_ui").style.display = "block";
 
-          // Add click event for new user submit button
-          document.getElementById("btnSubmit").onclick = function () { getNewUserInfo(user); };
-        })
+            // Add click event for new user submit button
+            document.getElementById("btnSubmit").onclick = function () {
+              getNewUserInfo(user);
+            };
+          })
           .catch(function (error) {
             console.log("error is " + error)
           })
@@ -125,3 +130,32 @@ var uiConfig = {
 
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
+
+function accountmodalsuccess() {
+  document.getElementById("accountLabel").innerHTML = "Success!";
+  document.getElementById("accountModText").innerHTML = "Account created!"
+  $('#accountMod').modal('show');
+
+  document.getElementById("advance").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.location.assign("main.html")
+  }, false);
+}
+
+function accountmodalTeamFail() {
+  document.getElementById("accountLabel").innerHTML = "Whoops!";
+  document.getElementById("accountModText").innerHTML = "Please enter a team."
+  $('#accountMod').modal('show');
+}
+
+function accountmodalGenderFail() {
+  document.getElementById("accountLabel").innerHTML = "Whoops!";
+  document.getElementById("accountModText").innerHTML = "Please enter a gender."
+  $('#accountMod').modal('show');
+}
+
+function accountmodalSportFail() {
+  document.getElementById("accountLabel").innerHTML = "Whoops!";
+  document.getElementById("accountModText").innerHTML = "Please enter a sport."
+  $('#accountMod').modal('show');
+}

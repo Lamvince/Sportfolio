@@ -13,9 +13,11 @@ function showAllUsers() {
               let newCard = document.getElementById("card-template")
                 .content.cloneNode(true);
               newCard.querySelector('.card-name').innerHTML = doc.data().name;
+              newCard.getElementById("userspfp").src = doc.data().userpfp;
               newCard.querySelector('.card-href').href = "chat.html?uid=" +
                 doc.id + "&name=" + doc.data().name; //pass name and id
               document.getElementById("friends-go-here").appendChild(newCard);
+              
             }
           })
         })

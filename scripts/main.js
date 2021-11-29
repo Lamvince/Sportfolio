@@ -21,19 +21,5 @@ function insertName() {
     }
   });
 }
+
 insertName();
-
-
-document.getElementById("notification").addEventListener("click", function (e) {
-  e.preventDefault();
-
-  db.collection("users").where("noti", "!=", null)
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        alert(doc.data().recentSender + " just send you a message! Message back using this chat ID! " + doc.data().noti);
-      });
-    })
-
-}, false);

@@ -12,6 +12,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+
   <!-- Firebase 8 related JS CDN -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -38,44 +43,50 @@
     </div>
   </nav>
 
-   <!-- Hamburger Side Navbar -->
-   <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" id="sidenav">
+  <!-- Hamburger Side Navbar -->
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" id="sidenav">
     <i class="material-icons-outlined white" onclick="showOrHide('sidenav')">close</i>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
           <i class="material-icons-outlined white">leaderboard</i> Rank
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
           <i class="material-icons-outlined white">group</i> Connections
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" /></svg>
           <i class="material-icons-outlined white">settings</i> Settings
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#table" /></svg>
           <i class="material-icons-outlined white">contact_support</i> About
         </a>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#grid" /></svg>
           <i class="material-icons-outlined white">alternate_email</i> Contact
         </a>
       </li>
       <li>
         <a href="./index.html" class="nav-link text-white" onclick="logout()">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#people-circle" /></svg>
           <i class="material-icons-outlined white">logout</i> Logout
         </a>
       </li>
@@ -87,13 +98,13 @@
     <h2 id="heading">Discover</h2>
 
     <input type="text" id="search_query" placeholder="Search for...">
-    
+
     <div id="button_div">
       <input type="button" value="Search" id="btn_search" onclick="getSearchResults()">
     </div>
-    
+
     <br>
-    
+
     <div class="card flex-row flex-wrap searchResult" id="1"></div>
     <div class="card flex-row flex-wrap searchResult" id="2"></div>
     <div class="card flex-row flex-wrap searchResult" id="3"></div>
@@ -107,6 +118,24 @@
   </div>
 
 
+  <!-- Notifcation Modal -->
+  <div class="modal fade" id="notificationMod" tabindex="-1" aria-labelledby="notificationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="notificationLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div id="notificationModText" class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- Footer -->
@@ -118,8 +147,11 @@
       <i class="material-icons-outlined text-white">account_circle</i>
     </a>
     <i class="material-icons-outlined text-white">forum</i>
-    <i class="material-icons-outlined text-white">notifications</i>
+    <i id="notification" class="material-icons-outlined text-white" type="button" data-bs-toggle="modal"
+      data-bs-target="#notificationMod">notifications</i>
   </footer>
+
+  <script src="./../scripts/modals.js"></script>
 </body>
 
 </html>

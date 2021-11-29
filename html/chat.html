@@ -12,6 +12,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+
   <!-- Firebase 8 related JS CDN -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -89,38 +94,52 @@
   </div>
 
   <div class="container py-3">
-    <h3>My Chat with <span id="friend">Friend</span></h3>
-    <!--The div element for the map -->
-    <!-- <input class="btn btn-success" value="Chat Samsantech" onclick="chat('samsantech')"> -->
-
-    <!-- <input id="username" type="text" placeholder="Enter name"><br/> -->
+    <h3>Messaging <span id="friend">Friend</span></h3>
+    <input id="textChatID" type="text" placeholder="Enter Chat Number">
+    <button type="button" id="savetext" class="btn btn-primary mx-auto m-3">
+      Save Chat Number
+    </button>
     <div class="container">
-      <!-- <input id="text" type="text" placeholder="Enter name"><br /> -->
-
-      <input id="text" type="text" placeholder="Enter message"><br />
-      <button id="post"> Post </button> <br />
-      <button id="clear"> Clear </button> <br />
-      <button id="quit"> Quit </button> <br />
       <div class="p-5 mb-4 bg-light rounded-3" id="results"></div>
     </div>
+  </div>
+  <div class="container">
+    <input id="text" type="text" placeholder="Enter message">
+    <button id="post" class="btn btn-primary"> Post </button>
+    <button id="clear" class="btn btn-success"> Clear </button>
+    <button id="quit" class="btn btn-danger"> Quit </button> <br />
   </div>
 
   <template id="card-template">
     <div class="card">
       <div class="container msg">
+        <img id="msguserpfp" src="./../images/placeholderpfpfromserver.png"/>
         <b class="card-name"> Name</b>
         <span class="card-body"> some stuff </span>
       </div>
     </div>
   </template>
 
-  <div id="user-descriptions" contenteditable="true">
-    Enter Chat Number
-  </div>
-  <button type="button" id="savetext" class="btn btn-primary mx-auto m-3">
-    Save Text
-  </button>
+  
 
+  <!-- Notifcation Modal -->
+  <div class="modal fade" id="notificationMod" tabindex="-1" aria-labelledby="notificationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="notificationLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div id="notificationModText" class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
@@ -131,10 +150,12 @@
       <i class="material-icons-outlined text-white">account_circle</i>
     </a>
     <i class="material-icons-outlined text-white">forum</i>
-    <i class="material-icons-outlined text-white">notifications</i>
+    <i id="notification" class="material-icons-outlined text-white" type="button" data-bs-toggle="modal"
+      data-bs-target="#notificationMod">notifications</i>
   </footer>
 
   <script src="./../scripts/chat.js"></script>
+  <script src="./../scripts/modals.js"></script>
 </body>
 
 </html>

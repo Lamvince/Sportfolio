@@ -89,6 +89,7 @@ function loadVisit() {
           .get()
           .then(userDoc => {
               // get the documents of query
+              var user_role = userDoc.data.role;
               var user_Name = userDoc.data().name;
               var user_sport = userDoc.data().sport;
               var user_team = userDoc.data().team;
@@ -101,6 +102,7 @@ function loadVisit() {
               //insert visited user info with html 
               document.getElementById("title").innerHTML = user_Name + "'s Profile";
 
+              document.getElementById("visit-role").innerText = user_role;
               document.getElementById("visit-name").innerText = user_Name;
               document.getElementById("visit-sport").innerText = user_sport;
               document.getElementById("visit-team").innerText = user_team;

@@ -6,6 +6,8 @@
   padding-bottom: 30px;
 }
 
+
+
 /* turn search icon black */
 
 #navbar_search {
@@ -94,8 +96,14 @@
   height: 37px;
 }
 
+#main_container {
+  background-color: #dfe3ee !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 #custom-cards {
-  background-color: rgb(146, 228, 183);
+  background-color: #8b9dc3 !important;
 }
 
 #welcome {
@@ -105,11 +113,15 @@
 }
 
 #review {
-  background-color: rgb(247, 247, 247);
+  background-color: #dfe3ee !important;
+}
+
+.cardsMedia {
+  background-color: #f7f7f7 !important;
 }
 
 #featured-3 {
-  background-color: rgb(146, 228, 183);
+  background-color: #8b9dc3 !important;
 }
 
 #btn_follow_div{
@@ -278,23 +290,10 @@
   text-align: center;
 }
 
-#about2 {
-  background-color: rgb(247, 247, 247);
-}
-
-#about1 {
-  background-color: rgb(146, 228, 183);
-}
-
-#about3 {
-  background-color: rgb(146, 228, 183);
-}
-
 /* profile.html */
 
 #body {
-  background-color: rgb(247, 247, 247);
-
+  background-color: #dfe3ee;
 }
 
 #profile_pic {
@@ -395,10 +394,50 @@
   color: white;
 }
 
+
+/* User profile pictures */
 #userspfp {
-  width: 15%;
+  width: 100px;
+  width: 100px;
 }
 
 #msguserpfp {
-  width: 10%;
+  width: 50px;
+  height: 50px;
+}
+
+/* Colors */
+
+#navSportfolio {
+  background-color: #3b5998 !important;
+}
+
+#footerSportfolio {
+  background-color: #313542 !important;
+}
+
+.sportLast {
+  background-color: #313542 !important;
+}
+
+#loginButton {
+  background-color: #3b5998 !important;
+  border-color: #3b5998 !important;
+}
+
+.sportprim {
+  background-color: #3b5998 !important;
+  border-color: #3b5998 !important;
+}
+
+.darkerWhite {
+  background-color: #f7f7f7 !important;
+}
+
+.lightBlue {
+  background-color: #8b9dc3 !important;
+}
+
+.bodyColor {
+ background-color: #dfe3ee !important;
 }

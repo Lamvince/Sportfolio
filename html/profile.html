@@ -41,7 +41,7 @@
 
   <!-- Header -->
 
-  <nav class="navbar navbar-light bg-success">
+  <nav id="navSportfolio" class="navbar navbar-light bg-success">
     <div class="container py-3">
       <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
       <a href="./../html/search.html">
@@ -53,7 +53,7 @@
 
 
   <!-- Hamburger Side Navbar -->
-  <div class="d-flex flex-column flex-shrink-0 p-3 bg-secondary text-white" id="sidenav">
+  <div class="d-flex flex-column flex-shrink-0 p-3 sportLast text-white" id="sidenav">
     <i class="material-icons-outlined" onclick="showOrHide('sidenav')">close</i>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
@@ -114,7 +114,7 @@
     <div id="user-description" class="mx-auto p-2" contenteditable="true">
       Click me to write your own description!
     </div>
-    <button type="button" id="savetextpfp" class="btn btn-primary mx-auto m-3">
+    <button type="button" id="savetextpfp" class="btn btn-primary sportprim mx-auto m-3">
       Save Text
     </button>
 
@@ -128,7 +128,7 @@
     </div>
 
     <div id="btn_edit_profile_div">
-      <button type="button" id="btn_edit_profile" class="btn btn-primary">
+      <button type="button" id="btn_edit_profile" class="btn btn-primary sportprim">
         Edit profile photo
       </button>
       <button id="btn_upload_profile" class="btn btn-success">Upload profile photo</button>
@@ -138,10 +138,10 @@
 
     <div id="photo1" class="card" style="width: 18rem;">
       <img id="img1" src="./../images/tempimg.png" class="card-img-top" alt="...">
-      <div class="card-body">
+      <div class="card-body cardsMedia">
         <h5 class="card-title">Photo #1</h5>
         <p class="card-text"></p>
-        <button type="button" id="upload1" class="btn btn-primary">
+        <button type="button" id="upload1" class="btn btn-primary sportprim">
           Add new photo
         </button>
         <button id="photoupload1" class="btn btn-success">Upload photo</button>
@@ -150,10 +150,10 @@
     </div>
     <div id="photo2" class="card" style="width: 18rem;">
       <img id="img2" src="./../images/tempimg.png" class="card-img-top" alt="...">
-      <div class="card-body">
+      <div class="card-body cardsMedia">
         <h5 class="card-title">Photo #2</h5>
         <p class="card-text"></p>
-        <button type="button" id="upload2" class="btn btn-primary">
+        <button type="button" id="upload2" class="btn btn-primary sportprim">
           Add new photo
         </button>
         <button id="photoupload2" type="button" class="btn btn-success">Upload photo</button>
@@ -162,10 +162,10 @@
     </div>
     <div id="photo3" class="card" style="width: 18rem;">
       <img id="img3" src="./../images/tempimg.png" class="card-img-top" alt="...">
-      <div class="card-body">
+      <div class="card-body cardsMedia">
         <h5 class="card-title">Photo #3</h5>
         <p class="card-text"></p>
-        <button type="button" id="upload3" class="btn btn-primary">
+        <button type="button" id="upload3" class="btn btn-primary sportprim">
           Add new photo
         </button>
         <button id="photoupload3" type="button" class="btn btn-success">Upload photo</button>
@@ -177,10 +177,10 @@
       <video id="uservideo1" src="" class="card-img-top" alt="..." controls>
         <source id="vid1src" src="">
       </video>
-      <div class="card-body">
+      <div class="card-body cardsMedia">
         <h5 class="card-title">Video #1</h5>
         <p class="card-text"></p>
-        <button type="button" id="uploadvideo1" class="btn btn-primary">
+        <button type="button" id="uploadvideo1" class="btn btn-primary sportprim">
           Add new video
         </button>
         <button id="videoupload1" type="button" class="btn btn-success">Upload video</button>
@@ -192,10 +192,10 @@
       <video id="uservideo2" src="" class="card-img-top" alt="..." controls>
         <source id="vid2src" src="">
       </video>
-      <div class="card-body">
+      <div class="card-body cardsMedia">
         <h5 class="card-title">Video #2</h5>
         <p class="card-text"></p>
-        <button type="button" id="uploadvideo2" class="btn btn-primary">
+        <button type="button" id="uploadvideo2" class="btn btn-primary sportprim">
           Add new video
         </button>
         <button id="videoupload2" type="button" class="btn btn-success">Upload video</button>
@@ -207,10 +207,10 @@
       <video id="uservideo3" src="" class="card-img-top" alt="..." controls>
         <source id="vid3src" src="">
       </video>
-      <div class="card-body">
+      <div class="card-body cardsMedia">
         <h5 class="card-title">Video #3</h5>
         <p class="card-text"></p>
-        <button type="button" id="uploadvideo3" class="btn btn-primary">
+        <button type="button" id="uploadvideo3" class="btn btn-primary sportprim">
           Add new video
         </button>
         <button id="videoupload3" type="button" class="btn btn-success">Upload video</button>
@@ -258,7 +258,7 @@
 
 
   <!-- Footer -->
-  <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
+  <footer id="footerSportfolio" class="navbar justify-content-evenly bg-secondary fixed-bottom">
     <a href="./../html/main.html">
       <i class="material-icons-outlined text-white">home</i>
     </a>

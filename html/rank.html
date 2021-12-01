@@ -3,28 +3,30 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Sportfolio</title>
+  <title>Sportfolio Rankings</title>
   <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./../styles/my_style.css" />
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <!-- Bootstrap JS -->
+  <!-- JS Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
   </script>
-
-  <!-- Firebase 8 related JS CDN -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
-
-  <!-- Link to the api keys for your Firebase project -->
+  <!-- Link to JS -->
   <script src="./../scripts/firebase.js"></script>
   <script src="./../scripts/my_script.js"></script>
 
@@ -32,24 +34,23 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 </head>
 
-<body id="body">
-
-  <!-- Header -->
-
-  <nav class="navbar navbar-light sportprim">
+<body id="body" style="background-color: rgb(247,247,247);">
+  <nav class="navbar navbar-light bg-success">
     <div class="container py-3">
       <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
-      <i class="material-icons-outlined">search</i>
+      <a href="./../html/search.html">
+        <i class="material-icons-outlined" id="navbar_search">search</i>
+      </a>
     </div>
   </nav>
 
   <!-- Hamburger Side Navbar -->
-  <div class="d-flex flex-column flex-shrink-0 p-3 sportLast text-white" id="sidenav">
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-secondary text-white" id="sidenav">
     <i class="material-icons-outlined" onclick="showOrHide('sidenav')">close</i>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="./../html/rank.html" class="nav-link text-white">
+        <a href="#" class="nav-link text-warning">
           <svg class="bi me-2" width="16" height="16">
             <use xlink:href="#speedometer2" /></svg>
           <i class="material-icons-outlined">leaderboard</i> Rank
@@ -91,17 +92,40 @@
     </ul>
   </div>
 
-  <div id="friends-go-here" class="container">
-    <template id="card-template">
-      <div class="card darkerWhite">
-        <div class="container item">
-          <img id="userspfp" src="./../images/placeholderpfpfromserver.png"/>
-          <b class="card-name"> Name</b>
-          <a class="btn card-href btn btn-primary">Message</a>
+<div id="container-fluid">
+    <h1 class="text-center pt-4">Rank Scoreboard</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4 px-5 pt-1 m-0">
+        <div class="col">
+            <div class="card gold" id="top1">
+            </div>
         </div>
-      </div>
+        <div class="col">
+            <div class="card silver" id="top2">
+            </div>
+        </div>
+        <div class="col">
+            <div class="card bronze" id="top3">
+            </div>
+        </div>
+    </div>
+
+    <template id="CardTemplate">
+        <div class="card flex-row flex-wrap">
+            <div class='card-header border-0'>
+                <img class='img' id='profile_pic'>
+            </div>
+            <div class='card-block px-2'>
+                <h4 class='rank-name'></h4>
+                <p class='team'></p>
+                <p class='score'></p>
+            </div>
+        </div>
     </template>
-  </div>
+
+    <br>
+    <div id="rank-here"></div>
+    
+</div>
 
   <!-- Notifcation Modal -->
   <div class="modal fade" id="notificationMod" tabindex="-1" aria-labelledby="notificationLabel" aria-hidden="true">
@@ -122,12 +146,7 @@
     </div>
   </div>
 
-
-
-
-
-  <!-- Footer -->
-  <footer class="navbar justify-content-evenly sportLast fixed-bottom">
+  <footer class="navbar justify-content-evenly bg-secondary fixed-bottom">
     <a href="./../html/main.html">
       <i class="material-icons-outlined text-white">home</i>
     </a>
@@ -135,13 +154,16 @@
       <i class="material-icons-outlined text-white">account_circle</i>
     </a>
     <a href="./../html/users.html">
-      <i class="material-icons-outlined iconSelectColor">forum</i>
+      <i class="material-icons-outlined text-white">forum</i>
     </a>
     <i id="notification" class="material-icons-outlined text-white" type="button" data-bs-toggle="modal"
       data-bs-target="#notificationMod">notifications</i>
   </footer>
 
-  <script src="./../scripts/users.js"></script>
+  <script>
+    rankTopThree();
+    displayRank();
+  </script>
   <script src="./../scripts/modals.js"></script>
 </body>
 

@@ -37,15 +37,46 @@ function logoHeader() {
 }
 
 
-// Grabs profile pictures and adds them to Recommened Connections on main.html
-function getProfilePic() {
+
+function rankTopThree() {
     var count = 1;
-    db.collection("users").get()
+    db.collection("users").orderBy("rank", "desc").limit(3).get()
         .then(allUsers => {
             allUsers.forEach(doc => {
+                var name = doc.data().name;
+                var team = doc.data().team;
+                var rank = doc.data().rank;
                 var image = doc.data().userpfp;
-                document.getElementById(count).innerHTML = "<img class='img-fluid' src=" + image + " alt=''>";
-                count = count + 1;
+                document.getElementById("top"+count).innerHTML = "<h5 class='card-title text-center pt-3 pb-2'>#" 
+                + count + "</h5><img src=" + image + " class='card-img-top mx-auto' id='profile_pic'><div class='card-body text-center'><h5 class='card-title'>" 
+                + name +"</h5><br><p class='card-text'>" + team + "</p><p class='card-text'>Rank Score: " + rank + "</p></div>";
+                count++;
+            })
+        })
+}
+
+function displayRank() {
+    let CardTemplate = document.getElementById("CardTemplate");
+    var count = 1;
+    db.collection("users").orderBy("rank", "desc").get()
+        .then(allUsers => {
+            allUsers.forEach(doc => {
+                var name = doc.data().name;
+                var team = doc.data().team;
+                var rank = doc.data().rank;
+                var image = doc.data().userpfp;
+                let newcard = CardTemplate.content.cloneNode(true);
+
+                //update title and text and image
+                newcard.querySelector('.img').src = image;
+                newcard.querySelector('.rank-name').innerHTML = "#" + count + ": " + name;
+                newcard.querySelector('.team').innerHTML = team;
+                newcard.querySelector('.score').innerHTML = "Rank Score: " + rank;
+
+                if(count >= 4) {
+                    document.getElementById("rank-here").appendChild(newcard);
+                }
+                count++;
             })
         })
 }

@@ -90,11 +90,18 @@
   cursor: pointer;
 }
 
-/* Icon size for main page */
+/* main.html */
 .img-xs {
   width: 37px;
   height: 37px;
 }
+
+.rounded-circle {
+  margin-right: 1rem;
+  object-fit: cover;
+}
+
+/* End of CSS for main.html */
 
 #main_container {
   background-color: #dfe3ee !important;
@@ -360,6 +367,20 @@
   margin-right: auto;
   margin-top: 5px;
   margin-bottom: 50px;
+}
+
+/* rank.html */
+
+.gold {
+  background-color: #FFD700 !important;
+}
+
+.silver {
+  background-color: #C0C0C0 !important;
+}
+
+.bronze {
+  background-color: #CD7F32 !important;
 }
 
 /* New user UI */

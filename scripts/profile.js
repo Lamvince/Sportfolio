@@ -347,7 +347,7 @@ function insertPageData() {
           }
 
           // Save the description text
-          document.getElementById("savetext").addEventListener("click", function (e) {
+          document.getElementById("savetextpfp").addEventListener("click", function (e) {
             e.preventDefault();
 
             let usertext = document.getElementById("user-description").innerHTML;

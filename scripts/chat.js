@@ -28,12 +28,19 @@ function initChat() {
   db.collection("chats").doc(chatid).set({
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
   }).then(doc => {
-    alert("Your Chat ID is " + chatid +
-      ". Pass this to your friend and enter the id into the box below and save it.");
+
+    modalChat();
 
   })
 }
 initChat();
+
+function modalChat() {
+  document.getElementById("chatModText").innerHTML = "Your Chat ID is " + chatid +
+    ". Pass this to your friend and enter the id into the box below and save it.";
+
+  $('#chatMod').modal('show');
+}
 
 //------------------------------------------------------
 // This function allows the Logged in user post a message. 

@@ -120,7 +120,7 @@ function loadVisit() {
           .get()
           .then(userDoc => {
               // get the documents of query
-              var user_role = userDoc.data.role;
+              var user_role = userDoc.data().role;
               var user_Name = userDoc.data().name;
               var user_sport = userDoc.data().sport;
               var user_team = userDoc.data().team;

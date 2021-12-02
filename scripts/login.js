@@ -74,7 +74,7 @@ var uiConfig = {
       let placeholderimg = "./../images/tempimg.png";
       if (authResult.additionalUserInfo.isNewUser) {
 
-        let temp = "https://firebasestorage.googleapis.com/v0/b/sportfolio-96c76.appspot.com/o/images%2Fplaceholderpfpfromserver.png?alt=media&token=9f8ca543-9f0a-47c4-aa2b-217918ed8629"
+        let temp = "./../images/placeholderpfpfromserver.png";
         console.log("new user");
         db.collection("users").doc(user.uid).set({
             name: user.displayName,

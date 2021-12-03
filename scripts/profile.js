@@ -104,6 +104,7 @@ function insertPageData() {
                     image: imgName,
                     userpfp: url
                   });
+                  //Show modal once profile picture has been uploaded
                   $('#mediaMod').modal('show');
                   document.getElementById("profile_photo_load_progress").style.display = "none";
                   document.getElementById("btn_upload_profile").style.display = "none";
@@ -131,9 +132,6 @@ function insertPageData() {
               document.getElementById("uservideo3").src = userDoc.data().uservid3;
             })
 
-          //SET UP ONCLICK FOR EDIT PROFILE PHOTO
-
-          document
 
 
           //SET UP ONCLICKS FOR ADD PHOTO BUTTONS
@@ -180,10 +178,12 @@ function insertPageData() {
                 //check progress, set card title accordingly
                 if (progress < 100) {
                   document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = 'Upload progress: ' + progress + '%';
+                  // Don't show modal if progress is not done
                   $('#mediaMod').modal('hide');
                 } else {
                   document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = "Upload complete!";
                   setTimeout(() => {
+                    // Show modal once progress is done
                     $('#mediaMod').modal('show');
                     document.getElementsByClassName("card-title")[cardNum - 1].innerHTML = oldCardText;
                     //hide upload button, show delete button
@@ -367,10 +367,12 @@ function insertPageData() {
 }
 insertPageData();
 
+// Display this text if video has been uploaded successfully
 function videoSuccess() {
   document.getElementById("mediaModText").innerHTML = "Video successfully uploaded!";
 }
 
+// Display this text if video upload failed
 function uploadFail() {
   document.getElementById("mediaLabel").innerHTML = "Whoops!";
   document.getElementById("mediaModText").innerHTML = "Could not upload your file.";

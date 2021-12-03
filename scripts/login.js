@@ -28,10 +28,13 @@ function getNewUserInfo(user) {
   //unchosen team is ""
 
   if (userGender.localeCompare("Gender") == 0) {
+    // show modal error if gender is not entered
     accountmodalGenderFail();
   } else if (userSport.localeCompare("What sport do you play?") == 0) {
+    // show modal error if sport is not entered
     accountmodalSportFail();
   } else if (userTeam.localeCompare("") == 0) {
+    // show modal error if team is not entered
     accountmodalTeamFail();
   } else {
     verified = true;
@@ -44,9 +47,11 @@ function getNewUserInfo(user) {
       team: userTeam,
       role: userRole
     });
+    // show modal success if account is created
     accountmodalsuccess();
     console.log("verified");
   } else {
+    // don't show a modal if account is not created successfully
     console.log("not verified");
     $('#accountMod').modal('hide');
 
@@ -131,29 +136,34 @@ var uiConfig = {
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
 
+// Modal thats displays the account creation being successful, then redirects users to main.html
 function accountmodalsuccess() {
   document.getElementById("accountLabel").innerHTML = "Success!";
   document.getElementById("accountModText").innerHTML = "Account created!"
   $('#accountMod').modal('show');
 
+  // When user hits close on modal success, redirect user to main.html
   document.getElementById("advance").addEventListener("click", function (e) {
     e.preventDefault();
     window.location.assign("main.html")
   }, false);
 }
 
+// Shows a fail message if team not entered
 function accountmodalTeamFail() {
   document.getElementById("accountLabel").innerHTML = "Whoops!";
   document.getElementById("accountModText").innerHTML = "Please enter a team."
   $('#accountMod').modal('show');
 }
 
+// Shows a fail message if gender not entered
 function accountmodalGenderFail() {
   document.getElementById("accountLabel").innerHTML = "Whoops!";
   document.getElementById("accountModText").innerHTML = "Please enter a gender."
   $('#accountMod').modal('show');
 }
 
+// Shows a fail message if sport not entered
 function accountmodalSportFail() {
   document.getElementById("accountLabel").innerHTML = "Whoops!";
   document.getElementById("accountModText").innerHTML = "Please enter a sport."

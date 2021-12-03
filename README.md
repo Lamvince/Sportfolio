@@ -6,7 +6,7 @@
 * [Contents](#content)
 
 ## General Info
-Our team BBY-31 is developing Sportfolio to help athletes and recruiters with the recruitment process
+Our team BBY-31 is developing Sportfolio to help athletes and recruiters with the recruitment process<br/>
 Link to Sportfolio - https://sportfolio-96c76.web.app/html/index.html
 
 * Hello! My name is Ryan and I am excited to work with my team to build an awesome app.

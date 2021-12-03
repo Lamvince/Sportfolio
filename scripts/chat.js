@@ -50,14 +50,20 @@ function modalChat() {
 function postMessageListen(chatid) {
   var textInput = document.getElementById("text");
   var postButton = document.getElementById("post");
+
   postButton.addEventListener("click", function () {
     var msgText = textInput.value; //user provided message
     firebase.auth().onAuthStateChanged(function (user) {
-      db.collection('chats').doc(chatid).collection("messages")
+      db.collection('users').doc(user.uid).get().then(doc => {
+        let pfp = doc.data().userpfp;
+        db.collection('chats').doc(chatid).collection("messages")
         .add({
+          
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           name: user.displayName,
           text: msgText,
+          userpfp: pfp,
+
           userid: user.uid
         })
 
@@ -66,6 +72,8 @@ function postMessageListen(chatid) {
         noti: chatid,
         recentSender: sender
       });
+
+      })
 
     })
   });
@@ -121,6 +129,7 @@ function listenNewMessage(chatid) {
           console.log("new message ", change.doc.data());
           let msgCard = document.getElementById("card-template")
             .content.cloneNode(true);
+          msgCard.querySelector('img').src = change.doc.data().userpfp;
           msgCard.querySelector('.card-body').innerHTML = change.doc.data().text;
           msgCard.querySelector('.card-name').innerHTML = change.doc.data().name;
           document.getElementById("results").appendChild(msgCard);

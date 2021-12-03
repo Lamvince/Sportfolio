@@ -1,22 +1,23 @@
-## My Web Application (Title)
+## Sportfolio
 
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
 
 ## General Info
-This browser based web application to ...
 * Hello! My name is Ryan and I am excited to work with my team to build an awesome app.
 * Hi, my name is Noorarjun and I want to make a web app with my team.
 * Salutation, Vincent here o/
 
+Our team BBY-31 is developing Sportfolio to help athletes and recruiters with the recruitment process
+
 	
 ## Technologies
 Technologies used for this project:
-* HTML, CSS
+* HTML
+* CSS
 * JavaScript
 * Bootstrap 
-* ...
 	
 ## Content
 Content of the project folder:
@@ -29,12 +30,43 @@ Content of the project folder:
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
+├── html                     # Folder for images
+    /about.html    
+    /chat.html
+    /contact.html
+    /index.html
+    /login.html
+    /main.html
+    /profile.html
+    /rank.html
+    /search.html
+    /users.html
+    /visitprofile.html 
 ├── images                   # Folder for images
-    /blah.jpg                # 
+    /aboutpage.jpg    
+    /follow.png
+    /index.png
+    /indexbball.png
+    /indexfootball.png
+    /indexhockey.png
+    /login_background.jpg
+    /login_background.png
+    /msg.png
+    /pfp.png
+    /placeholderpfpfromserver.png
+    /temp.png
+    /tempimg.png
+    /upload.png              
 ├── scripts                  # Folder for scripts
-    /blah.js                 # 
+    /chat.js                
+    /login.js               
+    /main.js                 
+    /modal.js                
+    /my_script.js            
+    /profile.js              
+    /users.js                
 ├── styles                   # Folder for styles
-    /blah.css                # 
+    /my_style.css            
 
 Firebase hosting files: 
 ├── .firebaserc...
@@ -42,7 +74,4 @@ Firebase hosting files:
 
 ```
 
-Tips for file naming files and folders:
-* use lowercase with no spaces
-* use dashes (not underscore) for word separation
 

@@ -4,6 +4,7 @@
 * [Technologies](#technologies)
 * [Features](#features)
 * [Contents](#content)
+* [References](#references)
 
 ## General Info
 Our team BBY-31 is developing Sportfolio to help athletes and recruiters with the recruitment process<br/>
@@ -19,7 +20,6 @@ Technologies used for this project:
 * CSS
 * JavaScript
 * Bootstrap 
-* jQuery
 
 ## Features
 * Upload photos and videos to a profile page
@@ -82,5 +82,33 @@ Firebase hosting files:
 
 
 ```
+
+## References
+Images
+
+* https://unsplash.com/photos/XcBPc0Q_2h8
+* https://unsplash.com/photos/tYivPd425DU
+* https://unsplash.com/photos/dVhM3o9BVeg
+* https://unsplash.com/photos/r-xKieMqL34
+* https://unsplash.com/photos/qn76So6OKPc
+* https://pixels.com/featured/dramatic-soccer-stadium-panorama-dmytro-aksonov.html
+* https://thenounproject.com/icon/follow-2836319/
+* https://thenounproject.com/term/text-messages/162379/
+* https://icons-for-free.com/box+document+outline+share+top+upload+icon-1320195323221671611/
+* https://www.fkop.de/wp-content/uploads/avatar.png
+* https://cdn.city-arts.org.uk/wp-content/themes/city-arts-theme-2021/static/img/blank-profile.png
+* https://www.kait8.com/2020/12/04/ja-morant-works-improving-grizzlies-training-camp-opens/?outputType=apps
+* https://www.usatoday.com/story/sports/nba/grizzlies/2021/11/26/grizzlies-ja-morant-left-knee-injury-status-uncertain/8772212002/
+* https://wgnradio.com/bob-sirott/chicago-sun-times-cover-story-impactful-for-readers-and-those-behind-the-scenes-as-well/
+* https://en.as.com/en/2021/09/30/nba/1632991649_183524.html
+* https://www.nba.com/news/james-harden-hamstring-out-indefinitely-after-suffering-setback
+* https://blacksportsonline.com/2013/03/new-lebron-james-troll-face-is-it-better-than-the-original/
+* https://www.cbc.ca/sports/hockey/nhl/sidney-crosby-tests-positive-for-covid-nhl-1.6235577
+
+Libraries/APIs
+
+* https://getbootstrap.com/
+* https://firebase.google.com/
+
 
 

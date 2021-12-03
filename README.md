@@ -19,7 +19,8 @@ Technologies used for this project:
 * HTML
 * CSS
 * JavaScript
-* Bootstrap 
+* Bootstrap
+* Firebase
 
 ## Features
 * Upload photos and videos to a profile page
@@ -74,11 +75,15 @@ It has the following subfolders and files:
     /my_script.js            
     /profile.js              
     /users.js                
-├── styles                   # Folder for styles
+└── styles                   # Folder for styles
     /my_style.css            
 
 Firebase hosting files: 
-├── .firebaserc...
+├── .firebaserc              # Folder for firebase
+├── firebase.json
+├── firestore.indexes.json
+├── firestore.rules
+└── storage.rules
 
 
 ```

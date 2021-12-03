@@ -1,3 +1,4 @@
+// adds name of user to home page
 function insertName() {
   firebase.auth().onAuthStateChanged(user => {
     // Check if user is signed in:
@@ -11,41 +12,50 @@ function insertName() {
         .then(userDoc => {
           var user_Name = userDoc.data().name;
           console.log(user_Name);
-          //method #1:  insert with html only
-          //document.getElementById("name-goes-here").innerText = n;    //using javascript
-          //method #2:  insert using jquery
           $("#name-goes-here").text(user_Name); //using jquery
         })
-    } else {
-      // No user is signed in.
     }
   });
 }
 
-// Grabs profile pictures and adds them to Recommened Connections on main.html
+// Grabs profile pictures and adds them to Recommened Connections on main.html using the template ConnectionsTemplate
 function getProfilePic() {
+  let CardTemplate = document.getElementById("ConnectionsTemplate");
   var count = 1;
+  // read limited to 6 users only
   db.collection("users").limit(6).get()
       .then(allUsers => {
           allUsers.forEach(doc => {
               var image = doc.data().userpfp;
-              document.getElementById("recommend"+count).innerHTML = "<img class='img-fluid' src=" + image + ">";
+              let newcard = CardTemplate.content.cloneNode(true);
+
+              // adds profile picture to template
+              newcard.querySelector('.profile-pic').src = image;
+
+              document.getElementById("recommend").appendChild(newcard);
               count++;
           })
       })
 }
 
-// Grabs sorts user by rank descending and adds highest ranked users to Rank Scoreboard on main.html
+// Grabs sorts user by rank descending and adds top 5 ranked users to Rank Scoreboard on main.html
 function getUserByRank() {
+  let CardTemplate = document.getElementById("RankTemplate");
   var count = 1;
+  // reads using orderBy() to sort by descending and gets first 5 results
   db.collection("users").orderBy("rank", "desc").limit(5).get()
       .then(allUsers => {
           allUsers.forEach(doc => {
               var name = doc.data().name;
               var rank = doc.data().rank;
               var image = doc.data().userpfp;
-              document.getElementById("rank"+count).innerHTML = "<img class='img-xs rounded-circle' src=" + image 
-                  + "><div class='ml-2'><b>#" + count + ": </b>" + name + "<p class='tx-11 text-muted'>Rank: " + rank + "</p></div>";
+              let newcard = CardTemplate.content.cloneNode(true);
+
+              //populates scoreboard with user data
+              newcard.querySelector('.img-xs').src = image;
+              newcard.querySelector('.text').innerHTML = "<b>#" + count + ": </b>" + name + "<p class='tx-11 text-muted'>Rank: " + rank + "</p>";
+
+              document.getElementById("rank-here").appendChild(newcard);    
               count++;
           })
       })

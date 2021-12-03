@@ -92,9 +92,21 @@
     </ul>
   </div>
 
-  <!-- Rank list -->
-  <div id="container-fluid">
+   <!-- Rank list -->
+   <div id="container-fluid">
     <h1 class="text-center pt-4">Rank Scoreboard</h1>
+
+    <!-- Template for top 3. Not displayed -->
+    <template id="TopTemplate">
+      <h5 class='card-title text-center pt-3 pb-2 top'></h5>
+      <img src="" class='card-img-top mx-auto img' id='profile_pic'>
+      <div class='card-body text-center'>
+        <h5 class='card-title name'>" + name +"</h5>
+        <br>
+        <p class='team'>" + team + "</p>
+        <p class='score'>Rank Score: " + rank + "</p>
+      </div>
+    </template>
 
     <!-- Top 3 -->
     <div class="row row-cols-1 row-cols-md-3 g-4 px-5 pt-1 m-0">
@@ -112,6 +124,7 @@
       </div>
     </div>
 
+    <!-- Template for rank 4 and below. Not displayed -->
     <template id="CardTemplate">
       <div class="card flex-row flex-wrap darkerWhite">
         <div class="card-header border-0">
@@ -125,6 +138,7 @@
       </div>
     </template>
 
+    <!-- Rank 4 and below -->
     <br>
     <div id="rank-here"></div>
 

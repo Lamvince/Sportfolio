@@ -93,114 +93,92 @@
     </ul>
   </div>
 
-  <!-- Main body -->
-  <div class="container">
-    <h1 id="name">Hello, <span id="name-goes-here"></span></h1>
-    <div class="row">
+ <!-- Main body -->
+ <div class="container">
+  <h1 id="name">Hello, <span id="name-goes-here"></span></h1>
+  <div class="row">
 
-      <!-- Announcements and scores start -->
-      <div class="d-md-block col-md-6">
-        <div class="card rounded card-body">
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <h6 class="card-title mb-0">Announcements</h6>
-          </div>
-          <p>Congratulations to Sportfolio user Ath Lete! Ath has been recruited by the sportsball team the Cityname
-            Teamname. Best wishes to our up-and-coming athlete.</p>
-          <p class="text-muted">December 2, 2021</p>
-          <p>The Burnaby-31 Team is proud to announce the launch of SPORTFOLIO.
-            A webapp that connects athletes with recruiters.
-            We hope to see aspiring athletes show off their skills and make connections.
-          </p>
-          <p class="text-muted">November 15, 2021</p>
-        </div>
-        <div class="card rounded">
-          <div class="card-body">
-            <h6 class="card-title">Rank Scoreboard</h6>
-            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-              <div class="d-flex align-items-center hover-pointer" id="rank1">
-              </div>
-            </div>
-            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-              <div class="d-flex align-items-center hover-pointer" id="rank2">
-              </div>
-            </div>
-            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-              <div class="d-flex align-items-center hover-pointer" id="rank3">
-              </div>
-            </div>
-            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-              <div class="d-flex align-items-center hover-pointer" id="rank4">
-              </div>
-            </div>
-            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-              <div class="d-flex align-items-center hover-pointer" id="rank5">
-              </div>
-            </div>
-          </div>
+    <!-- Template for rank scoreboard. Not displayed -->
+    <template id="RankTemplate">
+      <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+        <div class="d-flex align-items-center hover-pointer">
+          <img class='img-xs rounded-circle' src="">
+          <div class='ml-2 text'></div>
         </div>
       </div>
-      <!-- Announcements and scores end -->
+    </template>
 
-      <!-- Connections start-->
-      <div class="d-md-block col-md-6">
-        <div class="row">
+    <!-- Announcements and scores start -->
+    <div class="d-md-block col-md-6">
+      <div class="card rounded card-body">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h6 class="card-title mb-0">Announcements</h6>
+        </div>
+        <p>Congratulations to Sportfolio user Ath Lete! Ath has been recruited by the sportsball team the Cityname
+          Teamname. Best wishes to our up-and-coming athlete.</p>
+        <p class="text-muted">December 2, 2021</p>
+        <p>The Burnaby-31 Team is proud to announce the launch of SPORTFOLIO.
+          A webapp that connects athletes with recruiters.
+          We hope to see aspiring athletes show off their skills and make connections.
+        </p>
+        <p class="text-muted">November 15, 2021</p>
+      </div>
+      <div class="card rounded">
+        <div class="card-body">
+          <h6 class="card-title">Rank Scoreboard</h6>
+          <div id="rank-here"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Announcements and scores end -->
+
+    <!-- Template for recommended connection. Not displayed -->
+    <template id="ConnectionsTemplate">
+      <div class="col-4">
+        <figure>
+          <img class='img-fluid profile-pic' src="">
+        </figure>
+      </div>
+    </template>
+
+    <!-- Connections start-->
+    <div class="d-md-block col-md-6">
+      <div class="row">
+        <div class="col-md-12 grid-margin">
+          <div class="card rounded">
+            <div class="card-body">
+              <h6 class="card-title">Recommended Connections</h6>
+              <div class="row" id="recommend">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 grid-margin">
           <div class="col-md-12 grid-margin">
             <div class="card rounded">
               <div class="card-body">
-                <h6 class="card-title">Recommended Connections</h6>
-                <div class="row">
-                  <div class="col-4">
-                    <figure id="recommend1"></figure>
-                  </div>
-                  <div class="col-4">
-                    <figure id="recommend2"></figure>
-                  </div>
-                  <div class="col-4">
-                    <figure id="recommend3"></figure>
-                  </div>
-                  <div class="col-4">
-                    <figure id="recommend4"></figure>
-                  </div>
-                  <div class="col-4">
-                    <figure id="recommend5"></figure>
-                  </div>
-                  <div class="col-4">
-                    <figure id="recommend6"></figure>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 grid-margin">
-            <div class="col-md-12 grid-margin">
-              <div class="card rounded">
-                <div class="card-body">
-                  <h6 class="card-title">Local Events</h6>
-                  <p>Notre Dame Regional Secondary <i>Jugglers</i> vs St Patrick Regional Secondary <i>Celtics</i> CISVA
-                    Basketball Semi-Finals</p>
-                  <p class="text-muted">December 9, 2021</p>
-                  <a href="">Read More</a>
-                  <hr>
-                  <p>Richmond Secondary <i>Colts</i> vs Surrey Secondary <i>Spartans</i> Football</p>
-                  <p class="text-muted">December 11, 2021</p>
-                  <a href="">Read More</a>
-                  <hr>
-                  <p>Lower Mainland Athlete-Recruiter Winter Meet and Greet</p>
-                  <p class="text-muted">December 18, 2021</p>
-                  <a href="">Read More</a>
-                  <hr>
-                  <p>The NHL In-Person Scouting Combine</p>
-                  <p class="text-muted">March 22, 2022</p>
-                  <a href="">Read More</a>
-                </div>
+                <h6 class="card-title">Local Events</h6>
+                <p>Notre Dame Regional Secondary <i>Jugglers</i> vs St Patrick Regional Secondary <i>Celtics</i> CISVA
+                  Basketball Semi-Finals</p>
+                <p class="text-muted">December 9, 2021</p>
+                <hr>
+                <p>Richmond Secondary <i>Colts</i> vs Surrey Secondary <i>Spartans</i> Football</p>
+                <p class="text-muted">December 11, 2021</p>
+                <hr>
+                <p>Lower Mainland Athlete-Recruiter Winter Meet and Greet</p>
+                <p class="text-muted">December 18, 2021</p>
+                <hr>
+                <p>The NHL In-Person Scouting Combine</p>
+                <p class="text-muted">March 22, 2022</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Connections end -->
     </div>
+    <!-- Connections end -->
   </div>
+</div>
 
   <!-- Notification Modal -->
   <div class="modal fade" id="notificationMod" tabindex="-1" aria-labelledby="notificationLabel" aria-hidden="true">

@@ -1,3 +1,4 @@
+// hides top navbar icons and display logo if logged out
 function logoHeader() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -15,8 +16,12 @@ function logoHeader() {
     });
 }
 
+// populates top three cards in rank.html using the template TopTEmplate
 function rankTopThree() {
+    let TopTemplate = document.getElementById("TopTemplate");
     var count = 1;
+    // reads from database and sorts by rank descending order
+    // get top three users only
     db.collection("users").orderBy("rank", "desc").limit(3).get()
         .then(allUsers => {
             allUsers.forEach(doc => {
@@ -24,17 +29,28 @@ function rankTopThree() {
                 var team = doc.data().team;
                 var rank = doc.data().rank;
                 var image = doc.data().userpfp;
-                document.getElementById("top"+count).innerHTML = "<h5 class='card-title text-center pt-3 pb-2'>#" 
-                + count + "</h5><img src=" + image + " class='card-img-top mx-auto' id='profile_pic'><div class='card-body text-center'><h5 class='card-title'>" 
-                + name +"</h5><br><p class='card-text'>" + team + "</p><p class='card-text'>Rank Score: " + rank + "</p></div>";
+                let newcard = TopTemplate.content.cloneNode(true);
+
+                //update name, team, rank and profile pic
+                newcard.querySelector('.top').innerHTML = "#" + count;
+                newcard.querySelector('.img').src = image;
+                newcard.querySelector('.name').innerHTML = name;
+                newcard.querySelector('.team').innerHTML = team;
+                newcard.querySelector('.score').innerHTML = "Rank Score: " + rank;
+
+                document.getElementById("top"+count).appendChild(newcard);
                 count++;
             })
         })
 }
 
+// populates cards after top three in rank.html using the template CardTemplate
 function displayRank() {
     let CardTemplate = document.getElementById("CardTemplate");
     var count = 1;
+
+    // reads from database and sorts by rank descending order
+    // skips top three user
     db.collection("users").orderBy("rank", "desc").get()
         .then(allUsers => {
             allUsers.forEach(doc => {
@@ -44,7 +60,7 @@ function displayRank() {
                 var image = doc.data().userpfp;
                 let newcard = CardTemplate.content.cloneNode(true);
 
-                //update title and text and image
+                //update name, team, rank and profile pic
                 newcard.querySelector('.img').src = image;
                 newcard.querySelector('.rank-name').innerHTML = "#" + count + ": " + name;
                 newcard.querySelector('.team').innerHTML = team;
@@ -58,25 +74,33 @@ function displayRank() {
         })
 }
 
+// queries database filtering with where() to match search query with user name an displays result
+// puts result into template and makes template card clickable
 function getSearchResults() {
+    let CardTemplate = document.getElementById("SearchTemplate");
+
+    // assigns user input into "input"
     let input = document.getElementById("search_query").value.toLowerCase();
     var count = 1;
 
-    while(count<=10){
-        document.getElementById(count).innerHTML = "";
-        count++;
-    }
-    count = 1;
-
+    // reads from database using where to match user query to lowerCaseName field
     db.collection("users").where('lowerCaseName', '>=', input).where('lowerCaseName', '<=', input + '\uf8ff').get()
         .then((snapshot) => {
             snapshot.docs.forEach(doc => {
                 var name = doc.data().name;
-                var image = doc.data().userpfp;
+                var team = doc.data().team;
                 var sport = doc.data().sport;
-                console.log(name);
-                console.log(`${doc.id}`);
-                document.getElementById(count).innerHTML = "<div class='card-header border-0'><img id='profile_pic' src="+image+"></div><div class='card-block px-2'><h4 class='card-title'>"+name+"</h4><p class='card-text'>"+sport+"</p></div>";
+                var image = doc.data().userpfp;
+                let newcard = CardTemplate.content.cloneNode(true);
+
+                //update name, team, rank and profile pic
+                newcard.querySelector('.img').src = image;
+                newcard.querySelector('.name').innerHTML = name;
+                newcard.querySelector('.team').innerHTML = team;
+                newcard.querySelector('.sport').innerHTML = sport;
+                newcard.querySelector('.searchResult').setAttribute("id", count);
+
+                document.getElementById("result-here").appendChild(newcard);
 
                 //add click event for name
                 document.getElementById(count).onclick = function() {
@@ -93,6 +117,8 @@ function loadVisit() {
     //get the ID of user being visited
     let params = new URL(window.location.href);
     uid = params.searchParams.get("uid"); //parse "uid"
+
+    // reads user with user id that matches parsed url
     db.collection("users").doc(uid)
           .get()
           .then(userDoc => {
@@ -138,6 +164,8 @@ function loadVisit() {
           })
 }
 
+
+// Signs out user from authentication and returns them to landing page
 function logout() {
       firebase.auth().signOut().then(() => {
           console.log("Logged out");
@@ -145,6 +173,8 @@ function logout() {
       });
   }
 
+// Show or hide an element. Used for hamburger menu
+// param: id of the item being hidden or shown
 function showOrHide(id) {
     var x = document.getElementById(id);
     if (x.style.display === "block") {

@@ -1,5 +1,4 @@
-function insertPageData() {
-  let files = [];
+let files = [];
 
   firebase.auth().onAuthStateChanged(user => {
     // Check if user is signed in:
@@ -364,8 +363,6 @@ function insertPageData() {
       // No user is signed in.
     }
   });
-}
-insertPageData();
 
 // Display this text if video has been uploaded successfully
 function videoSuccess() {

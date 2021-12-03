@@ -34,6 +34,7 @@
   justify-content: center;
 }
 
+/* Index review */
 #section-container-review {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
@@ -113,11 +114,13 @@
   background-color: #8b9dc3 !important;
 }
 
+/* Welcome text index.html */
 #welcome {
   background-color: rgb(247, 247, 247);
   padding: 5%;
-
 }
+
+/* Colors for sections */
 
 #review {
   background-color: #dfe3ee !important;
@@ -131,11 +134,14 @@
   background-color: #8b9dc3 !important;
 }
 
+/* Visit profile follow button */
 #btn_follow_div{
   display: flex;
   justify-content: center;
 }
 
+
+/* Icons index.html */
 #msgicon {
   width: 20%;
 }
@@ -174,6 +180,7 @@
 
 /* End of CSS for search.html */
 
+/* About section about.html */
 #about-section {
   height: 100%;
   width: 100%;
@@ -204,6 +211,7 @@
   font-size: 32pt;
 }
 
+/* About one */
 #about1 {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
@@ -235,6 +243,7 @@
   text-align: center;
 }
 
+/* About two */
 #about2 {
   grid-column: 1 / span 1;
   grid-row: 2 / span 1;
@@ -266,6 +275,7 @@
   text-align: center;
 }
 
+/* About three */
 #about3 {
   grid-column: 1 / span 1;
   grid-row: 3 / span 1;
@@ -369,7 +379,7 @@
   margin-bottom: 50px;
 }
 
-/* rank.html */
+/* rank.html colors */
 
 .gold {
   background-color: #FFD700 !important;
@@ -395,11 +405,14 @@
   padding-bottom: 20px;
 }
 
+
+/* User description box */
 #user-description {
   width: 30%;
   text-align: center;
 }
 
+/* Buttons to save input */
 #savetext {
   display: inline;
   justify-content: center;

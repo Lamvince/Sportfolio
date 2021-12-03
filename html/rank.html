@@ -92,40 +92,43 @@
     </ul>
   </div>
 
-<div id="container-fluid">
+  <!-- Rank list -->
+  <div id="container-fluid">
     <h1 class="text-center pt-4">Rank Scoreboard</h1>
+
+    <!-- Top 3 -->
     <div class="row row-cols-1 row-cols-md-3 g-4 px-5 pt-1 m-0">
-        <div class="col">
-            <div class="card gold" id="top1">
-            </div>
+      <div class="col">
+        <div class="card gold" id="top1">
         </div>
-        <div class="col">
-            <div class="card silver" id="top2">
-            </div>
+      </div>
+      <div class="col">
+        <div class="card silver" id="top2">
         </div>
-        <div class="col">
-            <div class="card bronze" id="top3">
-            </div>
+      </div>
+      <div class="col">
+        <div class="card bronze" id="top3">
         </div>
+      </div>
     </div>
 
     <template id="CardTemplate">
-        <div class="card flex-row flex-wrap darkerWhite">
-            <div class='card-header border-0'>
-                <img class='img' id='profile_pic'>
-            </div>
-            <div class='card-block px-2'>
-                <h4 class='rank-name'></h4>
-                <p class='team'></p>
-                <p class='score'></p>
-            </div>
+      <div class="card flex-row flex-wrap darkerWhite">
+        <div class="card-header border-0">
+          <img class="img" id="profile_pic">
         </div>
+        <div class="card-block px-2">
+          <h4 class="rank-name"></h4>
+          <p class="team"></p>
+          <p class="score"></p>
+        </div>
+      </div>
     </template>
 
     <br>
     <div id="rank-here"></div>
-    
-</div>
+
+  </div>
 
   <!-- Notification Modal -->
   <div class="modal fade" id="notificationMod" tabindex="-1" aria-labelledby="notificationLabel" aria-hidden="true">
@@ -145,6 +148,7 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <footer id="footerSportfolio" class="navbar justify-content-evenly bg-secondary fixed-bottom">
     <a href="./../html/main.html">
       <i class="material-icons-outlined text-white">home</i>

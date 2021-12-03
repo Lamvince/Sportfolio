@@ -35,7 +35,6 @@
 <body id="body">
 
   <!-- Header -->
-
   <nav class="navbar navbar-light sportprim">
     <div class="container py-3">
       <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
@@ -91,18 +90,20 @@
     </ul>
   </div>
 
-
+  <!-- Search -->
   <div id="main_container">
     <h2 id="heading">Discover</h2>
 
     <input type="text" id="search_query" placeholder="Search for...">
 
     <div id="button_div">
-      <input type="button" value="Search" id="btn_search" class="btn btn-primary sportprim" onclick="getSearchResults()">
+      <input type="button" value="Search" id="btn_search" class="btn btn-primary sportprim"
+        onclick="getSearchResults()">
     </div>
 
     <br>
 
+    <!-- Users -->
     <div class="card flex-row flex-wrap searchResult darkerWhite" id="1"></div>
     <div class="card flex-row flex-wrap searchResult darkerWhite" id="2"></div>
     <div class="card flex-row flex-wrap searchResult darkerWhite" id="3"></div>

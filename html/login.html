@@ -2,114 +2,118 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Login | Sportfolio</title>
-    <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Login | Sportfolio</title>
+  <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./../styles/my_style.css" />
+  <link rel="stylesheet" href="./../styles/my_style.css" />
 
-    <!-- Bootstrap FirebaseUI CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <!-- Bootstrap FirebaseUI CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-    <!-- Firebase 8 CDNs-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-        </script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
-    <!-- Link to the api keys for your firebase project -->
-    <script src="./../scripts/firebase.js"></script>
-    <script src="./../scripts/my_script.js"></script>
+  <!-- Link to the api keys for your firebase project -->
+  <script src="./../scripts/firebase.js"></script>
+  <script src="./../scripts/my_script.js"></script>
 
 
-    <!-- Google Icons (Material Design)-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+  <!-- Google Icons (Material Design)-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 </head>
 
 <body style="background-image: url('./../images/login_background.png');
         background-size: auto 100vh;">
-    <nav class="navbar navbar-light sportprim">
-        <div class="container py-3">
-            <!-- <i class="material-icons">menu</i>
-            <i class="material-icons">search</i> -->
-        </div>
-    </nav>
 
-    <div class="container text-center py-5">
-        <h1 id="logo" class="display-2 fw-bold">Sportfolio</h1>
-        <h5 style="color: white;">If you don't have an account, enter your email and follow the prompts!</h5>
+  <!-- Header -->      
+  <nav class="navbar navbar-light sportprim">
+    <div class="container py-3">
+      <!-- <i class="material-icons">menu</i>
+           <i class="material-icons">search</i> -->
     </div>
-    <div id="firebaseui-auth-container"></div>
-    <div id="new_user_ui" class= "px-3">
-        <div id="new_user_prompt">
-            <div>
-                <p>Great, you're almost ready!</p>
-                <p>Please fill in the following information to complete account setup! </p>
-            </div>
-        </div>
+  </nav>
 
-        <div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="role1" checked>
-                <label class="form-check-label" for="flexRadioDefault1">
-                    <span class="radiofont">Athlete</span>
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="role2">
-                <label class="form-check-label" for="flexRadioDefault2">
-                    <span class="radiofont">Recruiter</span>
-                </label>
-            </div>
-        </div>
-        <div>
-            <select id="userGender" class="form-select" aria-label="Default select example">
-                <option selected>Gender</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option>
-                <option value="4">Prefer not to say</option>
-            </select>
-        </div>
-        <div>
-            <select id="userSport" class="form-select" aria-label="Default select example">
-                <option selected>What sport do you play?</option>
-                <option value="1">Basketball</option>
-                <option value="2">Baseball</option>
-                <option value="3">Football</option>
-                <option value="4">Ice hockey</option>
-                <option value="5">Soccer</option>
-            </select>
-        </div>
-        <div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Team name</span>
-                <input id="userTeam" type="text" class="form-control" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
-            </div>
-        </div>
-        <div id="submit_div">
-            <button id="btnSubmit" type="button" class="btn btn-primary">Create account</button>
-        </div>
+  <!-- Sportfolio text -->
+  <div class="container text-center py-5">
+    <h1 id="logo" class="display-2 fw-bold">Sportfolio</h1>
+    <h5 style="color: white;">If you don't have an account, enter your email and follow the prompts!</h5>
+  </div>
+  <div id="firebaseui-auth-container"></div>
+  <div id="new_user_ui" class="px-3">
+    <div id="new_user_prompt">
+      <div>
+        <p>Great, you're almost ready!</p>
+        <p>Please fill in the following information to complete account setup! </p>
+      </div>
     </div>
-    <div id="loader">Loading...</div>
 
-    <!-- Account Modal -->
+    <!-- Signup information -->
+    <div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="role1" checked>
+        <label class="form-check-label" for="flexRadioDefault1">
+          <span class="radiofont">Athlete</span>
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="role2">
+        <label class="form-check-label" for="flexRadioDefault2">
+          <span class="radiofont">Recruiter</span>
+        </label>
+      </div>
+    </div>
+    <div>
+      <select id="userGender" class="form-select" aria-label="Default select example">
+        <option selected>Gender</option>
+        <option value="1">Male</option>
+        <option value="2">Female</option>
+        <option value="3">Other</option>
+        <option value="4">Prefer not to say</option>
+      </select>
+    </div>
+    <div>
+      <select id="userSport" class="form-select" aria-label="Default select example">
+        <option selected>What sport do you play?</option>
+        <option value="1">Basketball</option>
+        <option value="2">Baseball</option>
+        <option value="3">Football</option>
+        <option value="4">Ice hockey</option>
+        <option value="5">Soccer</option>
+      </select>
+    </div>
+    <div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Team name</span>
+        <input id="userTeam" type="text" class="form-control" aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default">
+      </div>
+    </div>
+    <div id="submit_div">
+      <button id="btnSubmit" type="button" class="btn btn-primary">Create account</button>
+    </div>
+  </div>
+  <div id="loader">Loading...</div>
+
+  <!-- Account Modal -->
   <div class="modal fade" id="accountMod" tabindex="-1" aria-labelledby="accountLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -126,16 +130,15 @@
     </div>
   </div>
 
-
-
-    <footer class="navbar justify-content-evenly sportLast fixed-bottom">
-        <!-- <i class="material-icons-outlined">home</i>
+  <!-- Footer -->
+  <footer class="navbar justify-content-evenly sportLast fixed-bottom">
+    <!-- <i class="material-icons-outlined">home</i>
         <i class="material-icons-outlined">account_circle</i>
         <i class="material-icons-outlined">forum</i>
         <i class="material-icons-outlined">notifications</i> -->
-    </footer>
+  </footer>
 
-    <script src="./../scripts/login.js"></script>
+  <script src="./../scripts/login.js"></script>
 
 
 </body>

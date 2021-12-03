@@ -2,126 +2,126 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Home | Sportfolio</title>
-    <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../styles/my_style.css" />
+  <meta charset="utf-8">
+  <title>Home | Sportfolio</title>
+  <meta name="authors" content="Arjun Sidhu, Ryan Rudzitis, Vincent Lam">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./../styles/my_style.css" />
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- Firebase 8 related JS CDN -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <!-- Firebase 8 related JS CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-    <!-- Link to the api keys for your Firebase project -->
-    <script src="./../scripts/firebase.js"></script>
-    <script src="./../scripts/my_script.js"></script>
+  <!-- Link to the api keys for your Firebase project -->
+  <script src="./../scripts/firebase.js"></script>
+  <script src="./../scripts/my_script.js"></script>
 
-    <!-- Google Icons (Material Design)-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+  <!-- Google Icons (Material Design)-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 </head>
 
 <body>
-    <nav id="navSportfolio" class="navbar navbar-light bg-success">
-        <div class="container py-3">
-            <h1 id="logo" class="display-2 fw-bold">Sportfolio</h1>
-        </div>
-    </nav>
+  <!-- Header -->
+  <nav id="navSportfolio" class="navbar navbar-light bg-success">
+    <div class="container py-3">
+      <h1 id="logo" class="display-2 fw-bold">Sportfolio</h1>
+    </div>
+  </nav>
 
-    <div class="px-4 text-center" style="background-image: url('./../images/index.png');
+  <!-- Index background -->
+  <div class="px-4 text-center" style="background-image: url('./../images/index.png');
     background-size: 100% auto;" id="welcome">
-        <h1 class="display-4 fw-bold text-white">Welcome to Sportfolio!</h1>
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4 text-white fw-bold black_border">Sportfolio is a free web application that aims to improve the recruitment process for
-                both athletes and recruiters.</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                <a href="login.html"><button id="loginButton" class="btn btn-primary btn-lg px-4 me-sm-3">Log in</button></a>
-            </div>
-        </div>
-        <div class="overflow-hidden" style="max-height: 30vh;">
-        </div>
+    <h1 class="display-4 fw-bold text-white">Welcome to Sportfolio!</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4 text-white fw-bold black_border">Sportfolio is a free web application that aims to improve the
+        recruitment process for
+        both athletes and recruiters.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <a href="login.html"><button id="loginButton" class="btn btn-primary btn-lg px-4 me-sm-3">Log in</button></a>
+      </div>
     </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+    </div>
+  </div>
 
-    <div class="px-4 py-5" id="custom-cards">
-
-        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-            <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
-                    style="background-image: url('./../images/indexbball.png');
+  <!-- 3 Cards -->
+  <div class="px-4 py-5" id="custom-cards">
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('./../images/indexbball.png');
                     background-size: 100% auto;">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold black_border">Display your highlights to the world</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
-                style="background-image: url('./../images/indexhockey.png');
-                background-size: 100% 100%;">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold black_border">Connect with athletes and recruiters
-                        </h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
-                style="background-image: url('./../images/indexfootball.png');
-                background-size: 100% 100%;">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold black_border">Get scouted faster, digitally</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section class="py-5 px-4" id="review">
-        <div id="section-container-review">
-            <div id="reviewpic">
-                <img id="pfpicon" class="mb-4" src="./../images/pfp.png">
-            </div>
-            <div id="reviewtext">
-                <h4><i>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque voluptatibus alias deleniti veritatis voluptate possimus soluta nam ipsa. Sed quos numquam cumque est in amet nobis neque eius vel voluptates.</i></h4>
-            </div>
-        </div>
-    </section>
-
-    <div class="px-4 py-5 text-center" id="featured-3">
-        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-          <div class="feature col">
-            <img id="uploadicon" class="mx-auto" src="./../images/upload.png">
-            <h2>Upload Mulitimedia</h2>
-            <p>Upload your highlight videos and pictures to your profile and allow recruiters to see your talent.</p>
-          </div>
-          <div class="feature col">
-            <img id="msgicon" class="mx-auto" src="./../images/msg.png">
-            <h2>Direct Messaging</h2>
-            <p>Directly message other athletes and recruiters and make that personal connection.</p>
-          </div>
-          <div class="feature col">
-            <img id="followicon" class="mx-auto" src="./../images/follow.png">
-            <h2>Follow Others</h2>
-            <p>Network with others by following them on Sportfolio and make future connections.</p>
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold black_border">Display your highlights to the world</h2>
           </div>
         </div>
       </div>
-        
 
-    
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('./../images/indexhockey.png');
+                background-size: 100% 100%;">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold black_border">Connect with athletes and recruiters
+            </h2>
+          </div>
+        </div>
+      </div>
 
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('./../images/indexfootball.png');
+                background-size: 100% 100%;">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold black_border">Get scouted faster, digitally</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Review section -->
+  <section class="py-5 px-4" id="review">
+    <div id="section-container-review">
+      <div id="reviewpic">
+        <img id="pfpicon" class="mb-4" src="./../images/pfp.png">
+      </div>
+      <div id="reviewtext">
+        <h4><i>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque voluptatibus alias deleniti veritatis
+            voluptate possimus soluta nam ipsa. Sed quos numquam cumque est in amet nobis neque eius vel voluptates.</i>
+        </h4>
+      </div>
+    </div>
+  </section>
 
+  <!-- 3 Features -->
+  <div class="px-4 py-5 text-center" id="featured-3">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <img id="uploadicon" class="mx-auto" src="./../images/upload.png">
+        <h2>Upload Mulitimedia</h2>
+        <p>Upload your highlight videos and pictures to your profile and allow recruiters to see your talent.</p>
+      </div>
+      <div class="feature col">
+        <img id="msgicon" class="mx-auto" src="./../images/msg.png">
+        <h2>Direct Messaging</h2>
+        <p>Directly message other athletes and recruiters and make that personal connection.</p>
+      </div>
+      <div class="feature col">
+        <img id="followicon" class="mx-auto" src="./../images/follow.png">
+        <h2>Follow Others</h2>
+        <p>Network with others by following them on Sportfolio and make future connections.</p>
+      </div>
+    </div>
+  </div>
 
-    <footer id="footerSportfolio" class="navbar justify-content-evenly bg-secondary text-white">
-        <p>©2021 BBY-31 | <a href="about.html" class="white">About</a> | <a href="contact.html" class="white">Contact Us</a></p>
-    </footer>
+  <!-- Footer -->
+  <footer id="footerSportfolio" class="navbar justify-content-evenly bg-secondary text-white">
+    <p>©2021 BBY-31 | <a href="about.html" class="white">About</a> | <a href="contact.html" class="white">Contact Us</a>
+    </p>
+  </footer>
 
 </body>
 

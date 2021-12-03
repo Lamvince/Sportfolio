@@ -36,11 +36,7 @@
 
 <body>
 
-
-
-
   <!-- Header -->
-
   <nav id="navSportfolio" class="navbar navbar-light bg-success">
     <div class="container py-3">
       <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
@@ -49,8 +45,6 @@
       </a>
     </div>
   </nav>
-
-
 
   <!-- Hamburger Side Navbar -->
   <div class="d-flex flex-column flex-shrink-0 p-3 sportLast text-white" id="sidenav">
@@ -100,25 +94,30 @@
     </ul>
   </div>
 
-
+  <!-- User info -->
   <div id="main_container">
 
+    <!-- Profile picture -->
     <div>
       <img id="profile_pic" src="./../images/placeholderpfpfromserver.png" class="rounded mx-auto d-block">
     </div>
 
+    <!-- Name -->
     <div id="greeting">
       <p>Hello, <span id="user-name"></span>!</p>
     </div>
 
+    <!-- Description -->
     <div id="user-description" class="mx-auto p-2" contenteditable="true">
       Click me to write your own description!
     </div>
+
+    <!-- Save Description -->
     <button type="button" id="savetextpfp" class="btn btn-primary sportprim mx-auto m-3">
       Save Text
     </button>
 
-
+    <!-- More user info -->
     <div id="user_info">
       <p>Role: <span id="user-role"></span></p>
       <p>Sport: <span id="user-sport"></span></p>
@@ -135,7 +134,7 @@
       <br>
     </div>
 
-
+    <!-- Photo containers -->
     <div id="photo1" class="card" style="width: 18rem;">
       <img id="img1" src="./../images/tempimg.png" class="card-img-top" alt="...">
       <div class="card-body cardsMedia">
@@ -173,6 +172,7 @@
       </div>
     </div>
 
+    <!-- Video containers -->
     <div id="video1" class="card" style="width: 18rem;">
       <video id="uservideo1" src="" class="card-img-top" alt="..." controls>
         <source id="vid1src" src="">
@@ -237,8 +237,8 @@
     </div>
   </div>
 
-   <!-- Media Modal -->
-   <div class="modal fade" id="mediaMod" tabindex="-1" aria-labelledby="mediaLabel" aria-hidden="true">
+  <!-- Media Modal -->
+  <div class="modal fade" id="mediaMod" tabindex="-1" aria-labelledby="mediaLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

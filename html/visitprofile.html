@@ -35,11 +35,7 @@
 
 <body>
 
-
-
-
   <!-- Header -->
-
   <nav class="navbar navbar-light sportprim">
     <div class="container py-3">
       <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
@@ -48,8 +44,6 @@
       </a>
     </div>
   </nav>
-
-
 
   <!-- Hamburger Side Navbar -->
   <div class="d-flex flex-column flex-shrink-0 p-3 sportLast text-white" id="sidenav">
@@ -99,19 +93,23 @@
     </ul>
   </div>
 
-
+  <!-- Other User info -->
   <div id="main_container">
 
+    <!-- Vist profile pic -->
     <div>
       <img id="visit_profile_pic" src="./../images/placeholderpfpfromserver.png" class="rounded mx-auto d-block">
     </div>
 
+    <!-- Visit name -->
     <div id="visit_name">
       <p><span id="visit-name"></span></p>
     </div>
 
+    <!-- Visit description -->
     <div id="visit-description" class="mx-auto p-2"></div>
 
+    <!-- Visit more info -->
     <div id="visit_info">
       <p>Role: <span id="visit-role"></span></p>
       <p>Sport: <span id="visit-sport"></span></p>
@@ -126,6 +124,7 @@
       </button>
     </div>
 
+    <!-- Visit photos -->
     <div id="visit_photo1" class="card" style="width: 18rem;">
       <img id="visit-img1" src="./../images/uploadanimg.png" class="card-img-top" alt="...">
       <div class="card-body darkerWhite">
@@ -148,6 +147,7 @@
       </div>
     </div>
 
+    <!-- Visit videos -->
     <div id="visit_video1" class="card" style="width: 18rem;">
       <video id="visit-video1" src="" class="card-img-top" alt="..." controls>
         <source id="visit-vid1src" src="">
@@ -196,9 +196,6 @@
       </div>
     </div>
   </div>
-
-
-
 
   <!-- Footer -->
   <footer class="navbar justify-content-evenly sportLast fixed-bottom">

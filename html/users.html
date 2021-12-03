@@ -35,7 +35,6 @@
 <body id="body">
 
   <!-- Header -->
-
   <nav class="navbar navbar-light sportprim">
     <div class="container py-3">
       <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
@@ -93,11 +92,12 @@
     </ul>
   </div>
 
+  <!-- List of users -->
   <div id="friends-go-here" class="container">
     <template id="card-template">
       <div class="card darkerWhite">
         <div class="container item">
-          <img id="userspfp" src="./../images/placeholderpfpfromserver.png"/>
+          <img id="userspfp" src="./../images/placeholderpfpfromserver.png" />
           <b class="card-name"> Name</b>
           <a class="btn card-href btn btn-primary">Message</a>
         </div>
@@ -105,7 +105,7 @@
     </template>
   </div>
 
-  <!-- Notifcation Modal -->
+  <!-- Notification Modal -->
   <div class="modal fade" id="notificationMod" tabindex="-1" aria-labelledby="notificationLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -122,10 +122,6 @@
       </div>
     </div>
   </div>
-
-
-
-
 
   <!-- Footer -->
   <footer class="navbar justify-content-evenly sportLast fixed-bottom">

@@ -36,7 +36,6 @@
 <body id="body">
 
   <!-- Header -->
-
   <nav class="navbar navbar-light sportprim">
     <div class="container py-3">
       <i class="material-icons-outlined" onclick="showOrHide('sidenav')">menu</i>
@@ -86,12 +85,13 @@
         <a href="./../html/index.html" class="nav-link text-white" onclick="logout()">
           <svg class="bi me-2" width="16" height="16">
             <use xlink:href="#people-circle" /></svg>
-          <i class="material-icons-outlined" >logout</i> Logout
+          <i class="material-icons-outlined">logout</i> Logout
         </a>
       </li>
     </ul>
   </div>
 
+  <!-- Messages and Chat ID Input -->
   <div class="container py-3">
     <h3>Messaging <span id="friend">Friend</span></h3>
     <input id="textChatID" type="text" placeholder="Enter Chat Number">
@@ -102,6 +102,8 @@
       <div class="p-5 mb-4 bg-light rounded-3" id="results"></div>
     </div>
   </div>
+
+  <!-- Post, clear, quit, and message input -->
   <div class="container">
     <input id="text" type="text" placeholder="Enter message">
     <button id="post" class="btn btn-primary"> Post </button>
@@ -109,6 +111,7 @@
     <button id="quit" class="btn btn-danger"> Quit </button> <br />
   </div>
 
+  <!-- Sent Message card -->
   <template id="card-template">
     <div class="card">
       <div class="container msg">
@@ -119,9 +122,9 @@
     </div>
   </template>
 
-  
 
-  <!-- Notifcation Modal -->
+
+  <!-- Notification Modal -->
   <div class="modal fade" id="notificationMod" tabindex="-1" aria-labelledby="notificationLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

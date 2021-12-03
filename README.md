@@ -2,15 +2,16 @@
 
 * [General info](#general-info)
 * [Technologies](#technologies)
+* [Features](#features)
 * [Contents](#content)
 
 ## General Info
+Our team BBY-31 is developing Sportfolio to help athletes and recruiters with the recruitment process
+Link to Sportfolio - https://sportfolio-96c76.web.app/html/index.html
+
 * Hello! My name is Ryan and I am excited to work with my team to build an awesome app.
 * Hi, my name is Noorarjun and I want to make a web app with my team.
 * Salutation, Vincent here o/
-
-Our team BBY-31 is developing Sportfolio to help athletes and recruiters with the recruitment process
-
 	
 ## Technologies
 Technologies used for this project:
@@ -18,6 +19,14 @@ Technologies used for this project:
 * CSS
 * JavaScript
 * Bootstrap 
+* jQuery
+
+## Features
+* Upload photos and videos to a profile page
+* Edit profile picture and user description
+* Search for other users and check their rank (score)
+* Message other users on the website
+* View other profiles
 	
 ## Content
 Content of the project folder:

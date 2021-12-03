@@ -1,6 +1,9 @@
 let uid;
 var sender;
 
+// Initializes the chat
+// params: none
+// return: none
 function initChat() {
   //get the ID of who we are chatting with
   let params = new URL(window.location.href);
@@ -88,6 +91,8 @@ function postMessageListen(chatid) {
 //This function clears the entire chat log.
 //gets the messsages collection, and deletes each doc one by one
 //in Firestore, and deletes the DOM of class name "msg" (see template)
+// params: chatid
+// return: none
 function clearButtonListen(chatid) {
   var clearButton = document.getElementById("clear");
   clearButton.addEventListener("click", function () {
@@ -108,6 +113,8 @@ function clearButtonListen(chatid) {
 }
 
 // Quits the chat session and sends the user back to users.html
+// params: chatid
+// return: none
 function quitButtonListen(chatid) {
   var quitButton = document.getElementById("quit");
   quitButton.addEventListener("click", function () {
@@ -125,6 +132,8 @@ function quitButtonListen(chatid) {
 // When a new message doc has been added, let's display it.
 // Use "onSnapshot()" to listen to changes.
 // https://firebase.google.com/docs/firestore/query-data/listen.html#view_changes_between_snapshots
+// params: chatid
+// return: none
 function listenNewMessage(chatid) {
   // Listens to all the new message docs for that chat ID and displays it.
   db.collection("chats").doc(chatid).collection("messages")

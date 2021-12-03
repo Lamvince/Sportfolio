@@ -1,3 +1,6 @@
+// Gets the new user information
+// params: user
+// return: none
 function getNewUserInfo(user) {
 
   let verified = false;
@@ -137,6 +140,8 @@ var uiConfig = {
 ui.start('#firebaseui-auth-container', uiConfig);
 
 // Modal thats displays the account creation being successful, then redirects users to main.html
+// params: none
+// return: none
 function accountmodalsuccess() {
   document.getElementById("accountLabel").innerHTML = "Success!";
   document.getElementById("accountModText").innerHTML = "Account created!"
@@ -150,6 +155,8 @@ function accountmodalsuccess() {
 }
 
 // Shows a fail message if team not entered
+// params: none
+// return: none
 function accountmodalTeamFail() {
   document.getElementById("accountLabel").innerHTML = "Whoops!";
   document.getElementById("accountModText").innerHTML = "Please enter a team."
@@ -157,6 +164,8 @@ function accountmodalTeamFail() {
 }
 
 // Shows a fail message if gender not entered
+// params: none
+// return: none
 function accountmodalGenderFail() {
   document.getElementById("accountLabel").innerHTML = "Whoops!";
   document.getElementById("accountModText").innerHTML = "Please enter a gender."
@@ -164,6 +173,8 @@ function accountmodalGenderFail() {
 }
 
 // Shows a fail message if sport not entered
+// params: none
+// return: none
 function accountmodalSportFail() {
   document.getElementById("accountLabel").innerHTML = "Whoops!";
   document.getElementById("accountModText").innerHTML = "Please enter a sport."

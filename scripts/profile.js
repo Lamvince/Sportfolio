@@ -364,11 +364,15 @@ firebase.auth().onAuthStateChanged(user => {
 });
 
 // Display this text if video has been uploaded successfully
+// params: none
+// return: none
 function videoSuccess() {
   document.getElementById("mediaModText").innerHTML = "Video successfully uploaded!";
 }
 
-// Display this text if video upload failed
+// Display a fail text if video has been uploaded successfully
+// params: none
+// return: none
 function uploadFail() {
   document.getElementById("mediaLabel").innerHTML = "Whoops!";
   document.getElementById("mediaModText").innerHTML = "Could not upload your file.";

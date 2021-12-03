@@ -1,4 +1,6 @@
 // Shows the logged in user's notifications, basically shows if a user has a new message or not.
+// params: none
+// return: none
 function notificationModal() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {

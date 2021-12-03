@@ -1,6 +1,8 @@
 let usertext;
 
 // Show is list of all users EXCEPT me (who is logged in)
+// params: none
+// return: none
 function showAllUsers() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {

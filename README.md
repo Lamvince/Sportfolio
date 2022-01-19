@@ -9,6 +9,7 @@
 ## General Info
 Our team BBY-31 is developing Sportfolio to help athletes and recruiters with the recruitment process<br/>
 Link to Sportfolio - https://sportfolio-96c76.web.app/html/index.html
+
 Link to an early Figma prototype - https://www.figma.com/proto/9jQYIo18qn9dKQmIU9BdAP/Sportfolio?node-id=132%3A3637&starting-point-node-id=132%3A3637
 
 * Hello! My name is Ryan and I am excited to work with my team to build an awesome app.
